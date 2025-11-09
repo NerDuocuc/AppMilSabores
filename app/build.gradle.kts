@@ -38,29 +38,30 @@ android {
         compose = true
     }
 }
+// Pega este bloque completo en tu archivo app/build.gradle.kts
 
-dependencies {
+    dependencies {
 
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation(libs.androidx.activity.compose)
-    implementation(platform(libs.androidx.compose.bom))
-    implementation(libs.androidx.ui)
-    implementation(libs.androidx.ui.graphics)
-    implementation(libs.androidx.ui.tooling.preview)
-    implementation(libs.androidx.material3)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(platform(libs.androidx.compose.bom))
-    androidTestImplementation(libs.androidx.ui.test.junit4)
-    debugImplementation(libs.androidx.ui.tooling)
-    debugImplementation(libs.androidx.ui.test.manifest)
+        implementation("androidx.core:core-ktx:1.17.0")
+        implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.9.4")
+        implementation("androidx.activity:activity-compose:1.11.0")
+        implementation(platform("androidx.compose:compose-bom:2024.09.00"))
+        implementation("androidx.compose.ui:ui")
+        implementation("androidx.compose.ui:ui-graphics")
+        implementation("androidx.compose.ui:ui-tooling-preview")
+        implementation("androidx.compose.material3:material3")
 
-    // ViewModel para Compose
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.9.4")
+        // --- DEPENDENCIAS CORREGIDAS PARA MVVM Y NAVEGACIÓN ---
+        implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.9.4") // Versión estable y alineada
+        implementation("androidx.navigation:navigation-compose:2.7.7")     // Versión estable y compatible
 
-    // Navegación para Compose (para moverte entre pantallas)
-    implementation("androidx.navigation:navigation-compose:2.9.5")
+        // --- DEPENDENCIAS DE TEST (Déjalas como están en tu proyecto) ---
+        testImplementation("junit:junit:4.13.2")
+        androidTestImplementation("androidx.test.ext:junit:1.2.1")
+        androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
+        androidTestImplementation(platform("androidx.compose:compose-bom:2024.09.00"))
+        androidTestImplementation("androidx.compose.ui:ui-test-junit4")
+        debugImplementation("androidx.compose.ui:ui-tooling")
+        debugImplementation("androidx.compose.ui:ui-test-manifest")
 
-}
+    }
