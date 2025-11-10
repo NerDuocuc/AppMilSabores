@@ -8,11 +8,12 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
-import com.example.appmilsabores.ui.home.HomeScreen // Importa tu nueva pantalla
-import com.example.appmilsabores.ui.theme.AppMilSaboresTheme // El tema de tu app
-import com.example.appmilsabores.ui.navigation.AppNavigation
+import com.example.appmilsabores.presentation.ui.theme.AppMilSaboresTheme // El tema de tu app
+import com.example.appmilsabores.presentation.navigation.AppNavGraph
+
 
 class MainActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -21,9 +22,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    // ¡AQUÍ ESTÁ EL CAMBIO!
-                    // En lugar de llamar a una pantalla, llamamos al navegador.
-                    AppNavigation()
+                    AppNavGraph()
                 }
             }
         }

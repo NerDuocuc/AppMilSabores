@@ -1,0 +1,66 @@
+package com.example.appmilsabores.presentation.viewmodel
+
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.appmilsabores.data.repository.UserRepositoryImpl
+import com.example.appmilsabores.domain.model.Order
+import com.example.appmilsabores.domain.model.UserProfile
+import com.example.appmilsabores.domain.usecase.GetUserProfileUseCase
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asSharedFlow
+import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
+
+data class UserUiState(
+    val profile: UserProfile? = null,
+    val orders: List<Order> = emptyList(),
+    val isLoading: Boolean = true
+)
+
+class UserViewModel(
+    private val useCase: GetUserProfileUseCase = GetUserProfileUseCase(UserRepositoryImpl())
+) : ViewModel() {
+
+    private val _uiState = MutableStateFlow(UserUiState())
+    val uiState: StateFlow<UserUiState> = _uiState
+
+    private val _logoutEvents = MutableSharedFlow<Unit>(extraBufferCapacity = 1)
+    val logoutEvents = _logoutEvents.asSharedFlow()
+
+    private val _messages = MutableSharedFlow<String>(extraBufferCapacity = 1)
+    val messages = _messages.asSharedFlow()
+
+    init {
+        loadUserData()
+    }
+
+    fun loadUserData() {
+        viewModelScope.launch {
+            val profile = useCase.getUserProfile()
+            val orders = useCase.getOrders()
+            _uiState.update { UserUiState(profile, orders, isLoading = false) }
+        }
+    }
+
+    fun logout() {
+        viewModelScope.launch {
+            useCase.logout()
+            _logoutEvents.emit(Unit)
+        }
+    }
+
+    fun updateProfilePhoto(photoUri: String) {
+        viewModelScope.launch {
+            runCatching {
+                useCase.updateProfilePhoto(photoUri)
+            }.onSuccess {
+                loadUserData()
+                _messages.emit("Foto de perfil actualizada")
+            }.onFailure {
+                _messages.emit("No se pudo actualizar la foto de perfil")
+            }
+        }
+    }
+}

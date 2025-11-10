@@ -8,6 +8,14 @@
         android:minSdkVersion="24"
         android:targetSdkVersion="36" />
 
+    <!-- PERMISOS DE LA APLICACIÓN -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
     <permission
         android:name="com.example.appmilsabores.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
         android:protectionLevel="signature" />
@@ -15,6 +23,7 @@
     <uses-permission android:name="com.example.appmilsabores.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
 
     <application
+        android:name="com.example.appmilsabores.AppMilSaboresApplication"
         android:allowBackup="true"
         android:appComponentFactory="androidx.core.app.CoreComponentFactory"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -27,6 +36,16 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/Theme.AppMilSabores" >
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.appmilsabores.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true" >
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
         <activity
             android:name="com.example.appmilsabores.MainActivity"
             android:exported="true"
@@ -60,6 +79,11 @@
                 android:name="androidx.profileinstaller.ProfileInstallerInitializer"
                 android:value="androidx.startup" />
         </provider>
+
+        <service
+            android:name="androidx.room.MultiInstanceInvalidationService"
+            android:directBootAware="true"
+            android:exported="false" />
 
         <receiver
             android:name="androidx.profileinstaller.ProfileInstallReceiver"

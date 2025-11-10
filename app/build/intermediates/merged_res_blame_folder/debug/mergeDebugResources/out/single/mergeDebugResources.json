@@ -1,66 +1,322 @@
 [
     {
-        "merged": "com.example.appmilsabores.app-debug-42:/mipmap-mdpi_ic_launcher.webp.flat",
-        "source": "com.example.appmilsabores.app-main-44:/mipmap-mdpi/ic_launcher.webp"
+        "merged": "com.example.appmilsabores.app-debug-52:/drawable_pg002.png.flat",
+        "source": "com.example.appmilsabores.app-main-54:/drawable/pg002.png"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-42:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "com.example.appmilsabores.app-main-44:/mipmap-anydpi-v26/ic_launcher_round.xml"
+        "merged": "com.example.appmilsabores.app-debug-52:/drawable_silla_product.jpg.flat",
+        "source": "com.example.appmilsabores.app-main-54:/drawable/silla_product.jpg"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-42:/mipmap-mdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.appmilsabores.app-main-44:/mipmap-mdpi/ic_launcher_round.webp"
+        "merged": "com.example.appmilsabores.app-debug-52:/drawable_promo_banner_2.png.flat",
+        "source": "com.example.appmilsabores.app-main-54:/drawable/promo_banner_2.png"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-42:/xml_data_extraction_rules.xml.flat",
-        "source": "com.example.appmilsabores.app-main-44:/xml/data_extraction_rules.xml"
+        "merged": "com.example.appmilsabores.app-debug-52:/drawable_cg001.png.flat",
+        "source": "com.example.appmilsabores.app-main-54:/drawable/cg001.png"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-42:/xml_backup_rules.xml.flat",
-        "source": "com.example.appmilsabores.app-main-44:/xml/backup_rules.xml"
+        "merged": "com.example.appmilsabores.app-debug-52:/drawable_gamer_4.png.flat",
+        "source": "com.example.appmilsabores.app-main-54:/drawable/gamer_4.png"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-42:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.appmilsabores.app-main-44:/mipmap-xxhdpi/ic_launcher_round.webp"
+        "merged": "/Users/matiasheyersaez/.gradle/daemon/8.13/com.example.appmilsabores.app-debug-52:/xml_backup_rules.xml.flat",
+        "source": "/Users/matiasheyersaez/.gradle/daemon/8.13/com.example.appmilsabores.app-main-54:/xml/backup_rules.xml"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-42:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.appmilsabores.app-main-44:/mipmap-xxxhdpi/ic_launcher_round.webp"
+        "merged": "com.example.appmilsabores.app-debug-52:/drawable_ms001.webp.flat",
+        "source": "com.example.appmilsabores.app-main-54:/drawable/ms001.webp"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-42:/mipmap-xxxhdpi_ic_launcher.webp.flat",
-        "source": "com.example.appmilsabores.app-main-44:/mipmap-xxxhdpi/ic_launcher.webp"
+        "merged": "com.example.appmilsabores.app-debug-52:/drawable_gamer.jpg.flat",
+        "source": "com.example.appmilsabores.app-main-54:/drawable/gamer.jpg"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-42:/mipmap-hdpi_ic_launcher.webp.flat",
-        "source": "com.example.appmilsabores.app-main-44:/mipmap-hdpi/ic_launcher.webp"
+        "merged": "com.example.appmilsabores.app-debug-52:/drawable_ic_launcher_background.xml.flat",
+        "source": "com.example.appmilsabores.app-main-54:/drawable/ic_launcher_background.xml"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-42:/drawable_ic_launcher_background.xml.flat",
-        "source": "com.example.appmilsabores.app-main-44:/drawable/ic_launcher_background.xml"
+        "merged": "com.example.appmilsabores.app-debug-52:/drawable_polera_product.png.flat",
+        "source": "com.example.appmilsabores.app-main-54:/drawable/polera_product.png"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-42:/mipmap-hdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.appmilsabores.app-main-44:/mipmap-hdpi/ic_launcher_round.webp"
+        "merged": "/Users/matiasheyersaez/.gradle/daemon/8.13/com.example.appmilsabores.app-debug-52:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "/Users/matiasheyersaez/.gradle/daemon/8.13/com.example.appmilsabores.app-main-54:/drawable/ic_launcher_foreground.xml"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-42:/mipmap-xhdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.appmilsabores.app-main-44:/mipmap-xhdpi/ic_launcher_round.webp"
+        "merged": "/Users/matiasheyersaez/.gradle/daemon/8.13/com.example.appmilsabores.app-debug-52:/drawable_ic_launcher_background.xml.flat",
+        "source": "/Users/matiasheyersaez/.gradle/daemon/8.13/com.example.appmilsabores.app-main-54:/drawable/ic_launcher_background.xml"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-42:/mipmap-xhdpi_ic_launcher.webp.flat",
-        "source": "com.example.appmilsabores.app-main-44:/mipmap-xhdpi/ic_launcher.webp"
+        "merged": "com.example.appmilsabores.app-debug-52:/drawable_avatar_placeholder.png.flat",
+        "source": "com.example.appmilsabores.app-main-54:/drawable/avatar_placeholder.png"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-42:/mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "com.example.appmilsabores.app-main-44:/mipmap-anydpi-v26/ic_launcher.xml"
+        "merged": "com.example.appmilsabores.app-debug-52:/drawable_audifonos.jpg.flat",
+        "source": "com.example.appmilsabores.app-main-54:/drawable/audifonos.jpg"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-42:/drawable_ic_launcher_foreground.xml.flat",
-        "source": "com.example.appmilsabores.app-main-44:/drawable/ic_launcher_foreground.xml"
+        "merged": "com.example.appmilsabores.app-debug-52:/drawable_co002.webp.flat",
+        "source": "com.example.appmilsabores.app-main-54:/drawable/co002.webp"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-42:/mipmap-xxhdpi_ic_launcher.webp.flat",
-        "source": "com.example.appmilsabores.app-main-44:/mipmap-xxhdpi/ic_launcher.webp"
+        "merged": "com.example.appmilsabores.app-debug-52:/drawable_pp001.png.flat",
+        "source": "com.example.appmilsabores.app-main-54:/drawable/pp001.png"
+    },
+    {
+        "merged": "com.example.appmilsabores.app-debug-52:/drawable_audifonos_product.webp.flat",
+        "source": "com.example.appmilsabores.app-main-54:/drawable/audifonos_product.webp"
+    },
+    {
+        "merged": "com.example.appmilsabores.app-debug-52:/drawable_catan_product.webp.flat",
+        "source": "com.example.appmilsabores.app-main-54:/drawable/catan_product.webp"
+    },
+    {
+        "merged": "com.example.appmilsabores.app-debug-52:/drawable_gamer_1.png.flat",
+        "source": "com.example.appmilsabores.app-main-54:/drawable/gamer_1.png"
+    },
+    {
+        "merged": "com.example.appmilsabores.app-debug-52:/drawable_splash_logo.png.flat",
+        "source": "com.example.appmilsabores.app-main-54:/drawable/splash_logo.png"
+    },
+    {
+        "merged": "com.example.appmilsabores.app-debug-52:/drawable_cg002.jpg.flat",
+        "source": "com.example.appmilsabores.app-main-54:/drawable/cg002.jpg"
+    },
+    {
+        "merged": "com.example.appmilsabores.app-debug-52:/drawable_ic_keyboard.xml.flat",
+        "source": "com.example.appmilsabores.app-main-54:/drawable/ic_keyboard.xml"
+    },
+    {
+        "merged": "/Users/matiasheyersaez/.gradle/daemon/8.13/com.example.appmilsabores.app-debug-52:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/matiasheyersaez/.gradle/daemon/8.13/com.example.appmilsabores.app-main-54:/mipmap-xxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.appmilsabores.app-debug-52:/drawable_jm002.png.flat",
+        "source": "com.example.appmilsabores.app-main-54:/drawable/jm002.png"
+    },
+    {
+        "merged": "com.example.appmilsabores.app-debug-52:/drawable_bald.avif.flat",
+        "source": "com.example.appmilsabores.app-main-54:/drawable/bald.avif"
+    },
+    {
+        "merged": "com.example.appmilsabores.app-debug-52:/drawable_mp002.jpg.flat",
+        "source": "com.example.appmilsabores.app-main-54:/drawable/mp002.jpg"
+    },
+    {
+        "merged": "com.example.appmilsabores.app-debug-52:/drawable_ic_visa.png.flat",
+        "source": "com.example.appmilsabores.app-main-54:/drawable/ic_visa.png"
+    },
+    {
+        "merged": "com.example.appmilsabores.app-debug-52:/drawable_logo2.png.flat",
+        "source": "com.example.appmilsabores.app-main-54:/drawable/logo2.png"
+    },
+    {
+        "merged": "com.example.appmilsabores.app-debug-52:/drawable_street.avif.flat",
+        "source": "com.example.appmilsabores.app-main-54:/drawable/street.avif"
+    },
+    {
+        "merged": "com.example.appmilsabores.app-debug-52:/drawable_sg002.png.flat",
+        "source": "com.example.appmilsabores.app-main-54:/drawable/sg002.png"
+    },
+    {
+        "merged": "com.example.appmilsabores.app-debug-52:/drawable_gamer_2.png.flat",
+        "source": "com.example.appmilsabores.app-main-54:/drawable/gamer_2.png"
+    },
+    {
+        "merged": "/Users/matiasheyersaez/.gradle/daemon/8.13/com.example.appmilsabores.app-debug-52:/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/matiasheyersaez/.gradle/daemon/8.13/com.example.appmilsabores.app-main-54:/mipmap-hdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/Users/matiasheyersaez/.gradle/daemon/8.13/com.example.appmilsabores.app-debug-52:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "/Users/matiasheyersaez/.gradle/daemon/8.13/com.example.appmilsabores.app-main-54:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "com.example.appmilsabores.app-debug-52:/drawable_opti.jpg.flat",
+        "source": "com.example.appmilsabores.app-main-54:/drawable/opti.jpg"
+    },
+    {
+        "merged": "com.example.appmilsabores.app-debug-52:/drawable_ic_chair.xml.flat",
+        "source": "com.example.appmilsabores.app-main-54:/drawable/ic_chair.xml"
+    },
+    {
+        "merged": "com.example.appmilsabores.app-debug-52:/drawable_ic_monitor.xml.flat",
+        "source": "com.example.appmilsabores.app-main-54:/drawable/ic_monitor.xml"
+    },
+    {
+        "merged": "com.example.appmilsabores.app-debug-52:/drawable_ic_headset.xml.flat",
+        "source": "com.example.appmilsabores.app-main-54:/drawable/ic_headset.xml"
+    },
+    {
+        "merged": "com.example.appmilsabores.app-debug-52:/drawable_pg001.png.flat",
+        "source": "com.example.appmilsabores.app-main-54:/drawable/pg001.png"
+    },
+    {
+        "merged": "com.example.appmilsabores.app-debug-52:/drawable_worlds.webp.flat",
+        "source": "com.example.appmilsabores.app-main-54:/drawable/worlds.webp"
+    },
+    {
+        "merged": "/Users/matiasheyersaez/.gradle/daemon/8.13/com.example.appmilsabores.app-debug-52:/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/matiasheyersaez/.gradle/daemon/8.13/com.example.appmilsabores.app-main-54:/mipmap-xhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.appmilsabores.app-debug-52:/drawable_mouse_product.webp.flat",
+        "source": "com.example.appmilsabores.app-main-54:/drawable/mouse_product.webp"
+    },
+    {
+        "merged": "/Users/matiasheyersaez/.gradle/daemon/8.13/com.example.appmilsabores.app-debug-52:/xml_data_extraction_rules.xml.flat",
+        "source": "/Users/matiasheyersaez/.gradle/daemon/8.13/com.example.appmilsabores.app-main-54:/xml/data_extraction_rules.xml"
+    },
+    {
+        "merged": "com.example.appmilsabores.app-debug-52:/drawable_circuit_background.png.flat",
+        "source": "com.example.appmilsabores.app-main-54:/drawable/circuit_background.png"
+    },
+    {
+        "merged": "com.example.appmilsabores.app-debug-52:/drawable_p5_product.webp.flat",
+        "source": "com.example.appmilsabores.app-main-54:/drawable/p5_product.webp"
+    },
+    {
+        "merged": "com.example.appmilsabores.app-debug-52:/drawable_pp002.png.flat",
+        "source": "com.example.appmilsabores.app-main-54:/drawable/pp002.png"
+    },
+    {
+        "merged": "com.example.appmilsabores.app-debug-52:/drawable_ic_mouse.xml.flat",
+        "source": "com.example.appmilsabores.app-main-54:/drawable/ic_mouse.xml"
+    },
+    {
+        "merged": "com.example.appmilsabores.app-debug-52:/drawable_mp001.jpg.flat",
+        "source": "com.example.appmilsabores.app-main-54:/drawable/mp001.jpg"
+    },
+    {
+        "merged": "com.example.appmilsabores.app-debug-52:/drawable_jm001.webp.flat",
+        "source": "com.example.appmilsabores.app-main-54:/drawable/jm001.webp"
+    },
+    {
+        "merged": "/Users/matiasheyersaez/.gradle/daemon/8.13/com.example.appmilsabores.app-debug-52:/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/matiasheyersaez/.gradle/daemon/8.13/com.example.appmilsabores.app-main-54:/mipmap-mdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.appmilsabores.app-debug-52:/drawable_ac002.webp.flat",
+        "source": "com.example.appmilsabores.app-main-54:/drawable/ac002.webp"
+    },
+    {
+        "merged": "com.example.appmilsabores.app-debug-52:/drawable_poleron_product.png.flat",
+        "source": "com.example.appmilsabores.app-main-54:/drawable/poleron_product.png"
+    },
+    {
+        "merged": "/Users/matiasheyersaez/.gradle/daemon/8.13/com.example.appmilsabores.app-debug-52:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "/Users/matiasheyersaez/.gradle/daemon/8.13/com.example.appmilsabores.app-main-54:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.example.appmilsabores.app-debug-52:/drawable_background.png.flat",
+        "source": "com.example.appmilsabores.app-main-54:/drawable/background.png"
+    },
+    {
+        "merged": "com.example.appmilsabores.app-debug-52:/drawable_mousepad_product.jpg.flat",
+        "source": "com.example.appmilsabores.app-main-54:/drawable/mousepad_product.jpg"
+    },
+    {
+        "merged": "/Users/matiasheyersaez/.gradle/daemon/8.13/com.example.appmilsabores.app-debug-52:/xml_file_paths.xml.flat",
+        "source": "/Users/matiasheyersaez/.gradle/daemon/8.13/com.example.appmilsabores.app-main-54:/xml/file_paths.xml"
+    },
+    {
+        "merged": "/Users/matiasheyersaez/.gradle/daemon/8.13/com.example.appmilsabores.app-debug-52:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "/Users/matiasheyersaez/.gradle/daemon/8.13/com.example.appmilsabores.app-main-54:/mipmap-hdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.appmilsabores.app-debug-52:/drawable_promo_banner_1.png.flat",
+        "source": "com.example.appmilsabores.app-main-54:/drawable/promo_banner_1.png"
+    },
+    {
+        "merged": "com.example.appmilsabores.app-debug-52:/drawable_logo_levelup.png.flat",
+        "source": "com.example.appmilsabores.app-main-54:/drawable/logo_levelup.png"
+    },
+    {
+        "merged": "com.example.appmilsabores.app-debug-52:/drawable_sg001.jpg.flat",
+        "source": "com.example.appmilsabores.app-main-54:/drawable/sg001.jpg"
+    },
+    {
+        "merged": "/Users/matiasheyersaez/.gradle/daemon/8.13/com.example.appmilsabores.app-debug-52:/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "/Users/matiasheyersaez/.gradle/daemon/8.13/com.example.appmilsabores.app-main-54:/mipmap-xhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.appmilsabores.app-debug-52:/drawable_ac003.png.flat",
+        "source": "com.example.appmilsabores.app-main-54:/drawable/ac003.png"
+    },
+    {
+        "merged": "com.example.appmilsabores.app-debug-52:/drawable_carcassonne_product.png.flat",
+        "source": "com.example.appmilsabores.app-main-54:/drawable/carcassonne_product.png"
+    },
+    {
+        "merged": "com.example.appmilsabores.app-debug-52:/drawable_ic_mastercard.png.flat",
+        "source": "com.example.appmilsabores.app-main-54:/drawable/ic_mastercard.png"
+    },
+    {
+        "merged": "com.example.appmilsabores.app-debug-52:/drawable_gamer_3.png.flat",
+        "source": "com.example.appmilsabores.app-main-54:/drawable/gamer_3.png"
+    },
+    {
+        "merged": "com.example.appmilsabores.app-debug-52:/drawable_blog.webp.flat",
+        "source": "com.example.appmilsabores.app-main-54:/drawable/blog.webp"
+    },
+    {
+        "merged": "com.example.appmilsabores.app-debug-52:/drawable_co001.webp.flat",
+        "source": "com.example.appmilsabores.app-main-54:/drawable/co001.webp"
+    },
+    {
+        "merged": "/Users/matiasheyersaez/.gradle/daemon/8.13/com.example.appmilsabores.app-debug-52:/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "/Users/matiasheyersaez/.gradle/daemon/8.13/com.example.appmilsabores.app-main-54:/mipmap-xxxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.appmilsabores.app-debug-52:/drawable_jm003.webp.flat",
+        "source": "com.example.appmilsabores.app-main-54:/drawable/jm003.webp"
+    },
+    {
+        "merged": "com.example.appmilsabores.app-debug-52:/drawable_logo.png.flat",
+        "source": "com.example.appmilsabores.app-main-54:/drawable/logo.png"
+    },
+    {
+        "merged": "com.example.appmilsabores.app-debug-52:/drawable_teclados.avif.flat",
+        "source": "com.example.appmilsabores.app-main-54:/drawable/teclados.avif"
+    },
+    {
+        "merged": "com.example.appmilsabores.app-debug-52:/drawable_kirby.avif.flat",
+        "source": "com.example.appmilsabores.app-main-54:/drawable/kirby.avif"
+    },
+    {
+        "merged": "com.example.appmilsabores.app-debug-52:/drawable_teclado_product.png.flat",
+        "source": "com.example.appmilsabores.app-main-54:/drawable/teclado_product.png"
+    },
+    {
+        "merged": "/Users/matiasheyersaez/.gradle/daemon/8.13/com.example.appmilsabores.app-debug-52:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/matiasheyersaez/.gradle/daemon/8.13/com.example.appmilsabores.app-main-54:/mipmap-xxxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.appmilsabores.app-debug-52:/drawable_gta.jpg.flat",
+        "source": "com.example.appmilsabores.app-main-54:/drawable/gta.jpg"
+    },
+    {
+        "merged": "/Users/matiasheyersaez/.gradle/daemon/8.13/com.example.appmilsabores.app-debug-52:/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "/Users/matiasheyersaez/.gradle/daemon/8.13/com.example.appmilsabores.app-main-54:/mipmap-mdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.appmilsabores.app-debug-52:/drawable_ac001.jpg.flat",
+        "source": "com.example.appmilsabores.app-main-54:/drawable/ac001.jpg"
+    },
+    {
+        "merged": "/Users/matiasheyersaez/.gradle/daemon/8.13/com.example.appmilsabores.app-debug-52:/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "/Users/matiasheyersaez/.gradle/daemon/8.13/com.example.appmilsabores.app-main-54:/mipmap-xxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.appmilsabores.app-debug-52:/drawable_pc_product.jpg.flat",
+        "source": "com.example.appmilsabores.app-main-54:/drawable/pc_product.jpg"
+    },
+    {
+        "merged": "com.example.appmilsabores.app-debug-52:/drawable_comunidada.jpg.flat",
+        "source": "com.example.appmilsabores.app-main-54:/drawable/comunidada.jpg"
+    },
+    {
+        "merged": "com.example.appmilsabores.app-debug-52:/drawable_ms002.webp.flat",
+        "source": "com.example.appmilsabores.app-main-54:/drawable/ms002.webp"
     }
 ]
