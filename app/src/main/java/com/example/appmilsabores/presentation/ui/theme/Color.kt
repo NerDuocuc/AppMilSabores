@@ -3,15 +3,30 @@ package com.example.appmilsabores.presentation.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val Purple80 = Color(0xFFD0BCFF)
-val PurpleGrey80 = Color(0xFFCCC2DC)
-val Pink80 = Color(0xFFEFB8C8)
+val WebFondoClaro = Color(0xFFFFFFFF)       // --color-background: #ffffff
+val WebTextoPrincipal = Color(0xFF1A1A1A)   // --color-text-primary: #1a1a1a
+val WebAcentoPrincipal = Color(0xFFB08D57) // --accent-main: #b08d57
+val WebAcentoOscuro = Color(0xFF6B3E26)     // --accent-dark: #6b3e26
 
-val Purple40 = Color(0xFF6650a4)
-val PurpleGrey40 = Color(0xFF625b71)
-val Pink40 = Color(0xFF7D5260)
+// Color de fondo principal
+val PureBlackBackground = WebFondoClaro
 
-val PureBlackBackground = Color.Black
-val TopBarAndDrawerColor = Color.Black.copy(alpha = 0.85f)
-val PrimaryPurple = Color(0xFFC000FF)
-val CardBackgroundColor = Color(0xFF2C2C2C)
+// Color de tarjetas y superficies
+val CardBackgroundColor = WebFondoClaro
+
+// Color de acento principal
+val PrimaryPurple = WebAcentoPrincipal
+
+// Color de textos principales
+val MainTextColor = WebTextoPrincipal
+
+
+// Colores que se pueden ignorar
+
+val BackgroundColor = Color(0xFF1CB1EF) // Ignorado
+val TopBarAndDrawerColor = Color.Black.copy(alpha = 0.85f) // Ignorado
+val PurpleGrey80 = Color(0xFFCCC2DC) // Ignorado
+val Pink80 = Color(0xFFEFB8C8) // Ignorado
+val Purple40 = Color(0xFF6650a4) // Ignorado
+val PurpleGrey40 = Color(0xFF625b71) // Ignorado
+val Pink40 = Color(0xFF7D5260) // Ignorado

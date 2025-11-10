@@ -1,4 +1,4 @@
-#Mon Nov 10 13:51:25 CLST 2025
+#Mon Nov 10 14:23:10 CLST 2025
 base.0=/Users/matiasheyersaez/Documents/DuocUc/DesarrolloDeAplicaciones/AppMilSabores/AppMilSabores/app/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex
 base.1=/Users/matiasheyersaez/Documents/DuocUc/DesarrolloDeAplicaciones/AppMilSabores/AppMilSabores/app/build/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex
 base.10=/Users/matiasheyersaez/Documents/DuocUc/DesarrolloDeAplicaciones/AppMilSabores/AppMilSabores/app/build/intermediates/dex/debug/mergeProjectDexDebug/7/classes.dex
