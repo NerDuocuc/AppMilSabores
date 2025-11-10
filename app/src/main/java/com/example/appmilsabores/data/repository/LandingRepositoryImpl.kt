@@ -7,67 +7,58 @@ import com.example.appmilsabores.domain.repository.LandingRepository
 class LandingRepositoryImpl : LandingRepository {
 
     override fun getPromotions() = listOf(
-        Promotion("OFERTAS EN JUEGOS", "Renueva tu ludoteca esta semana", R.drawable.promo_banner_1),
-        Promotion("ACCESORIOS DESTACADOS", "Setup pro con envíos en 24h", R.drawable.promo_banner_1),
-        Promotion("ESCRITORIO GAMER", "Sillas y PC listos para tu stream", R.drawable.promo_banner_1)
+        Promotion("NUESTRAS ESPECIALIDADES", "Hecho a mano, con amor y tradición", R.drawable.vitrinareposteria), // <- TU IMAGEN
+        Promotion("TORTAS PARA CADA OCASIÓN", "Cumpleaños, bodas y más", R.drawable.torta_especial_boda),
+        Promotion("CONOCE A LA FUNDADORA", "La historia detrás de cada sabor", R.drawable.fundadora) // <- TU IMAGEN
     )
 
     override fun getCategories() = listOf(
-        Category("Juegos de Mesa", R.drawable.ic_keyboard),
-        Category("Accesorios", R.drawable.ic_headset),
-        Category("Consolas", R.drawable.ic_monitor),
-        Category("Computadores Gamers", R.drawable.ic_monitor),
-        Category("Sillas Gamers", R.drawable.ic_chair),
-        Category("Mouse", R.drawable.ic_mouse)
+        Category("Tortas Especiales", R.drawable.ic_cake), // Ícono genérico, la imagen real está en el producto
+        Category("Tortas Tradicionales", R.drawable.ic_pie),
+        Category("Postres", R.drawable.ic_cupcake),
+        Category("Saludables", R.drawable.ic_vegan),
+        Category("Pastelería Chilena", R.drawable.ic_cookie)
     )
 
     override fun getFeaturedProducts() = listOf(
         ProductSummary(
-            id = 1,
-            name = "Catan",
-            price = "$29.990",
-            imageRes = R.drawable.jm001
-        ),
-        ProductSummary(
-            id = 5,
-            name = "HyperX Cloud II",
-            price = "$79.990",
-            imageRes = R.drawable.ac002
-        ),
-        ProductSummary(
             id = 7,
-            name = "PlayStation 5",
-            price = "$549.990",
-            imageRes = R.drawable.co001
+            name = "Postre de Tiramisú",
+            price = "$5.990",
+            imageRes = R.drawable.tiramisu
         ),
         ProductSummary(
-            id = 9,
-            name = "PC Gamer ASUS ROG",
-            price = "$1.299.990",
-            imageRes = R.drawable.cg001
+            id = 1,
+            name = "Torta de Cumpleaños",
+            price = "$35.990",
+            imageRes = R.drawable.torta_especial_cumpleanos
+        ),
+        ProductSummary(
+            id = 12,
+            name = "Torta Sin Azúcar",
+            price = "$26.990",
+            imageRes = R.drawable.torta_sin_azucar_naranja
         )
     )
-
 
     override fun getNewProducts() = listOf(
         ProductSummary(
-            id = 11,
-            name = "Secretlab Titan",
-            price = "$349.990",
-            imageRes = R.drawable.sg001
+            id = 17,
+            name = "Tarta de Santiago",
+            price = "$18.990",
+            imageRes = R.drawable.tarta_santiago
         ),
         ProductSummary(
-            id = 13,
-            name = "Logitech G502 HERO",
-            price = "$49.990",
-            imageRes = R.drawable.ms001
+            id = 15,
+            name = "Pastel Vegano Choco",
+            price = "$4.990",
+            imageRes = R.drawable.vegana_chocolate
         ),
         ProductSummary(
-            id = 19,
-            name = "Polerón Respawn",
-            price = "$24.990",
-            imageRes = R.drawable.pg001
+            id = 5,
+            name = "Torta Cuadrada Choco",
+            price = "$25.990",
+            imageRes = R.drawable.torta_cuadrada_chocolate
         )
     )
-
 }

@@ -8,229 +8,210 @@ import com.example.appmilsabores.domain.model.ProductReview
 object LocalSeedData {
 
     val defaultProducts = listOf(
+        // --- Tortas Especiales ---
         ProductEntity(
             id = 1,
-            name = "Catan",
-            price = 29990.0,
-            oldPrice = 32990.0,
-            rating = 4.8f,
-            reviews = 256,
-            imageRes = R.drawable.jm001,
-            category = "Juegos de Mesa",
-            description = "Catan es un clásico juego de estrategia donde los jugadores colonizan una isla, comercian recursos y compiten por la supremacía."
+            name = "Torta Especial de Cumpleaños",
+            price = 35990.0,
+            oldPrice = 39990.0,
+            rating = 4.9f,
+            reviews = 88,
+            imageRes = R.drawable.torta_especial_cumpleanos, // <- TU IMAGEN
+            category = "Tortas Especiales",
+            description = "Una torta festiva y personalizable, con bizcocho de vainilla, relleno de crema y frutas de estación. Perfecta para celebrar."
         ),
         ProductEntity(
             id = 2,
-            name = "Carcassonne",
-            price = 24990.0,
-            oldPrice = 27990.0,
-            rating = 4.7f,
-            reviews = 198,
-            imageRes = R.drawable.jm002,
-            category = "Juegos de Mesa",
-            description = "Carcassonne es un juego de colocación de losetas en el que construyes ciudades, caminos y monasterios para sumar puntos."
+            name = "Torta Especial de Boda",
+            price = 89990.0,
+            oldPrice = null,
+            rating = 5.0f,
+            reviews = 45,
+            imageRes = R.drawable.torta_especial_boda, // <- TU IMAGEN
+            category = "Tortas Especiales",
+            description = "Elegancia y sabor en una torta de varios pisos. Sabores a elección, cubierta de fondant artesanal y detalles florales."
         ),
+
+        // --- Tortas Tradicionales ---
         ProductEntity(
             id = 3,
-            name = "Dixit",
-            price = 21990.0,
-            oldPrice = 24990.0,
-            rating = 4.6f,
-            reviews = 174,
-            imageRes = R.drawable.jm003,
-            category = "Juegos de Mesa",
-            description = "Dixit es un creativo juego de cartas ilustradas donde la imaginación y la interpretación son clave para ganar."
+            name = "Torta Circular de Vainilla",
+            price = 22990.0,
+            oldPrice = null,
+            rating = 4.7f,
+            reviews = 112,
+            imageRes = R.drawable.torta_circular_vainilla, // <- TU IMAGEN
+            category = "Tortas Tradicionales",
+            description = "Un clásico que nunca falla. Bizcocho de vainilla húmedo y esponjoso, relleno de manjar casero y cubierto con merengue."
         ),
         ProductEntity(
             id = 4,
-            name = "Control Xbox Series X",
-            price = 59990.0,
-            oldPrice = 64990.0,
-            rating = 4.9f,
-            reviews = 412,
-            imageRes = R.drawable.ac001,
-            category = "Accesorios",
-            description = "Control inalámbrico original para Xbox Series X|S con ergonomía mejorada y respuesta precisa."
+            name = "Torta Circular de Manjar",
+            price = 23990.0,
+            oldPrice = 25990.0,
+            rating = 4.8f,
+            reviews = 130,
+            imageRes = R.drawable.torta_circular_manjar, // <- TU IMAGEN
+            category = "Tortas Tradicionales",
+            description = "Para los amantes del manjar. Múltiples capas de bizcocho fino intercaladas con abundante manjar y nueces tostadas."
         ),
         ProductEntity(
             id = 5,
-            name = "Auriculares HyperX Cloud II",
-            price = 79990.0,
-            oldPrice = 89990.0,
-            rating = 4.8f,
-            reviews = 368,
-            imageRes = R.drawable.ac002,
-            category = "Accesorios",
-            description = "Headset HyperX Cloud II con sonido envolvente virtual 7.1 y micrófono con cancelación de ruido."
+            name = "Torta Cuadrada de Chocolate",
+            price = 25990.0,
+            oldPrice = null,
+            rating = 4.9f,
+            reviews = 155,
+            imageRes = R.drawable.torta_cuadrada_chocolate, // <- TU IMAGEN
+            category = "Tortas Tradicionales",
+            description = "Intensidad y textura. Bizcocho de chocolate 70% cacao, relleno de ganache y cubierto con trozos de chocolate belga."
         ),
         ProductEntity(
             id = 6,
-            name = "Teclado Mecánico Redragon Kumara",
-            price = 39990.0,
-            oldPrice = 44990.0,
-            rating = 4.7f,
-            reviews = 295,
-            imageRes = R.drawable.ac003,
-            category = "Accesorios",
-            description = "Teclado mecánico compacto Redragon Kumara con switches durables e iluminación RGB."
+            name = "Torta Cuadrada de Frutas",
+            price = 24990.0,
+            oldPrice = null,
+            rating = 4.6f,
+            reviews = 95,
+            imageRes = R.drawable.torta_cuadrada_frutas, // <- TU IMAGEN
+            category = "Tortas Tradicionales",
+            description = "Frescura y color. Bizcocho de yogur natural cubierto con crema pastelera y una selección de frutas frescas de la temporada."
         ),
+
+        // --- Postres y Dulces ---
         ProductEntity(
             id = 7,
-            name = "PlayStation 5",
-            price = 549990.0,
-            oldPrice = null,
+            name = "Postre de Tiramisú Clásico",
+            price = 5990.0,
+            oldPrice = 6490.0,
             rating = 4.9f,
-            reviews = 512,
-            imageRes = R.drawable.co001,
-            category = "Consolas",
-            description = "La consola PS5 ofrece gráficos de nueva generación, carga ultrarrápida con SSD y gatillos adaptativos."
+            reviews = 210,
+            imageRes = R.drawable.tiramisu, // <- TU IMAGEN (principal)
+            category = "Postres y Dulces",
+            description = "Capas de galletas de champaña bañadas en café de grano y licor, intercaladas con una suave crema de queso mascarpone."
         ),
         ProductEntity(
             id = 8,
-            name = "Nintendo Switch OLED",
-            price = 349990.0,
-            oldPrice = 369990.0,
+            name = "Tiramisú para Compartir (Formato 2)",
+            price = 15990.0,
+            oldPrice = null,
             rating = 4.8f,
-            reviews = 421,
-            imageRes = R.drawable.co002,
-            category = "Consolas",
-            description = "La consola Nintendo Switch OLED ofrece una pantalla OLED de 7 pulgadas, audio mejorado y un soporte ajustable para una experiencia de juego versátil tanto en modo portátil como en modo TV."
+            reviews = 90,
+            imageRes = R.drawable.tiramisu_2, // <- TU IMAGEN (alternativa)
+            category = "Postres y Dulces",
+            description = "El mismo sabor clásico de nuestro tiramisú, en un formato más grande ideal para compartir en una ocasión especial."
         ),
         ProductEntity(
             id = 9,
-            name = "PC Gamer ASUS ROG Strix",
-            price = 1299990.0,
-            oldPrice = 1399990.0,
+            name = "Mousse de Chocolate Intenso",
+            price = 4990.0,
+            oldPrice = null,
             rating = 4.8f,
-            reviews = 215,
-            imageRes = R.drawable.cg001,
-            category = "Computadores Gamers",
-            description = "PC gamer ASUS ROG Strix de alto rendimiento, ideal para juegos AAA y streaming."
+            reviews = 180,
+            imageRes = R.drawable.mousse_chocolate, // <- TU IMAGEN
+            category = "Postres y Dulces",
+            description = "Una mousse aireada y potente, hecha con chocolate de origen y un toque de sal marina para realzar su sabor."
         ),
         ProductEntity(
             id = 10,
-            name = "Notebook Gamer MSI Katana",
-            price = 999990.0,
-            oldPrice = 1099990.0,
+            name = "Brownie de Chocolate",
+            price = 2990.0,
+            oldPrice = null,
             rating = 4.7f,
-            reviews = 189,
-            imageRes = R.drawable.cg002,
-            category = "Computadores Gamers",
-            description = "Notebook MSI Katana con GPU dedicada y pantalla de alta tasa de refresco para gaming fluido."
+            reviews = 250,
+            imageRes = R.drawable.brownie, // <- TU IMAGEN
+            category = "Postres y Dulces",
+            description = "Húmedo por dentro, con una capa crujiente por fuera y lleno de trozos de nueces y chocolate. Un clásico irresistible."
         ),
         ProductEntity(
             id = 11,
-            name = "Silla Gamer Secretlab Titan",
-            price = 349990.0,
-            oldPrice = 379990.0,
+            name = "Brownie Doble Chocolate (Formato 2)",
+            price = 3290.0,
+            oldPrice = 3490.0,
             rating = 4.8f,
-            reviews = 164,
-            imageRes = R.drawable.sg001,
-            category = "Sillas Gamers",
-            description = "Silla gamer Secretlab Titan con soporte ergonómico y materiales premium para sesiones largas."
+            reviews = 190,
+            imageRes = R.drawable.brownie_2, // <- TU IMAGEN
+            category = "Postres y Dulces",
+            description = "Nuestra receta de brownie elevada al siguiente nivel, con doble carga de chocolate semi-amargo y una textura extra fudgy."
         ),
+
+        // --- Opciones Saludables / Especiales ---
         ProductEntity(
             id = 12,
-            name = "Silla Gamer Cougar Armor One",
-            price = 199990.0,
-            oldPrice = 219990.0,
-            rating = 4.6f,
-            reviews = 132,
-            imageRes = R.drawable.sg002,
-            category = "Sillas Gamers",
-            description = "Silla Cougar Armor One con estructura resistente y cojines ajustables para mayor comodidad."
+            name = "Torta Sin Azúcar de Naranja",
+            price = 26990.0,
+            oldPrice = null,
+            rating = 4.5f,
+            reviews = 65,
+            imageRes = R.drawable.torta_sin_azucar_naranja, // <- TU IMAGEN
+            category = "Opciones Saludables",
+            description = "Bizcocho húmedo de naranja endulzado naturalmente, ideal para quienes buscan una opción deliciosa y sin azúcar añadida."
         ),
         ProductEntity(
             id = 13,
-            name = "Mouse Logitech G502 HERO",
-            price = 49990.0,
-            oldPrice = 54990.0,
-            rating = 4.9f,
-            reviews = 542,
-            imageRes = R.drawable.ms001,
-            category = "Mouse",
-            description = "Mouse Logitech G502 HERO con sensor de alta precisión y pesos ajustables."
+            name = "Brownie Sin Gluten",
+            price = 3490.0,
+            oldPrice = null,
+            rating = 4.6f,
+            reviews = 80,
+            imageRes = R.drawable.brownie_sin_gluten, // <- TU IMAGEN
+            category = "Opciones Saludables",
+            description = "El mismo sabor intenso de nuestro brownie, pero elaborado con una mezcla de harinas sin gluten para que todos puedan disfrutarlo."
         ),
         ProductEntity(
             id = 14,
-            name = "Mouse Razer DeathAdder V2",
-            price = 39990.0,
-            oldPrice = 44990.0,
-            rating = 4.8f,
-            reviews = 487,
-            imageRes = R.drawable.ms002,
-            category = "Mouse",
-            description = "Mouse Razer DeathAdder V2 con diseño ergonómico y switches ópticos Razer."
+            name = "Pan de Molde Sin Gluten",
+            price = 4990.0,
+            oldPrice = null,
+            rating = 4.4f,
+            reviews = 55,
+            imageRes = R.drawable.pan_sin_gluten, // <- TU IMAGEN
+            category = "Opciones Saludables",
+            description = "Pan artesanal sin gluten, de miga suave y corteza dorada. Perfecto para sándwiches o tostadas."
         ),
         ProductEntity(
             id = 15,
-            name = "Mousepad Razer Goliathus Extended Chroma",
-            price = 29990.0,
-            oldPrice = 32990.0,
+            name = "Pastel Vegano de Chocolate",
+            price = 4990.0,
+            oldPrice = null,
             rating = 4.7f,
-            reviews = 268,
-            imageRes = R.drawable.mp001,
-            category = "Mousepad",
-            description = "Mousepad extendido con iluminación RGB Chroma y superficie optimizada para precisión."
+            reviews = 92,
+            imageRes = R.drawable.vegana_chocolate, // <- TU IMAGEN
+            category = "Opciones Saludables",
+            description = "Cremoso pastel de chocolate hecho a base de palta y cacao, endulzado con sirope de agave. 100% origen vegetal."
         ),
+
+        // --- Pastelería Chilena ---
         ProductEntity(
             id = 16,
-            name = "Mousepad Logitech G Powerplay",
-            price = 99990.0,
-            oldPrice = 109990.0,
-            rating = 4.6f,
-            reviews = 143,
-            imageRes = R.drawable.mp002,
-            category = "Mousepad",
-            description = "Mousepad Logitech Powerplay con carga inalámbrica continua para mouse compatibles."
+            name = "Empanada de Manzana",
+            price = 2490.0,
+            oldPrice = null,
+            rating = 4.8f,
+            reviews = 140,
+            imageRes = R.drawable.empanada_manzana, // <- TU IMAGEN
+            category = "Pastelería Chilena",
+            description = "Masa horneada rellena de compota de manzana casera, con un toque de canela y pasas. Un clásico del sur de Chile."
         ),
         ProductEntity(
             id = 17,
-            name = "Polera Gamer Personalizada 'Level-Up'",
-            price = 14990.0,
-            oldPrice = 17990.0,
-            rating = 4.5f,
-            reviews = 92,
-            imageRes = R.drawable.pp001,
-            category = "Poleras Personalizadas",
-            description = "Polera personalizada Level-Up con diseño gamer, tela suave y resistente."
-        ),
-        ProductEntity(
-            id = 18,
-            name = "Polera Retro Arcade",
-            price = 15990.0,
-            oldPrice = 18990.0,
-            rating = 4.6f,
-            reviews = 88,
-            imageRes = R.drawable.pp002,
-            category = "Poleras Personalizadas",
-            description = "Polera temática retro arcade con estampado de alta calidad y ajuste cómodo."
-        ),
-        ProductEntity(
-            id = 19,
-            name = "Polerón Gamer Hoodie 'Respawn'",
-            price = 24990.0,
-            oldPrice = 27990.0,
-            rating = 4.7f,
-            reviews = 104,
-            imageRes = R.drawable.pg001,
-            category = "Polerones Gamers Personalizados",
-            description = "Polerón con capucha estilo gamer, interior suave y estampado Respawn."
-        ),
-        ProductEntity(
-            id = 20,
-            name = "Polerón Level-Up Logo",
-            price = 26990.0,
-            oldPrice = 29990.0,
-            rating = 4.6f,
-            reviews = 97,
-            imageRes = R.drawable.pg002,
-            category = "Polerones Gamers Personalizados",
-            description = "Polerón con logo Level-Up, ideal para el día a día con estilo gamer."
+            name = "Tarta de Santiago",
+            price = 18990.0,
+            oldPrice = null,
+            rating = 4.9f,
+            reviews = 105,
+            imageRes = R.drawable.tarta_santiago, // <- TU IMAGEN
+            category = "Pastelería Chilena",
+            description = "Exquisita tarta de almendras molidas, de origen gallego pero adoptada en la repostería chilena. Densa, húmeda y sin harina de trigo."
         )
     )
 
-    private fun seedUser(
+    // El resto de tu archivo (seededUsers, productReviews) puede permanecer igual.
+    // ...
+}
+
+
+private fun seedUser(
         id: Long,
         run: String,
         nombre: String,
@@ -497,4 +478,4 @@ object LocalSeedData {
             )
         )
     )
-}
+
