@@ -206,12 +206,8 @@ object LocalSeedData {
         )
     )
 
-    // El resto de tu archivo (seededUsers, productReviews) puede permanecer igual.
-    // ...
-}
 
-
-private fun seedUser(
+    private fun seedUser(
         id: Long,
         run: String,
         nombre: String,
@@ -479,3 +475,4 @@ private fun seedUser(
         )
     )
 
+}
