@@ -16,6 +16,7 @@ import androidx.navigation.NavController
 import com.example.appmilsabores.presentation.ui.components.PaymentForm
 import com.example.appmilsabores.presentation.ui.theme.PrimaryPurple
 import com.example.appmilsabores.presentation.ui.theme.PureBlackBackground
+import com.example.appmilsabores.presentation.ui.theme.MainTextColor
 import com.example.appmilsabores.presentation.viewmodel.AddPaymentViewModel
 import kotlinx.coroutines.launch
 
@@ -71,9 +72,9 @@ fun AddPaymentMethodScreen(
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(50.dp),
-                    colors = ButtonDefaults.buttonColors(containerColor = PrimaryPurple)
+                    colors = ButtonDefaults.buttonColors(containerColor = PrimaryPurple, contentColor = MainTextColor)
                 ) {
-                    Text("Guardar Tarjeta", color = Color.White, fontSize = 18.sp)
+                        Text("Guardar Tarjeta", color = MainTextColor, fontSize = 18.sp)
                 }
 
                 if (state.showError && !state.isValid) {

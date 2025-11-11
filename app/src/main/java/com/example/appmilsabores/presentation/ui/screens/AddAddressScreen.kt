@@ -46,6 +46,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.appmilsabores.presentation.ui.theme.PrimaryPurple
 import com.example.appmilsabores.presentation.ui.theme.PureBlackBackground
+import com.example.appmilsabores.presentation.ui.theme.MainTextColor
 import com.example.appmilsabores.presentation.viewmodel.AddAddressUiState
 import com.example.appmilsabores.presentation.viewmodel.AddAddressViewModel
 
@@ -66,15 +67,15 @@ fun AddAddressScreen(
     Scaffold(
         topBar = {
             CenterAlignedTopAppBar(
-                title = { Text("Nueva dirección", fontWeight = FontWeight.Bold, color = Color.White) },
+                title = { Text("Nueva dirección", fontWeight = FontWeight.Bold, color = MainTextColor) },
                 navigationIcon = {
                     IconButton(onClick = { navController.popBackStack() }) {
-                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Volver", tint = Color.White)
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Volver", tint = MainTextColor)
                     }
                 },
                 colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
                     containerColor = PrimaryPurple,
-                    titleContentColor = Color.White
+                    titleContentColor = MainTextColor
                 )
             )
         },
@@ -103,9 +104,9 @@ fun AddAddressScreen(
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(52.dp),
-                colors = ButtonDefaults.buttonColors(containerColor = PrimaryPurple)
+                colors = ButtonDefaults.buttonColors(containerColor = PrimaryPurple, contentColor = MainTextColor)
             ) {
-                Text("Guardar dirección", color = Color.White, fontSize = 18.sp)
+                Text("Guardar dirección", color = MainTextColor, fontSize = 18.sp)
             }
 
             if (state.showValidationErrors && !state.isValid) {

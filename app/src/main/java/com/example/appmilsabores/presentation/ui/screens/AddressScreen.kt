@@ -25,6 +25,7 @@ import com.example.appmilsabores.presentation.ui.theme.PrimaryPurple
 import com.example.appmilsabores.presentation.ui.theme.PureBlackBackground
 import com.example.appmilsabores.presentation.ui.theme.TopBarAndDrawerColor
 import com.example.appmilsabores.presentation.viewmodel.AddressViewModel
+import com.example.appmilsabores.presentation.ui.theme.MainTextColor
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -68,7 +69,7 @@ fun AddressScreen(
             FloatingActionButton(
                 onClick = { navController.navigate(Destinations.AddAddress.route) },
                 containerColor = PrimaryPurple,
-                contentColor = Color.White
+                contentColor = MainTextColor
             ) {
                 Icon(Icons.Default.Add, contentDescription = "Agregar dirección")
             }

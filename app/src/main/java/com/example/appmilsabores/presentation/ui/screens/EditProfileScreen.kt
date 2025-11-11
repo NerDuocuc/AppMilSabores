@@ -46,6 +46,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.appmilsabores.presentation.ui.theme.PrimaryPurple
 import com.example.appmilsabores.presentation.ui.theme.PureBlackBackground
+import com.example.appmilsabores.presentation.ui.theme.MainTextColor
 import com.example.appmilsabores.presentation.viewmodel.EditProfileEvent
 import com.example.appmilsabores.presentation.viewmodel.EditProfileViewModel
 
@@ -75,14 +76,14 @@ fun EditProfileScreen(
                 title = { Text("Editar perfil", fontWeight = FontWeight.Bold) },
                 colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
                     containerColor = PrimaryPurple,
-                    titleContentColor = Color.White
+                    titleContentColor = MainTextColor
                 ),
                 navigationIcon = {
                     IconButton(onClick = { navController.popBackStack() }) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                             contentDescription = "Volver",
-                            tint = Color.White
+                            tint = MainTextColor
                         )
                     }
                 }
@@ -168,16 +169,16 @@ fun EditProfileScreen(
                         modifier = Modifier
                             .fillMaxWidth()
                             .height(52.dp),
-                        colors = ButtonDefaults.buttonColors(containerColor = PrimaryPurple)
+                        colors = ButtonDefaults.buttonColors(containerColor = PrimaryPurple, contentColor = MainTextColor)
                     ) {
                         if (state.isSaving) {
                             CircularProgressIndicator(
-                                color = Color.White,
+                                color = MainTextColor,
                                 strokeWidth = 2.dp,
                                 modifier = Modifier.size(20.dp)
                             )
                         } else {
-                            Text(text = "Guardar cambios", color = Color.White)
+                            Text(text = "Guardar cambios", color = MainTextColor)
                         }
                     }
                 }

@@ -30,7 +30,7 @@ import com.example.appmilsabores.utils.PriceUtils
 fun EmptyProductView(categoryName: String) {
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            Text("¡Uy!", fontSize = 24.sp, fontWeight = FontWeight.Bold, color = Color.White)
+                Text("¡Uy!", fontSize = 24.sp, fontWeight = FontWeight.Bold, color = MainTextColor)
             Text(
                 "No hay productos en la categoría \"$categoryName\" por ahora.",
                 color = Color.Gray,
@@ -71,7 +71,7 @@ fun ProductListItem(
             Spacer(modifier = Modifier.width(16.dp))
 
             Column(modifier = Modifier.weight(1f)) {
-                Text(product.name, fontWeight = FontWeight.Bold, color = Color.White, fontSize = 17.sp, maxLines = 2)
+                Text(product.name, fontWeight = FontWeight.Bold, color = MainTextColor, fontSize = 17.sp, maxLines = 2)
                 Spacer(modifier = Modifier.height(6.dp))
                 RatingBar(rating = product.rating, reviewCount = product.reviews)
                 Spacer(modifier = Modifier.height(8.dp))
@@ -101,8 +101,8 @@ fun ProductListItem(
 fun RatingBar(rating: Float, reviewCount: Int) {
     Row(verticalAlignment = Alignment.CenterVertically) {
         Icon(Icons.Default.Star, contentDescription = null, tint = Color.Yellow, modifier = Modifier.size(16.dp))
-        Spacer(modifier = Modifier.width(4.dp))
-        Text("$rating", fontWeight = FontWeight.Bold, color = Color.White, fontSize = 14.sp)
+    Spacer(modifier = Modifier.width(4.dp))
+    Text("$rating", fontWeight = FontWeight.Bold, color = MainTextColor, fontSize = 14.sp)
         Text(" ($reviewCount)", color = Color.Gray, fontSize = 14.sp)
     }
 }

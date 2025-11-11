@@ -43,6 +43,7 @@ import androidx.navigation.NavController
 import com.example.appmilsabores.presentation.ui.components.ProductListItem
 import com.example.appmilsabores.presentation.ui.theme.PrimaryPurple
 import com.example.appmilsabores.presentation.ui.theme.PureBlackBackground
+import com.example.appmilsabores.presentation.ui.theme.MainTextColor
 import com.example.appmilsabores.presentation.viewmodel.SearchEvent
 import com.example.appmilsabores.presentation.viewmodel.SearchViewModel
 import com.example.appmilsabores.presentation.viewmodel.SearchViewModelFactory
@@ -81,14 +82,14 @@ fun SearchScreen(
                 title = { Text("Buscar", fontWeight = FontWeight.Bold) },
                 colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
                     containerColor = PrimaryPurple,
-                    titleContentColor = Color.White
+                    titleContentColor = MainTextColor
                 ),
                 navigationIcon = {
                     IconButton(onClick = { navController.popBackStack() }) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                             contentDescription = "Volver",
-                            tint = Color.White
+                            tint = MainTextColor
                         )
                     }
                 }
@@ -128,8 +129,8 @@ fun SearchScreen(
                     focusedIndicatorColor = PrimaryPurple,
                     unfocusedIndicatorColor = Color.Gray,
                     focusedLabelColor = PrimaryPurple,
-                    focusedTextColor = Color.White,
-                    unfocusedTextColor = Color.White,
+                    focusedTextColor = MainTextColor,
+                    unfocusedTextColor = MainTextColor,
                     cursorColor = PrimaryPurple
                 ),
                 modifier = Modifier.fillMaxWidth()

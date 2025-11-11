@@ -81,12 +81,14 @@ import com.example.appmilsabores.domain.model.ProductSummary
 import com.example.appmilsabores.domain.model.Promotion
 import com.example.appmilsabores.presentation.navigation.Destinations
 import com.example.appmilsabores.presentation.ui.theme.PrimaryPurple
+import com.example.appmilsabores.presentation.ui.theme.MainTextColor
+import com.example.appmilsabores.presentation.ui.theme.CardCreamBackground
 
 @Composable
 fun CartActionButton(
     count: Int,
     onClick: () -> Unit,
-    tint: Color = Color.White
+    tint: Color = MainTextColor
 ) {
     IconButton(onClick = onClick) {
         BadgedBox(
@@ -96,7 +98,7 @@ fun CartActionButton(
                         val label = if (count > 99) "99+" else count.toString()
                         Text(
                             text = label,
-                            color = Color.White,
+                            color = MainTextColor,
                             fontSize = 10.sp,
                             fontWeight = FontWeight.Bold
                         )
@@ -122,6 +124,7 @@ fun LandingPageTopBar(
     onSearchActiveChange: (Boolean) -> Unit,
     notificationCount: Int,
     onNotificationClick: () -> Unit,
+    onSearchSubmit: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
     val focusRequester = remember { FocusRequester() }
@@ -170,7 +173,7 @@ fun LandingPageTopBar(
                     .height(searchHeight)
 
                 Surface(
-                    modifier = baseModifier,
+                    modifier = baseModifier.border(1.dp, Color.White.copy(alpha = 0.12f), RoundedCornerShape(searchShape)),
                     color = Color(0xFF111118),
                     shape = RoundedCornerShape(searchShape),
                     tonalElevation = searchElevation,
@@ -195,7 +198,7 @@ fun LandingPageTopBar(
                         onValueChange = onSearchQueryChange,
                         modifier = textFieldModifier,
                         placeholder = {
-                            Text(
+                                Text(
                                 text = "Buscar productos...",
                                 color = Color.White.copy(alpha = 0.7f),
                                 style = MaterialTheme.typography.bodyMedium
@@ -205,7 +208,7 @@ fun LandingPageTopBar(
                             Icon(
                                 imageVector = Icons.Outlined.Search,
                                 contentDescription = "Buscar",
-                                tint = Color.White.copy(alpha = 0.85f)
+                                tint = Color.White.copy(alpha = 0.95f)
                             )
                         },
                         trailingIcon = {
@@ -214,7 +217,7 @@ fun LandingPageTopBar(
                                     Icon(
                                         imageVector = Icons.Filled.Mic,
                                         contentDescription = "Búsqueda por voz",
-                                        tint = Color.White.copy(alpha = 0.8f)
+                                        tint = Color.White.copy(alpha = 0.85f)
                                     )
                                 }
                                 AnimatedVisibility(visible = searchActive) {
@@ -225,7 +228,7 @@ fun LandingPageTopBar(
                                         Icon(
                                             imageVector = Icons.Filled.Close,
                                             contentDescription = "Cerrar búsqueda",
-                                            tint = Color.White.copy(alpha = 0.7f)
+                                            tint = Color.White.copy(alpha = 0.75f)
                                         )
                                     }
                                 }
@@ -236,6 +239,7 @@ fun LandingPageTopBar(
                         keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
                         keyboardActions = KeyboardActions(onSearch = {
                             focusManager.clearFocus()
+                            onSearchSubmit(searchQuery)
                         }),
                         colors = TextFieldDefaults.colors(
                             focusedIndicatorColor = Color.Transparent,
@@ -281,15 +285,15 @@ fun LandingPageTopBar(
 @Composable
 fun SearchSuggestionPanel(
     query: String,
-    recentItems: List<String>,
-    trendingItems: List<String>,
+    recentItems: List<ProductSummary>,
+    trendingItems: List<ProductSummary>,
     onSuggestionClick: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
     val normalizedQuery = remember(query) { query.trim() }
     val filteredTrending = remember(normalizedQuery, trendingItems) {
         if (normalizedQuery.isBlank()) trendingItems
-        else trendingItems.filter { it.contains(normalizedQuery, ignoreCase = true) }
+        else trendingItems.filter { it.name.contains(normalizedQuery, ignoreCase = true) }
     }
 
     Surface(
@@ -303,29 +307,121 @@ fun SearchSuggestionPanel(
     ) {
         Column(modifier = Modifier.padding(vertical = 16.dp)) {
             if (normalizedQuery.isBlank()) {
-                SuggestionSection(
+                SuggestionSectionProducts(
                     title = "Búsquedas recientes",
                     icon = Icons.Outlined.History,
                     items = recentItems,
                     onSuggestionClick = onSuggestionClick
                 )
                 Spacer(modifier = Modifier.height(12.dp))
-                SuggestionSection(
+                SuggestionSectionProducts(
                     title = "Tendencias Gastronomicas",
                     icon = Icons.Outlined.TrendingUp,
                     items = trendingItems,
                     onSuggestionClick = onSuggestionClick
                 )
             } else {
-                SuggestionSection(
-                    title = "Sugerencias",
-                    icon = Icons.Outlined.Search,
-                    items = if (filteredTrending.isEmpty()) listOf("Ver resultados para \"$normalizedQuery\"") else filteredTrending,
-                    onSuggestionClick = onSuggestionClick,
-                    highlightQuery = normalizedQuery
-                )
+                if (filteredTrending.isEmpty()) {
+                    SuggestionSection(
+                        title = "Sugerencias",
+                        icon = Icons.Outlined.Search,
+                        items = listOf("Ver resultados para \"$normalizedQuery\""),
+                        onSuggestionClick = onSuggestionClick,
+                        highlightQuery = normalizedQuery
+                    )
+                } else {
+                    SuggestionSectionProducts(
+                        title = "Sugerencias",
+                        icon = Icons.Outlined.Search,
+                        items = filteredTrending,
+                        onSuggestionClick = onSuggestionClick,
+                        highlightQuery = normalizedQuery
+                    )
+                }
             }
         }
+    }
+}
+
+@Composable
+private fun SuggestionSectionProducts(
+    title: String,
+    icon: ImageVector,
+    items: List<ProductSummary>,
+    onSuggestionClick: (String) -> Unit,
+    highlightQuery: String? = null
+) {
+    if (items.isEmpty()) return
+
+    Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
+        Row(
+            modifier = Modifier.padding(horizontal = 20.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            Icon(icon, contentDescription = null, tint = PrimaryPurple, modifier = Modifier.size(18.dp))
+            Text(
+                text = title,
+                color = MainTextColor,
+                style = MaterialTheme.typography.labelLarge,
+                fontWeight = FontWeight.Bold
+            )
+        }
+
+        items.forEach { product ->
+            SuggestionRowProduct(
+                icon = icon,
+                product = product,
+                highlightQuery = highlightQuery,
+                onClick = { onSuggestionClick(product.name) }
+            )
+        }
+    }
+}
+
+@Composable
+private fun SuggestionRowProduct(
+    icon: ImageVector,
+    product: ProductSummary,
+    highlightQuery: String?,
+    onClick: () -> Unit
+) {
+    val displayText: AnnotatedString = remember(product.name, highlightQuery) {
+        if (highlightQuery.isNullOrBlank()) AnnotatedString(product.name) else {
+            val index = product.name.indexOf(highlightQuery, ignoreCase = true)
+            if (index < 0) AnnotatedString(product.name) else buildAnnotatedString {
+                append(product.name.substring(0, index))
+                pushStyle(SpanStyle(color = PrimaryPurple, fontWeight = FontWeight.SemiBold))
+                append(product.name.substring(index, index + highlightQuery.length))
+                pop()
+                append(product.name.substring(index + highlightQuery.length))
+            }
+        }
+    }
+
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable(onClick = onClick)
+            .padding(horizontal = 20.dp, vertical = 12.dp),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(12.dp)
+    ) {
+        // product image
+        Image(
+            painter = painterResource(id = product.imageRes),
+            contentDescription = product.name,
+            modifier = Modifier.size(36.dp),
+            contentScale = ContentScale.Crop
+        )
+
+        Text(
+            text = displayText,
+            color = MainTextColor,
+            style = MaterialTheme.typography.bodyMedium,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis
+        )
     }
 }
 
@@ -452,17 +548,17 @@ fun FeaturedCarousel(
                     .padding(24.dp),
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                Text(
-                    text = promotion.title,
-                    color = Color.White,
-                    style = MaterialTheme.typography.titleLarge,
-                    fontWeight = FontWeight.Black
-                )
-                Text(
-                    text = promotion.subtitle,
-                    color = Color.White.copy(alpha = 0.8f),
-                    style = MaterialTheme.typography.bodyMedium
-                )
+                        Text(
+                            text = promotion.title,
+                            color = Color.White,
+                            style = MaterialTheme.typography.titleLarge,
+                            fontWeight = FontWeight.Black
+                        )
+                        Text(
+                            text = promotion.subtitle,
+                            color = Color.White.copy(alpha = 0.85f),
+                            style = MaterialTheme.typography.bodyMedium
+                        )
             }
 
             Row(
@@ -553,20 +649,20 @@ fun CategoryShortcuts(
                     modifier = Modifier
                         .size(72.dp)
                         .clip(CircleShape)
-                        .background(Color(0xFF16161F))
+                        .background(CardCreamBackground)
                         .border(width = 1.dp, color = PrimaryPurple.copy(alpha = 0.6f), shape = CircleShape),
                     contentAlignment = Alignment.Center
                 ) {
                     Icon(
                         painter = painterResource(id = category.iconRes),
                         contentDescription = category.name,
-                        tint = Color.White,
+                        tint = MainTextColor,
                         modifier = Modifier.size(32.dp)
                     )
                 }
                 Text(
                     text = category.name,
-                    color = Color.White,
+                    color = MainTextColor,
                     style = MaterialTheme.typography.bodySmall,
                     textAlign = TextAlign.Center,
                     maxLines = 2,
@@ -596,7 +692,7 @@ fun ProductShowcaseRow(
                     .width(176.dp)
                     .height(236.dp)
                     .clickable { navController.navigate(Destinations.ProductDetail.create(product.id)) },
-                colors = CardDefaults.cardColors(containerColor = Color(0xFF14141C)),
+                colors = CardDefaults.cardColors(containerColor = CardCreamBackground),
                 shape = RoundedCornerShape(22.dp)
             ) {
                 Column(
@@ -611,7 +707,7 @@ fun ProductShowcaseRow(
                             .height(120.dp)
                             .clip(RoundedCornerShape(16.dp)),
                         tonalElevation = 0.dp,
-                        color = Color(0xFF1E1E27)
+                        color = CardCreamBackground
                     ) {
                         Image(
                             painter = painterResource(id = product.imageRes),
@@ -623,7 +719,7 @@ fun ProductShowcaseRow(
 
                     Text(
                         text = product.name,
-                        color = Color.White,
+                        color = MainTextColor,
                         style = MaterialTheme.typography.bodyMedium,
                         maxLines = 2,
                         overflow = TextOverflow.Ellipsis

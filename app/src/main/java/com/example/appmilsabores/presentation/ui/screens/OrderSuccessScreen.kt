@@ -38,6 +38,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.appmilsabores.presentation.navigation.Destinations
 import com.example.appmilsabores.presentation.ui.theme.PrimaryPurple
+import com.example.appmilsabores.presentation.ui.theme.MainTextColor
 import com.example.appmilsabores.presentation.ui.theme.PureBlackBackground
 import com.example.appmilsabores.utils.PriceUtils
 
@@ -55,11 +56,11 @@ fun OrderSuccessScreen(
                 title = { Text("Compra exitosa", fontWeight = FontWeight.Bold) },
                 colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
                     containerColor = PrimaryPurple,
-                    titleContentColor = Color.White
+                    titleContentColor = MainTextColor
                 ),
                 navigationIcon = {
                     IconButton(onClick = { navController.popBackStack() }) {
-                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Volver", tint = Color.White)
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Volver", tint = MainTextColor)
                     }
                 }
             )
@@ -82,7 +83,7 @@ fun OrderSuccessScreen(
                     modifier = Modifier.size(96.dp)
                 )
                 Spacer(modifier = Modifier.height(16.dp))
-                Text("¡Tu pago se procesó con éxito!", color = Color.White, fontSize = 22.sp, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
+                Text("¡Tu pago se procesó con éxito!", color = MainTextColor, fontSize = 22.sp, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
                 Spacer(modifier = Modifier.height(8.dp))
                 Text(
                     text = "Gracias por tu compra. Recibirás un correo con el detalle del pedido $orderId.",
@@ -105,9 +106,9 @@ fun OrderSuccessScreen(
                         }
                     },
                     modifier = Modifier.fillMaxWidth(),
-                    colors = ButtonDefaults.buttonColors(containerColor = PrimaryPurple)
+                    colors = ButtonDefaults.buttonColors(containerColor = PrimaryPurple, contentColor = MainTextColor)
                 ) {
-                    Text("Seguir explorando", color = Color.White, fontSize = 16.sp, fontWeight = FontWeight.SemiBold)
+                    Text("Seguir explorando", color = MainTextColor, fontSize = 16.sp, fontWeight = FontWeight.SemiBold)
                 }
 
                 OutlinedButton(

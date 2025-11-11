@@ -36,6 +36,7 @@ import com.example.appmilsabores.presentation.navigation.Destinations
 import com.example.appmilsabores.presentation.ui.components.SummarySection
 import com.example.appmilsabores.presentation.ui.theme.PrimaryPurple
 import com.example.appmilsabores.presentation.ui.theme.PureBlackBackground
+import com.example.appmilsabores.presentation.ui.theme.MainTextColor
 import com.example.appmilsabores.presentation.viewmodel.CheckoutUiState
 import com.example.appmilsabores.presentation.viewmodel.CheckoutViewModel
 import com.example.appmilsabores.utils.PriceUtils
@@ -77,11 +78,11 @@ fun CheckoutScreen(
                 title = { Text("Checkout", fontWeight = FontWeight.Bold) },
                 colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
                     containerColor = PrimaryPurple,
-                    titleContentColor = Color.White
+                    titleContentColor = MainTextColor
                 ),
                 navigationIcon = {
                     IconButton(onClick = { navController.popBackStack() }) {
-                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Volver", tint = Color.White)
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Volver", tint = MainTextColor)
                     }
                 }
             )
@@ -188,16 +189,16 @@ private fun CheckoutContent(
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(54.dp),
-                colors = ButtonDefaults.buttonColors(containerColor = PrimaryPurple)
+                colors = ButtonDefaults.buttonColors(containerColor = PrimaryPurple, contentColor = MainTextColor)
             ) {
-                if (state.isProcessing) {
+                    if (state.isProcessing) {
                     CircularProgressIndicator(
                         modifier = Modifier.size(22.dp),
-                        color = Color.White,
+                        color = MainTextColor,
                         strokeWidth = 2.dp
                     )
                 } else {
-                    Text("Confirmar compra", fontSize = 18.sp, color = Color.White)
+                    Text("Confirmar compra", fontSize = 18.sp, color = MainTextColor)
                 }
             }
         }

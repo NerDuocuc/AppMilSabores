@@ -660,12 +660,12 @@ fun RegistroScreen(
                             .fillMaxWidth()
                             .height(52.dp),
                         shape = RoundedCornerShape(12.dp),
-                        colors = ButtonDefaults.buttonColors(containerColor = PrimaryPurple)
+                        colors = ButtonDefaults.buttonColors(containerColor = PrimaryPurple, contentColor = MainTextColor)
                     ) {
                         if (state.isLoading) {
-                            CircularProgressIndicator(color = Color.White, modifier = Modifier.size(20.dp))
+                            CircularProgressIndicator(color = MainTextColor, modifier = Modifier.size(20.dp))
                         } else {
-                            Text("Registrarse", fontSize = 16.sp, color = Color.White)
+                            Text("Registrarse", fontSize = 16.sp, color = MainTextColor)
                         }
                     }
 

@@ -48,6 +48,7 @@ import com.example.appmilsabores.presentation.ui.theme.CardBackgroundColor
 import com.example.appmilsabores.presentation.ui.theme.PrimaryPurple
 import com.example.appmilsabores.presentation.ui.theme.TopBarAndDrawerColor
 import com.example.appmilsabores.utils.PriceUtils
+import com.example.appmilsabores.presentation.ui.theme.MainTextColor
 
 @Composable
 fun CartItemCard(
@@ -78,7 +79,7 @@ fun CartItemCard(
             Spacer(modifier = Modifier.width(16.dp))
 
             Column(modifier = Modifier.weight(1f)) {
-                Text(item.name, fontWeight = FontWeight.Bold, color = Color.White, fontSize = 16.sp)
+                Text(item.name, fontWeight = FontWeight.Bold, color = MainTextColor, fontSize = 16.sp)
                 Spacer(Modifier.height(4.dp))
                 Text(PriceUtils.formatPriceCLP(item.price), color = PrimaryPurple, fontWeight = FontWeight.SemiBold)
                 Spacer(Modifier.height(8.dp))
@@ -89,11 +90,11 @@ fun CartItemCard(
                         .border(1.dp, Color.Gray, RoundedCornerShape(15.dp))
                 ) {
                     IconButton(onClick = onQuantityDecrease, modifier = Modifier.size(30.dp)) {
-                        Icon(Icons.Default.Remove, null, tint = Color.White)
+                        Icon(Icons.Default.Remove, null, tint = MainTextColor)
                     }
-                    Text("${item.quantity}", color = Color.White, fontWeight = FontWeight.Bold)
+                    Text("${item.quantity}", color = MainTextColor, fontWeight = FontWeight.Bold)
                     IconButton(onClick = onQuantityIncrease, modifier = Modifier.size(30.dp)) {
-                        Icon(Icons.Default.Add, null, tint = Color.White)
+                        Icon(Icons.Default.Add, null, tint = MainTextColor)
                     }
                 }
             }
@@ -128,7 +129,7 @@ fun SummarySection(
 
 @Composable
 fun SummaryRow(label: String, value: Double, isTotal: Boolean = false) {
-    val color = if (isTotal) Color.White else Color.LightGray
+    val color = if (isTotal) MainTextColor else Color.LightGray
     val fontWeight = if (isTotal) FontWeight.Bold else FontWeight.Normal
     val fontSize = if (isTotal) 20.sp else 16.sp
 
@@ -171,11 +172,11 @@ fun CartBottomBar(
                     .fillMaxWidth()
                     .height(50.dp),
                 shape = RoundedCornerShape(16.dp),
-                colors = ButtonDefaults.buttonColors(containerColor = PrimaryPurple)
+                colors = ButtonDefaults.buttonColors(containerColor = PrimaryPurple, contentColor = MainTextColor)
             ) {
-                Icon(Icons.Default.ShoppingCartCheckout, contentDescription = null)
+                Icon(Icons.Default.ShoppingCartCheckout, contentDescription = null, tint = MainTextColor)
                 Spacer(modifier = Modifier.width(8.dp))
-                Text("Proceder al Pago", fontSize = 18.sp, color = Color.White)
+                Text("Proceder al Pago", fontSize = 18.sp, color = MainTextColor)
             }
         }
     }
@@ -195,7 +196,7 @@ fun EmptyCartView(navController: NavController, modifier: Modifier = Modifier) {
                 modifier = Modifier.size(100.dp)
             )
             Spacer(modifier = Modifier.height(16.dp))
-            Text("Tu carrito está vacío", fontSize = 20.sp, color = Color.White)
+            Text("Tu carrito está vacío", fontSize = 20.sp, color = MainTextColor)
             Spacer(modifier = Modifier.height(8.dp))
             Text("¡Encuentra los mejores artículos gamer!", color = Color.Gray)
             Spacer(modifier = Modifier.height(24.dp))
@@ -206,9 +207,9 @@ fun EmptyCartView(navController: NavController, modifier: Modifier = Modifier) {
                     }
                 },
                 shape = RoundedCornerShape(16.dp),
-                colors = ButtonDefaults.buttonColors(containerColor = PrimaryPurple)
+                colors = ButtonDefaults.buttonColors(containerColor = PrimaryPurple, contentColor = MainTextColor)
             ) {
-                Text("Explorar productos")
+                Text("Explorar productos", color = MainTextColor)
             }
         }
     }

@@ -144,11 +144,11 @@ fun ProfileScreen(
                     Column(horizontalAlignment = Alignment.CenterHorizontally) {
                         Text(
                             text = "Debes iniciar sesión para ver tu perfil",
-                            color = Color.White,
+                            color = MainTextColor,
                             fontWeight = FontWeight.SemiBold
                         )
                         Spacer(modifier = Modifier.height(12.dp))
-                        Button(onClick = { navController.navigate("login") }) {
+                        Button(onClick = { navController.navigate("login") }, colors = ButtonDefaults.buttonColors(containerColor = PrimaryPurple, contentColor = MainTextColor)) {
                             Text("Ir a iniciar sesión")
                         }
                     }

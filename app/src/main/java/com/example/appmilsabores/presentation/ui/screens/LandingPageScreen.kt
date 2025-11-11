@@ -72,6 +72,7 @@ import com.example.appmilsabores.presentation.ui.components.SearchSuggestionPane
 import com.example.appmilsabores.presentation.ui.components.SectionTitle
 import com.example.appmilsabores.presentation.ui.theme.PrimaryPurple
 import com.example.appmilsabores.presentation.ui.theme.PureBlackBackground
+import com.example.appmilsabores.presentation.ui.theme.MainTextColor
 import com.example.appmilsabores.presentation.viewmodel.CartViewModel
 import com.example.appmilsabores.presentation.viewmodel.LandingViewModel
 
@@ -98,6 +99,7 @@ fun LandingPageScreen(
 
     var searchQuery by rememberSaveable { mutableStateOf("") }
     var searchActive by rememberSaveable { mutableStateOf(false) }
+    // Recent searches (seeded with food-related examples)
     val recentSearches = rememberSaveable(
         saver = listSaver(
             save = { it.toList() },
@@ -105,19 +107,10 @@ fun LandingPageScreen(
         )
     ) {
         mutableStateListOf(
-            "PlayStation 5",
-            "Nintendo Switch OLED",
-            "RTX 4070",
-            "Silla gamer ergonómica"
-        )
-    }
-
-    val trendingSuggestions = remember {
-        listOf(
-            "Auriculares HyperX Cloud III",
-            "Steam Deck OLED",
-            "Monitor 240Hz",
-            "Teclado mecánico low profile"
+            "Tortas",
+            "Brownies",
+            "Galletas",
+            "Pan"
         )
     }
 
@@ -183,6 +176,7 @@ fun LandingPageScreen(
                 onSearchQueryChange = { query -> searchQuery = query },
                 searchActive = searchActive,
                 onSearchActiveChange = { active -> searchActive = active },
+                onSearchSubmit = { query -> handleSuggestion(query) },
                 notificationCount = notificationCount,
                 onNotificationClick = {
                     navController.navigate(Destinations.Notifications.route)
@@ -338,8 +332,8 @@ fun LandingPageScreen(
 
                     SearchSuggestionPanel(
                         query = searchQuery,
-                        recentItems = recentSearches,
-                        trendingItems = trendingSuggestions,
+                        recentItems = recentlyViewed,
+                        trendingItems = curatedRecommendations,
                         onSuggestionClick = { suggestion -> handleSuggestion(suggestion) },
                         modifier = Modifier
                             .align(Alignment.TopCenter)
@@ -401,7 +395,7 @@ private fun MilSaboresBottomNavigation(
                                     if (item.badgeCount > 0) {
                                         BadgedBox(
                                             badge = {
-                                                Badge(containerColor = Color.White, contentColor = PrimaryPurple) {
+                                                Badge(containerColor = PrimaryPurple, contentColor = MainTextColor) {
                                                     Text(
                                                         text = item.badgeCount.coerceAtMost(99).toString(),
                                                         fontSize = 10.sp,
@@ -435,7 +429,7 @@ private fun MilSaboresBottomNavigation(
                                         Badge(containerColor = PrimaryPurple) {
                                             Text(
                                                 text = item.badgeCount.coerceAtMost(99).toString(),
-                                                color = Color.White,
+                                                color = MainTextColor,
                                                 fontSize = 10.sp,
                                                 fontWeight = FontWeight.Bold
                                             )

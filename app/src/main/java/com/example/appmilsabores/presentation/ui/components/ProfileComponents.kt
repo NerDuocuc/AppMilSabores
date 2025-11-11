@@ -32,6 +32,7 @@ import com.example.appmilsabores.domain.model.UserProfile
 import com.example.appmilsabores.presentation.navigation.Destinations
 import com.example.appmilsabores.presentation.ui.theme.CardBackgroundColor
 import com.example.appmilsabores.presentation.ui.theme.PrimaryPurple
+import com.example.appmilsabores.presentation.ui.theme.MainTextColor
 
 // 🔹 Encabezado del perfil (foto + nombre + correo)
 @Composable
@@ -82,20 +83,20 @@ fun ProfileHeader(user: UserProfile, onChangePhotoRequest: () -> Unit) {
                     .size(36.dp)
                     .offset((-4).dp, (-4).dp)
                     .clip(CircleShape)
-                    .border(1.dp, Color.White.copy(alpha = 0.6f), CircleShape)
+                    .border(1.dp, PrimaryPurple.copy(alpha = 0.9f), CircleShape)
             ) {
                 Icon(
                     imageVector = Icons.Default.CameraAlt,
                     contentDescription = "Cambiar foto",
-                    tint = Color.White,
+                        tint = MainTextColor,
                     modifier = Modifier
                         .size(18.dp)
                 )
             }
         }
         Spacer(modifier = Modifier.height(12.dp))
-        Text(user.name, fontWeight = FontWeight.Bold, fontSize = 22.sp, color = Color.White)
-        Text(user.email, color = Color.Gray, fontSize = 14.sp)
+    Text(user.name, fontWeight = FontWeight.Bold, fontSize = 22.sp, color = MainTextColor)
+    Text(user.email, color = Color.Gray, fontSize = 14.sp)
         if (!user.address.isNullOrBlank()) {
             Spacer(modifier = Modifier.height(6.dp))
             Text(user.address, color = Color.LightGray, fontSize = 13.sp)
@@ -154,7 +155,7 @@ fun OrderHistory(orders: List<Order>) {
             "Historial de pedidos",
             fontWeight = FontWeight.Bold,
             fontSize = 18.sp,
-            color = Color.White,
+            color = MainTextColor,
             modifier = Modifier.padding(bottom = 12.dp)
         )
 
@@ -183,12 +184,12 @@ fun OrderCard(order: Order) {
             verticalAlignment = Alignment.CenterVertically
         ) {
             Column {
-                Text(order.id, color = Color.White, fontWeight = FontWeight.Bold)
+                Text(order.id, color = MainTextColor, fontWeight = FontWeight.Bold)
                 Text(order.date, color = Color.Gray, fontSize = 13.sp)
             }
             Column(horizontalAlignment = Alignment.End) {
                 Text(order.status, color = PrimaryPurple, fontSize = 14.sp, fontWeight = FontWeight.SemiBold)
-                Text(order.total, color = Color.White, fontWeight = FontWeight.Bold)
+                Text(order.total, color = MainTextColor, fontWeight = FontWeight.Bold)
             }
         }
     }
@@ -209,7 +210,7 @@ fun SettingsMenu(
             "Configuración",
             fontWeight = FontWeight.Bold,
             fontSize = 18.sp,
-            color = Color.White,
+            color = MainTextColor,
             modifier = Modifier.padding(bottom = 12.dp)
         )
 
@@ -245,6 +246,6 @@ fun SettingItem(title: String, icon: androidx.compose.ui.graphics.vector.ImageVe
     ) {
         Icon(icon, contentDescription = title, tint = PrimaryPurple, modifier = Modifier.size(24.dp))
         Spacer(modifier = Modifier.width(16.dp))
-        Text(title, color = Color.White, fontSize = 16.sp)
+        Text(title, color = MainTextColor, fontSize = 16.sp)
     }
 }

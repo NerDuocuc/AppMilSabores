@@ -20,6 +20,9 @@ val PrimaryPurple = WebAcentoPrincipal
 // Color de textos principales
 val MainTextColor = WebTextoPrincipal
 
+// Cream surface for cards on the landing screen (light cream background)
+val CardCreamBackground = Color(0xFFF7EFE5)
+
 
 // Colores que se pueden ignorar
 

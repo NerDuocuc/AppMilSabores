@@ -15,6 +15,7 @@ import androidx.compose.ui.unit.sp
 import com.example.appmilsabores.presentation.ui.theme.PrimaryPurple
 import com.example.appmilsabores.presentation.viewmodel.AccountViewModel
 import com.example.appmilsabores.presentation.viewmodel.AccountUiState
+import com.example.appmilsabores.presentation.ui.theme.MainTextColor
 
 @Composable
 fun AccountForm(
@@ -115,7 +116,7 @@ fun AccountForm(
         modifier = Modifier
             .fillMaxWidth()
             .height(50.dp),
-        colors = ButtonDefaults.buttonColors(containerColor = PrimaryPurple)
+    colors = ButtonDefaults.buttonColors(containerColor = PrimaryPurple, contentColor = MainTextColor)
     ) {
         Text("Guardar Cambios", color = Color.White, fontSize = 18.sp)
     }

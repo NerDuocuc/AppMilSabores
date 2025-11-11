@@ -40,6 +40,7 @@ import com.example.appmilsabores.domain.model.ProductSortOption
 import com.example.appmilsabores.presentation.ui.theme.PrimaryPurple
 import com.example.appmilsabores.presentation.ui.theme.TopBarAndDrawerColor
 import com.example.appmilsabores.utils.PriceUtils
+import com.example.appmilsabores.presentation.ui.theme.MainTextColor
 import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min
@@ -142,7 +143,7 @@ fun ProductFilterSheet(
                         onDismiss()
                     },
                     modifier = Modifier.weight(1f),
-                    colors = ButtonDefaults.buttonColors(containerColor = PrimaryPurple)
+                    colors = ButtonDefaults.buttonColors(containerColor = PrimaryPurple, contentColor = MainTextColor)
                 ) {
                     Icon(Icons.Default.FilterList, contentDescription = null, modifier = Modifier.padding(end = 6.dp))
                     Text("Aplicar")

@@ -62,7 +62,7 @@ fun PaymentMethodsScreen(
             FloatingActionButton(
                 onClick = { navController.navigate(Destinations.AddPaymentMethod.route) },
                 containerColor = PrimaryPurple,
-                contentColor = Color.White
+                contentColor = MainTextColor
             ) {
                 Icon(Icons.Default.Add, contentDescription = "Agregar Nuevo Método de Pago")
             }
