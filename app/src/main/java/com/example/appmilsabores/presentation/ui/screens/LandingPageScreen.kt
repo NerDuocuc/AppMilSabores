@@ -26,12 +26,12 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Category
-import androidx.compose.material.icons.filled.Favorite
+// Favorite icon removed from landing since favorites feature disabled
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material.icons.outlined.Category
-import androidx.compose.material.icons.outlined.Favorite
+// outlined Favorite removed
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material.icons.outlined.ShoppingCart
@@ -227,13 +227,6 @@ fun LandingPageScreen(
                 item {
                     ProductShowcaseRow(
                         products = curatedRecommendations,
-                        navController = navController
-                    )
-                }
-                    item { SectionTitle(title = "Nuevos lanzamientos", titleColor = Color.Black) }
-                item {
-                    ProductShowcaseRow(
-                        products = landingState.newProducts,
                         navController = navController
                     )
                 }

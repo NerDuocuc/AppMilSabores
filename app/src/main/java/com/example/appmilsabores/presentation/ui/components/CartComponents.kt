@@ -129,7 +129,8 @@ fun SummarySection(
 
 @Composable
 fun SummaryRow(label: String, value: Double, isTotal: Boolean = false) {
-    val color = if (isTotal) MainTextColor else Color.LightGray
+    // Use white for all summary text so it is readable over the dark cart bottom bar
+    val color = Color.White
     val fontWeight = if (isTotal) FontWeight.Bold else FontWeight.Normal
     val fontSize = if (isTotal) 20.sp else 16.sp
 
@@ -148,9 +149,11 @@ fun CartBottomBar(
     total: Double,
     onCheckout: () -> Unit
 ) {
+    // Use an opaque background for the cart bottom bar so underlying white content
+    // doesn't show through the translucent top bar color.
     Surface(
-        color = TopBarAndDrawerColor,
-        shadowElevation = 12.dp
+        color = TopBarAndDrawerColor.copy(alpha = 1f),
+        shadowElevation = 0.dp
     ) {
         Column(
             modifier = Modifier

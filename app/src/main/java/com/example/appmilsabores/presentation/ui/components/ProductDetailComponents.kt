@@ -22,8 +22,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.filled.FavoriteBorder
+// removed favorite icons since favorites feature disabled in UI
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
@@ -127,7 +126,7 @@ fun ProductImageCarousel(product: Product) {
 }
 
 @Composable
-fun ProductHeader(product: Product, isFavorite: Boolean, onToggleFavorite: () -> Unit) {
+fun ProductHeader(product: Product) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -142,14 +141,6 @@ fun ProductHeader(product: Product, isFavorite: Boolean, onToggleFavorite: () ->
                 Icon(Icons.Default.Star, contentDescription = null, tint = Color.Yellow)
                 Text("${product.rating}", color = Color.White, fontWeight = FontWeight.SemiBold)
             }
-        }
-
-        IconButton(onClick = onToggleFavorite) {
-            Icon(
-                if (isFavorite) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
-                contentDescription = "Favorito",
-                tint = if (isFavorite) PrimaryPurple else Color.Gray
-            )
         }
     }
 }

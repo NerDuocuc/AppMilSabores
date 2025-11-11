@@ -108,13 +108,7 @@ fun ProductDetailScreen(
                 .padding(paddingValues)
         ) {
             item { ProductImageCarousel(product = product) }
-            item {
-                ProductHeader(
-                    product = product,
-                    isFavorite = state.isFavorite,
-                    onToggleFavorite = viewModel::toggleFavorite
-                )
-            }
+            item { ProductHeader(product = product) }
             item { DetailPrice(price = product.price, oldPrice = product.oldPrice) }
             item {
                 DetailQuantityControl(
