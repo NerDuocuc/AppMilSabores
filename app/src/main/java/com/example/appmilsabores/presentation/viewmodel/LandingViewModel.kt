@@ -17,6 +17,7 @@ data class LandingUiState(
     val categories: List<Category> = emptyList(),
     val featured: List<ProductSummary> = emptyList(),
     val newProducts: List<ProductSummary> = emptyList(),
+    val desserts: List<ProductSummary> = emptyList(),
     val currentPage: Int = 0
 )
 
@@ -39,7 +40,8 @@ class LandingViewModel(
                 promotions = repo.getPromotions(),
                 categories = repo.getCategories(),
                 featured = repo.getFeaturedProducts(),
-                newProducts = repo.getNewProducts()
+                newProducts = repo.getNewProducts(),
+                desserts = repo.getDessertProducts()
             )
         }
     }

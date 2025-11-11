@@ -7,4 +7,6 @@ interface LandingRepository {
     fun getCategories(): List<Category>
     fun getFeaturedProducts(): List<ProductSummary>
     fun getNewProducts(): List<ProductSummary>
+    // Products to be used for curated "Te podría gustar" recommendations (e.g., Postres y Dulces)
+    fun getDessertProducts(): List<ProductSummary>
 }

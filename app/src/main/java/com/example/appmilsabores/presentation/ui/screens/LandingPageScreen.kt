@@ -158,8 +158,8 @@ fun LandingPageScreen(
         if (existingIndex >= 0) {
             recentSearches.removeAt(existingIndex)
         }
-    recentSearches.add(0, normalized)
-    if (recentSearches.size > 6) {
+        recentSearches.add(0, normalized)
+        if (recentSearches.size > 6) {
             recentSearches.removeAt(recentSearches.lastIndex)
         }
 
@@ -180,78 +180,6 @@ fun LandingPageScreen(
                 notificationCount = notificationCount,
                 onNotificationClick = {
                     navController.navigate(Destinations.Notifications.route)
-                }
-            )
-        },
-        bottomBar = {
-            val navItems = listOf(
-                BottomNavItem(
-                    destination = MainDestination.Home,
-                    route = Destinations.Landing.route,
-                    label = "Inicio",
-                    outlinedIcon = Icons.Outlined.Home,
-                    filledIcon = Icons.Filled.Home
-                ),
-                BottomNavItem(
-                    destination = MainDestination.Categories,
-                    route = Destinations.Categories.route,
-                    label = "Categorías",
-                    outlinedIcon = Icons.Outlined.Category,
-                    filledIcon = Icons.Filled.Category
-                ),
-                BottomNavItem(
-                    destination = MainDestination.Cart,
-                    route = Destinations.Cart.route,
-                    label = "Carrito",
-                    outlinedIcon = Icons.Outlined.ShoppingCart,
-                    filledIcon = Icons.Filled.ShoppingCart,
-                    isCentral = true,
-                    badgeCount = cartCount
-                ),
-                BottomNavItem(
-                    destination = MainDestination.Favorites,
-                    route = Destinations.Profile.route,
-                    label = "Favoritos",
-                    outlinedIcon = Icons.Outlined.Favorite,
-                    filledIcon = Icons.Filled.Favorite
-                ),
-                BottomNavItem(
-                    destination = MainDestination.Profile,
-                    route = Destinations.Profile.route,
-                    label = "Perfil",
-                    outlinedIcon = Icons.Outlined.Person,
-                    filledIcon = Icons.Filled.Person
-                )
-            )
-
-            MilSaboresBottomNavigation(
-                items = navItems,
-                selected = selectedDestination,
-                onItemSelected = { item ->
-                    if (selectedDestination != item.destination) {
-                        selectedDestination = item.destination
-                    }
-
-                    searchActive = false
-                    searchQuery = ""
-
-                    when (item.destination) {
-                        MainDestination.Home -> navController.navigate(Destinations.Landing.route) {
-                            launchSingleTop = true
-                        }
-                        MainDestination.Categories -> navController.navigate(Destinations.Categories.route) {
-                            launchSingleTop = true
-                        }
-                        MainDestination.Cart -> navController.navigate(Destinations.Cart.route) {
-                            launchSingleTop = true
-                        }
-                        MainDestination.Favorites -> navController.navigate(Destinations.Profile.route) {
-                            launchSingleTop = true
-                        }
-                        MainDestination.Profile -> navController.navigate(Destinations.Profile.route) {
-                            launchSingleTop = true
-                        }
-                    }
                 }
             )
         },
@@ -278,7 +206,8 @@ fun LandingPageScreen(
                 item {
                     SectionTitle(
                         title = "Categorías Populares",
-                        modifier = Modifier.padding(top = 4.dp)
+                        modifier = Modifier.padding(top = 4.dp),
+                        titleColor = Color.Black
                     )
                 }
                 item {
@@ -287,21 +216,21 @@ fun LandingPageScreen(
                         navController = navController
                     )
                 }
-                item { SectionTitle(title = "Visto recientemente") }
+                    item { SectionTitle(title = "Visto recientemente", titleColor = Color.Black) }
                 item {
                     ProductShowcaseRow(
                         products = recentlyViewed,
                         navController = navController
                     )
                 }
-                item { SectionTitle(title = "Te podría gustar") }
+                    item { SectionTitle(title = "Te podría gustar", titleColor = Color.Black) }
                 item {
                     ProductShowcaseRow(
                         products = curatedRecommendations,
                         navController = navController
                     )
                 }
-                item { SectionTitle(title = "Nuevos lanzamientos") }
+                    item { SectionTitle(title = "Nuevos lanzamientos", titleColor = Color.Black) }
                 item {
                     ProductShowcaseRow(
                         products = landingState.newProducts,

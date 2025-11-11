@@ -596,7 +596,9 @@ fun SectionTitle(
     title: String,
     modifier: Modifier = Modifier,
     actionLabel: String? = null,
-    onActionClick: (() -> Unit)? = null
+    onActionClick: (() -> Unit)? = null,
+    // Allow caller to override the title color (default kept white for backward compatibility)
+    titleColor: Color = Color.White
 ) {
     Row(
         modifier = modifier
@@ -607,7 +609,7 @@ fun SectionTitle(
     ) {
         Text(
             text = title,
-            color = Color.White,
+            color = titleColor,
             style = MaterialTheme.typography.titleMedium,
             fontWeight = FontWeight.Bold
         )

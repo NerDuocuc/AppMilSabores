@@ -43,23 +43,45 @@ class LandingRepositoryImpl : LandingRepository {
     )
 
     override fun getNewProducts() = listOf(
+        // Mostrar los nuevos lanzamientos de la categoría "Opciones Saludables"
         ProductSummary(
-            id = 17,
-            name = "Tarta de Santiago",
-            price = "$18.990",
-            imageRes = R.drawable.tarta_santiago
+            id = 12,
+            name = "Torta Sin Azúcar",
+            price = "$26.990",
+            imageRes = R.drawable.torta_sin_azucar_naranja
+        ),
+        ProductSummary(
+            id = 13,
+            name = "Brownie Sin Gluten",
+            price = "$3.490",
+            imageRes = R.drawable.brownie_sin_gluten
         ),
         ProductSummary(
             id = 15,
             name = "Pastel Vegano Choco",
             price = "$4.990",
             imageRes = R.drawable.vegana_chocolate
+        )
+    )
+
+    override fun getDessertProducts() = listOf(
+        ProductSummary(
+            id = 7,
+            name = "Postre de Tiramisú",
+            price = "$5.990",
+            imageRes = R.drawable.tiramisu
         ),
         ProductSummary(
-            id = 5,
-            name = "Torta Cuadrada Choco",
-            price = "$25.990",
-            imageRes = R.drawable.torta_cuadrada_chocolate
+            id = 9,
+            name = "Mousse de Chocolate Intenso",
+            price = "$4.990",
+            imageRes = R.drawable.mousse_chocolate
+        ),
+        ProductSummary(
+            id = 10,
+            name = "Brownie de Chocolate",
+            price = "$2.990",
+            imageRes = R.drawable.brownie
         )
     )
 }
