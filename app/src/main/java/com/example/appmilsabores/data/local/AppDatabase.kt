@@ -44,7 +44,7 @@ abstract class AppDatabase : RoomDatabase() {
 	}
 
 	companion object {
-		private const val DB_NAME = "levelup_gamer_app.db"
+		private const val DB_NAME = "pasteleria_mil_sabores.db"
 
 		@Volatile
 		private var instance: AppDatabase? = null

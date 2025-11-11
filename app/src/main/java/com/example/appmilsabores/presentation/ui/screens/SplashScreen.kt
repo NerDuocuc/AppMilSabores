@@ -47,8 +47,8 @@ fun SplashScreen(
         contentAlignment = Alignment.Center
     ) {
         Image(
-            painter = painterResource(id = R.drawable.splash_logo),
-            contentDescription = "Logo LevelUp Gamer"
+            painter = painterResource(id = R.drawable.background),
+            contentDescription = "Logo Pasteleria Mil Sabores"
         )
     }
 }

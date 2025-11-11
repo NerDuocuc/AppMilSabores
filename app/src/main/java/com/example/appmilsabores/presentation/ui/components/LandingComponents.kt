@@ -311,7 +311,7 @@ fun SearchSuggestionPanel(
                 )
                 Spacer(modifier = Modifier.height(12.dp))
                 SuggestionSection(
-                    title = "Tendencias LevelUp",
+                    title = "Tendencias Gastronomicas",
                     icon = Icons.Outlined.TrendingUp,
                     items = trendingItems,
                     onSuggestionClick = onSuggestionClick

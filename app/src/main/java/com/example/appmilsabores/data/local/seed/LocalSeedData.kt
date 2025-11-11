@@ -258,7 +258,7 @@ object LocalSeedData {
             run = "000000000",
             nombre = "System",
             apellidos = "",
-            correo = "system@levelup.local",
+            correo = "system@milsabores.local",
             perfil = "Administrador",
             fechaNacimiento = null,
             region = "",
