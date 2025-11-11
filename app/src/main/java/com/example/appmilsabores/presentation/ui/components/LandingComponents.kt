@@ -653,12 +653,24 @@ fun CategoryShortcuts(
                         .border(width = 1.dp, color = PrimaryPurple.copy(alpha = 0.6f), shape = CircleShape),
                     contentAlignment = Alignment.Center
                 ) {
-                    Icon(
-                        painter = painterResource(id = category.iconRes),
-                        contentDescription = category.name,
-                        tint = MainTextColor,
-                        modifier = Modifier.size(32.dp)
-                    )
+                    // If a representative image is provided for the category, show it (cropped circular).
+                    if (category.imageRes != null) {
+                        Image(
+                            painter = painterResource(id = category.imageRes),
+                            contentDescription = category.name,
+                            modifier = Modifier
+                                .size(48.dp)
+                                .clip(CircleShape),
+                            contentScale = ContentScale.Crop
+                        )
+                    } else {
+                        Icon(
+                            painter = painterResource(id = category.iconRes),
+                            contentDescription = category.name,
+                            tint = MainTextColor,
+                            modifier = Modifier.size(32.dp)
+                        )
+                    }
                 }
                 Text(
                     text = category.name,

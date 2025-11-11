@@ -408,14 +408,14 @@ object LocalSeedData {
                 id = "1_1",
                 author = "Valentina R.",
                 rating = 5f,
-                comment = "Un clásico imperdible, siempre distinto cada vez que lo jugamos.",
+                comment = "¡Increíble! La torta llegó fresca y la decoración fue tal cual la pedimos.",
                 date = "03 nov 2025"
             ),
             ProductReview(
                 id = "1_2",
                 author = "Rodrigo C.",
                 rating = 4.8f,
-                comment = "Componentes de buena calidad y las expansiones lo hacen aún mejor.",
+                comment = "Bizcocho húmedo y relleno cremoso, perfecto para celebrar con la familia.",
                 date = "28 oct 2025"
             )
         ),
@@ -424,7 +424,7 @@ object LocalSeedData {
                 id = "4_1",
                 author = "Carolina M.",
                 rating = 4.9f,
-                comment = "El control se siente muy sólido y la batería dura bastante.",
+                comment = "El manjar es casero y abundante; la torta tiene una textura perfecta y no empalaga.",
                 date = "30 oct 2025"
             )
         ),
@@ -433,7 +433,7 @@ object LocalSeedData {
                 id = "5_1",
                 author = "Jean P.",
                 rating = 4.7f,
-                comment = "Sonido envolvente real y micrófono claro, perfectos para raids.",
+                comment = "Chocolate intenso y bizcocho esponjoso — ideal para los amantes del chocolate.",
                 date = "15 oct 2025"
             )
         ),
@@ -442,7 +442,7 @@ object LocalSeedData {
                 id = "7_1",
                 author = "Andrea S.",
                 rating = 5f,
-                comment = "La velocidad de carga y los gatillos adaptativos son increíbles.",
+                comment = "Equilibrio perfecto entre café y crema; el tiramisú sabe auténtico y delicado.",
                 date = "01 nov 2025"
             )
         ),
@@ -451,7 +451,7 @@ object LocalSeedData {
                 id = "9_1",
                 author = "Ian L.",
                 rating = 4.8f,
-                comment = "Corre todos mis juegos AAA en ultra sin problemas.",
+                comment = "Mousse aireado y con un sabor profundo a chocolate — se derrite en la boca.",
                 date = "22 oct 2025"
             )
         ),
@@ -460,7 +460,7 @@ object LocalSeedData {
                 id = "13_1",
                 author = "Paula V.",
                 rating = 4.9f,
-                comment = "Sensor muy preciso, ideal para shooters competitivos.",
+                comment = "Excelente sabor y textura para un brownie sin gluten; nadie diría que es sin gluten.",
                 date = "05 nov 2025"
             )
         ),
@@ -469,7 +469,7 @@ object LocalSeedData {
                 id = "19_1",
                 author = "Martín F.",
                 rating = 4.6f,
-                comment = "Abriga harto y el estampado se mantiene después de varios lavados.",
+                comment = "Sabores caseros y porciones generosas; la presentación llegó impecable.",
                 date = "12 sep 2025"
             )
         )

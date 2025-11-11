@@ -13,11 +13,12 @@ class LandingRepositoryImpl : LandingRepository {
     )
 
     override fun getCategories() = listOf(
-        Category("Tortas Especiales", R.drawable.ic_especial), // Ícono genérico, la imagen real está en el producto
-        Category("Tortas Tradicionales", R.drawable.ic_cake),
-        Category("Postres", R.drawable.ic_cookie),
-        Category("Saludables", R.drawable.ic_vegan),
-        Category("Pastelería Chilena", R.drawable.ic_chile)
+        // Provide representative images where available. Keep iconRes as fallback.
+        Category("Tortas Especiales", R.drawable.ic_especial, imageRes = R.drawable.torta_especial_cumpleanos), // imagen específica
+        Category("Tortas Tradicionales", R.drawable.ic_cake, imageRes = R.drawable.torta_cuadrada_chocolate),
+        Category("Postres", R.drawable.ic_cookie, imageRes = R.drawable.tiramisu),
+        Category("Saludables", R.drawable.ic_vegan, imageRes = R.drawable.torta_sin_azucar_naranja),
+        Category("Pastelería Chilena", R.drawable.ic_chile, imageRes = R.drawable.tarta_santiago)
     )
 
     override fun getFeaturedProducts() = listOf(
