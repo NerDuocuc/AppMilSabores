@@ -372,7 +372,7 @@ fun RegistroScreen(
                         value = state.referralCode,
                         onValueChange = viewModel::onReferralCodeChange,
                         label = { Text("Código promocional(opcional)", color = Color.LightGray) },
-                        placeholder = { Text("LUG-XXXXX", color = Color.Gray) },
+                        placeholder = { Text("Example", color = Color.Gray) },
                         modifier = Modifier.fillMaxWidth(),
                         shape = RoundedCornerShape(12.dp),
                         keyboardOptions = KeyboardOptions(
@@ -391,7 +391,11 @@ fun RegistroScreen(
                         singleLine = true
                     )
 
-                    Spacer(modifier = Modifier.height(4.dp))
+                    // Mostrar error de código promocional si existe
+                    state.errors.referralCodeError?.let {
+                        Spacer(modifier = Modifier.height(4.dp))
+                        Text(text = it, color = Color(0xFFFF6B6B), fontSize = 12.sp)
+                    } ?: Spacer(modifier = Modifier.height(4.dp))
 
                     Text(
                         text = "Si alguien te invitó, ingresa su código para desbloquear puntos extra.",

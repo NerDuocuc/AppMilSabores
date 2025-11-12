@@ -53,6 +53,8 @@ class RegisterUserUseCase(
 			Result.Success(user)
 		} catch (emailInUse: EmailAlreadyInUseException) {
 			Result.Error("El correo ya está registrado")
+		} catch (runInUse: com.example.appmilsabores.domain.exceptions.RunAlreadyInUseException) {
+			Result.Error("Ya existe una cuenta registrada con ese RUN")
 		} catch (invalid: IllegalArgumentException) {
 			Result.Error(invalid.message ?: "Datos inválidos")
 		} catch (_: Exception) {

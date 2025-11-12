@@ -10,6 +10,7 @@ import com.example.appmilsabores.domain.model.Order
 import com.example.appmilsabores.domain.model.User
 import com.example.appmilsabores.domain.model.UserProfile
 import com.example.appmilsabores.domain.exceptions.EmailAlreadyInUseException
+import com.example.appmilsabores.domain.exceptions.RunAlreadyInUseException
 import com.example.appmilsabores.domain.repository.UserRepository
 import com.example.appmilsabores.utils.SecurityUtils
 import kotlin.random.Random
@@ -153,6 +154,12 @@ class UserRepositoryImpl(
         if (existingUser != null) {
             throw EmailAlreadyInUseException(normalizedEmail)
         }
+        // Ensure RUN uniqueness: normalize stored run (remove dots/dashes/spaces and uppercase) before checking
+        val cleanRun = sanitizedRun.replace(".", "").replace("-", "").replace(" ", "").uppercase()
+        val existingByRun = userDao.findByRun(cleanRun)
+        if (existingByRun != null) {
+            throw RunAlreadyInUseException(sanitizedRun)
+        }
         val hashedPassword = SecurityUtils.hashPassword(password)
         val trimmedFullName = listOf(cleanedFirstName, cleanedLastName)
             .filter { it.isNotBlank() }
@@ -170,7 +177,10 @@ class UserRepositoryImpl(
             region = sanitizedRegion,
             comuna = sanitizedComuna,
             address = sanitizedAddress,
-            promoCode = null,
+            // store the entered referral/promo code as the user's promoCode so it is
+            // available in profile and checkout. Keep referralCode field for tracking
+            // the inviter separately if needed.
+            promoCode = referralCode?.trim().takeUnless { it.isNullOrBlank() },
             referralCode = referralCode?.trim().takeUnless { it.isNullOrBlank() },
             hasLifetimeDiscount = hasDuocLifetimeBenefit(normalizedEmail),
             isSuperAdmin = false,

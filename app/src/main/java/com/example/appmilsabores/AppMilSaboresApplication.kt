@@ -8,6 +8,10 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
+import android.util.Log
+import java.io.File
+import java.io.PrintWriter
+import java.io.StringWriter
 
 class AppMilSaboresApplication : Application() {
 
@@ -23,8 +27,22 @@ class AppMilSaboresApplication : Application() {
         val database = appDatabase
         val sessionPrefs = sessionPreferencesDataSource
         applicationScope.launch {
-            database.seed()
-            sessionPrefs.seedSuperAdminIfNeeded()
+            try {
+                database.seed()
+                sessionPrefs.seedSuperAdminIfNeeded()
+            } catch (t: Throwable) {
+                // Log and persist the exception to a file so we can inspect crashes that occur during initialization
+                Log.e("AppInit", "Error during app initialization", t)
+                try {
+                    val sw = StringWriter()
+                    val pw = PrintWriter(sw)
+                    t.printStackTrace(pw)
+                    val logFile = File(filesDir, "init_crash.log")
+                    logFile.writeText(sw.toString())
+                } catch (ignored: Exception) {
+                    Log.e("AppInit", "Failed to write init_crash.log", ignored)
+                }
+            }
         }
     }
 

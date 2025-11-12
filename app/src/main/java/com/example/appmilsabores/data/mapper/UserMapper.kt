@@ -15,7 +15,6 @@ object UserMapper {
 			avatarRes = avatar,
 			photoUri = entity.photoUri,
 			orderCount = entity.orderCount,
-			couponCount = entity.couponCount,
 			promoCode = entity.promoCode,
 			run = entity.run,
 			profileRole = entity.profileRole,

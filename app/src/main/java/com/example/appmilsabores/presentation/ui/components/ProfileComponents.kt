@@ -130,7 +130,10 @@ fun StatsPanel(user: UserProfile) {
         horizontalArrangement = Arrangement.SpaceEvenly
     ) {
         StatCard("Pedidos", user.orderCount)
-        StatCard("Beneficios", user.couponCount)
+        // Mostrar la cantidad de códigos promocionales del usuario.
+        // Ahora usamos sólo el campo promoCode: si existe contamos 1, si no 0.
+        val promoCount = if (user.promoCode != null) 1 else 0
+        StatCard("Código promocional", promoCount)
     }
 }
 

@@ -16,7 +16,8 @@ import com.example.appmilsabores.data.local.seed.LocalSeedData
 
 @Database(
 	entities = [ProductEntity::class, CartItemEntity::class, UserEntity::class, PaymentMethodEntity::class],
-	version = 6,
+	// bumped version to 7 to apply destructive fallback migration after schema changes
+	version = 7,
 	exportSchema = true
 )
 abstract class AppDatabase : RoomDatabase() {

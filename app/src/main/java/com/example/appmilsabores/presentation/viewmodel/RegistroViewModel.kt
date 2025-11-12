@@ -47,7 +47,8 @@ data class FormErrors(
     val runError: String? = null,
     val regionError: String? = null,
     val comunaError: String? = null,
-    val termsError: String? = null
+    val termsError: String? = null,
+    val referralCodeError: String? = null
 )
 
 class RegistroViewModel(
@@ -96,7 +97,11 @@ class RegistroViewModel(
     }
 
     fun onRunChange(value: String) {
-        _uiState.update { it.copy(run = value) }
+        // Do not autoformat — only allow characters that belong to a RUN (digits + 'K')
+        // and limit total length to 9 characters (e.g. 8 digits + check digit).
+        val filtered = value.filter { it.isDigit() || it == 'K' || it == 'k' }
+        val truncated = if (filtered.length > 9) filtered.take(9) else filtered
+        _uiState.update { it.copy(run = truncated) }
     }
 
     fun onRegionChange(value: String) {
@@ -169,11 +174,22 @@ class RegistroViewModel(
                 }
 
                 is RegisterUserUseCase.Result.Error -> {
-                    _uiState.update {
-                        it.copy(
-                            isLoading = false,
-                            generalError = result.message
-                        )
+                    // If the error is about RUN already in use, show it as a field error; otherwise show general error
+                    if (result.message == "Ya existe una cuenta registrada con ese RUN") {
+                        _uiState.update { current ->
+                            current.copy(
+                                isLoading = false,
+                                errors = current.errors.copy(runError = result.message),
+                                generalError = null
+                            )
+                        }
+                    } else {
+                        _uiState.update {
+                            it.copy(
+                                isLoading = false,
+                                generalError = result.message
+                            )
+                        }
                     }
                 }
             }
@@ -191,6 +207,7 @@ class RegistroViewModel(
         var runError: String? = null
         var regionError: String? = null
         var comunaError: String? = null
+    var referralCodeError: String? = null
         var termsError: String? = null
 
         if (state.firstName.isBlank()) firstNameError = "El nombre es obligatorio"
@@ -219,6 +236,13 @@ class RegistroViewModel(
     // region, comuna and address are optional now; do not enforce validation errors for them
         if (!state.termsAccepted) termsError = "Debes aceptar los términos"
 
+        // Validate promotional/referral code: if provided, must be a known promo code
+        if (state.referralCode.isNotBlank()) {
+            if (!isValidPromo(state.referralCode.trim())) {
+                referralCodeError = "Código promocional inválido"
+            }
+        }
+
         return FormErrors(
             firstNameError = firstNameError,
             lastNameError = lastNameError,
@@ -231,7 +255,12 @@ class RegistroViewModel(
             regionError = regionError,
             comunaError = comunaError,
             termsError = termsError
+            , referralCodeError = referralCodeError
         )
+    }
+
+    private fun isValidPromo(code: String): Boolean {
+        return code.equals("DuocUc", ignoreCase = true)
     }
 
     private fun parseBirthDate(raw: String): Calendar? {

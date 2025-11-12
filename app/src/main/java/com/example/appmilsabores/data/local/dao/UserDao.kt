@@ -25,6 +25,9 @@ interface UserDao {
 	@Query("SELECT * FROM users WHERE email = :email LIMIT 1")
 	suspend fun findByEmail(email: String): UserEntity?
 
+	@Query("SELECT * FROM users WHERE REPLACE(REPLACE(REPLACE(UPPER(run), '.', ''), '-', ''), ' ', '') = :cleanRun LIMIT 1")
+	suspend fun findByRun(cleanRun: String): UserEntity?
+
 	@Query("SELECT * FROM users WHERE is_super_admin = 1 LIMIT 1")
 	suspend fun getSuperAdmin(): UserEntity?
 

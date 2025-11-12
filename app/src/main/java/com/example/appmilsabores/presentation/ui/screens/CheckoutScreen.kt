@@ -183,15 +183,14 @@ private fun CheckoutContent(
         }
 
         item {
-            // Promo section: allow entering/applying promo and toggling its use
+            // Promo section: sólo mostrar y permitir usar el código promocional guardado en la cuenta.
             CheckoutSectionCard(title = "Código promocional") {
                 Column {
-                    val currentPromo = state.promoCode ?: ""
                     if (state.promoCode != null) {
                         Row(verticalAlignment = Alignment.CenterVertically) {
                             Text("Código: ${state.promoCode}", color = Color.White, modifier = Modifier.weight(1f))
                             Spacer(modifier = Modifier.width(8.dp))
-                            TextButton(onClick = { /* already saved */ }) {
+                            TextButton(onClick = { /* código ya guardado en la cuenta */ }) {
                                 Text("Guardado", color = PrimaryPurple)
                             }
                         }
@@ -205,21 +204,11 @@ private fun CheckoutContent(
                             )
                         }
                     } else {
-                        // input for applying promo (not yet saved)
-                        var promoInput by remember { androidx.compose.runtime.mutableStateOf("") }
-                        Row {
-                            OutlinedTextField(
-                                value = promoInput,
-                                onValueChange = { promoInput = it },
-                                label = { Text("Código", color = Color.LightGray) },
-                                modifier = Modifier.weight(1f),
-                                singleLine = true
-                            )
-                            Spacer(modifier = Modifier.width(8.dp))
-                            Button(onClick = { onApplyPromo(promoInput) }, modifier = Modifier.height(48.dp)) {
-                                Text("Aplicar")
-                            }
-                        }
+                        // No se permite ingresar códigos en el carrito; sólo se usan los guardados en la cuenta.
+                        Text(
+                            text = "No tienes código promocional guardado en tu cuenta.",
+                            color = Color.Gray
+                        )
                     }
                 }
             }

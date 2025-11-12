@@ -309,8 +309,9 @@ object LocalSeedData {
             .ifBlank { cleanedFirstName }
         val normalizedEmail = correo.trim().lowercase()
         val roleIsAdmin = perfil.equals("Administrador", ignoreCase = true)
-    // Choose a random default avatar between male/female profile pictures
-    val placeholderAvatar = if (kotlin.random.Random.nextBoolean()) R.drawable.profile_picture_female else R.drawable.profile_picture_male
+        // Choose a random default avatar between male/female profile pictures
+        val placeholderAvatar = if (kotlin.random.Random.nextBoolean()) R.drawable.profile_picture_female else R.drawable.profile_picture_male
+
         return UserEntity(
             id = id,
             run = run.trim().ifBlank { null },

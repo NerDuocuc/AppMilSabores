@@ -19,7 +19,6 @@ data class UserEntity(
 	@ColumnInfo(name = "password_hash") val passwordHash: String? = null,
 	@ColumnInfo(name = "avatar_res") val avatarRes: Int? = null,
 	@ColumnInfo(name = "order_count") val orderCount: Int = 0,
-	@ColumnInfo(name = "coupon_count") val couponCount: Int = 0,
 	@ColumnInfo(name = "promo_code") val promoCode: String? = null,
 	@ColumnInfo(name = "profile_role") val profileRole: String? = null,
 	@ColumnInfo(name = "birth_date") val birthDate: String? = null,
