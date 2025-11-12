@@ -104,7 +104,7 @@ class CheckoutViewModel(
     }
 
     private fun isValidPromo(code: String): Boolean {
-        return code.equals("DuocUc", ignoreCase = true)
+        return code.equals("Felices50", ignoreCase = true)
     }
 
     fun refreshSelections() {
@@ -159,7 +159,20 @@ class CheckoutViewModel(
                     address = address,
                     paymentMethod = payment
                 )
-                _uiState.update { it.copy(isProcessing = false) }
+                // If a promo was applied for this purchase, consume it from the user's account.
+                if (currentState.promoApplied && !currentState.promoCode.isNullOrBlank()) {
+                    try {
+                        userRepository.setPromoCodeForCurrentUser(null)
+                        // update local uiState to reflect promo consumed
+                        _uiState.update { it.copy(promoCode = null, promoApplied = false, isProcessing = false) }
+                    } catch (_: Exception) {
+                        // if clearing promo fails, still proceed with success but keep UI consistent
+                        _uiState.update { it.copy(isProcessing = false) }
+                    }
+                } else {
+                    _uiState.update { it.copy(isProcessing = false) }
+                }
+
                 onSuccess(order, totalBeforeOrder)
             } catch (error: Exception) {
                 _uiState.update {

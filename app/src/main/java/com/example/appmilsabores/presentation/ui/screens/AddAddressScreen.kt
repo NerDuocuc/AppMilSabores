@@ -206,9 +206,9 @@ private fun addressTextFieldColors() = TextFieldDefaults.colors(
     disabledContainerColor = Color.Transparent,
     focusedIndicatorColor = PrimaryPurple,
     unfocusedIndicatorColor = Color.Gray,
-    focusedLabelColor = Color.White,
-    unfocusedLabelColor = Color.LightGray,
-    focusedTextColor = Color.White,
-    unfocusedTextColor = Color.White,
+    focusedLabelColor = MainTextColor,
+    unfocusedLabelColor = MainTextColor.copy(alpha = 0.7f),
+    focusedTextColor = MainTextColor,
+    unfocusedTextColor = MainTextColor,
     cursorColor = PrimaryPurple
 )

@@ -245,6 +245,24 @@ class UserRepositoryImpl(
         val userId = session.userId ?: return
         userDao.updatePromoCode(userId, promoCode?.trim().takeUnless { it.isNullOrBlank() })
     }
+
+    override suspend fun setAddressForCurrentUser(address: String?, comuna: String?, region: String?) {
+        val session = sessionPrefs.sessionFlow.first()
+        val userId = session.userId ?: return
+        val current = userDao.getUserById(userId) ?: return
+        if (current.isSuperAdmin) return
+
+    val normalizedAddress = address?.trim()?.ifBlank { null }
+    val normalizedComuna = comuna?.trim()?.ifBlank { null }
+    val normalizedRegion = region?.trim()?.ifBlank { null }
+
+        val updated = current.copy(
+            address = normalizedAddress,
+            comuna = normalizedComuna,
+            region = normalizedRegion
+        )
+        userDao.insertUser(updated)
+    }
     private suspend fun incrementUserOrderCount() {
         val session = sessionPrefs.sessionFlow.first()
         val userId = session.userId ?: return

@@ -107,6 +107,37 @@ class SessionPreferencesDataSource(context: Context) {
         }
     }
 
+    suspend fun savePrimaryAddress(address: String?, comuna: String?, region: String?) {
+        dataStore.edit { preferences ->
+            if (address.isNullOrBlank()) {
+                preferences.remove(KEY_PRIMARY_ADDRESS)
+            } else {
+                preferences[KEY_PRIMARY_ADDRESS] = address
+            }
+
+            if (comuna.isNullOrBlank()) {
+                preferences.remove(KEY_PRIMARY_COMUNA)
+            } else {
+                preferences[KEY_PRIMARY_COMUNA] = comuna
+            }
+
+            if (region.isNullOrBlank()) {
+                preferences.remove(KEY_PRIMARY_REGION)
+            } else {
+                preferences[KEY_PRIMARY_REGION] = region
+            }
+        }
+    }
+
+    suspend fun readPrimaryAddress(): Triple<String?, String?, String?> {
+        val prefs = dataStore.data.first()
+        return Triple(
+            prefs[KEY_PRIMARY_ADDRESS],
+            prefs[KEY_PRIMARY_COMUNA],
+            prefs[KEY_PRIMARY_REGION]
+        )
+    }
+
     suspend fun updateSession(transform: (SessionState) -> SessionState) {
         val current = sessionFlow.first()
         saveSession(transform(current))
@@ -133,6 +164,9 @@ class SessionPreferencesDataSource(context: Context) {
         private val KEY_EMAIL = stringPreferencesKey("email")
         private val KEY_FULL_NAME = stringPreferencesKey("full_name")
         private val KEY_REMEMBER_ME = booleanPreferencesKey("remember_me")
+        private val KEY_PRIMARY_ADDRESS = stringPreferencesKey("primary_address")
+        private val KEY_PRIMARY_COMUNA = stringPreferencesKey("primary_comuna")
+        private val KEY_PRIMARY_REGION = stringPreferencesKey("primary_region")
         private val KEY_VERSION = intPreferencesKey("prefs_version")
     }
 }

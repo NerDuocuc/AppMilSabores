@@ -6,6 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.appmilsabores.data.local.dao.CartDao
 import com.example.appmilsabores.data.local.dao.PaymentMethodDao
+import com.example.appmilsabores.data.local.dao.AddressDao
 import com.example.appmilsabores.data.local.dao.ProductDao
 import com.example.appmilsabores.data.local.dao.UserDao
 import com.example.appmilsabores.data.local.entity.CartItemEntity
@@ -15,7 +16,7 @@ import com.example.appmilsabores.data.local.entity.UserEntity
 import com.example.appmilsabores.data.local.seed.LocalSeedData
 
 @Database(
-	entities = [ProductEntity::class, CartItemEntity::class, UserEntity::class, PaymentMethodEntity::class],
+	entities = [ProductEntity::class, CartItemEntity::class, UserEntity::class, PaymentMethodEntity::class, com.example.appmilsabores.data.local.entity.AddressEntity::class],
 	// bumped version to 7 to apply destructive fallback migration after schema changes
 	version = 7,
 	exportSchema = true
@@ -26,6 +27,7 @@ abstract class AppDatabase : RoomDatabase() {
 	abstract fun cartDao(): CartDao
 	abstract fun userDao(): UserDao
 	abstract fun paymentMethodDao(): PaymentMethodDao
+	abstract fun addressDao(): AddressDao
 
 	suspend fun seed() {
 		val productDao = productDao()
