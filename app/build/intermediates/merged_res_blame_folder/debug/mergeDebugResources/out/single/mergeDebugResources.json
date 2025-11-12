@@ -8,32 +8,40 @@
         "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\drawable\\street.avif"
     },
     {
-        "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\drawable_splash_logo.png.flat",
-        "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\drawable\\splash_logo.png"
+        "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\drawable_vitrinareposteria.jpg.flat",
+        "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\drawable\\vitrinareposteria.jpg"
     },
     {
         "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\mipmap-mdpi_ic_launcher_round.webp.flat",
         "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\mipmap-mdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\drawable_vitrinareposteria.jpg.flat",
-        "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\drawable\\vitrinareposteria.jpg"
+        "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\drawable_splash_logo.png.flat",
+        "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\drawable\\splash_logo.png"
     },
     {
         "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\drawable_ic_chile.xml.flat",
         "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\drawable\\ic_chile.xml"
     },
     {
+        "merged": "com.example.appmilsabores.app-debug-4:/drawable_bizcochuelo_sin_gluten.jpg.flat",
+        "source": "com.example.appmilsabores.app-main-6:/drawable/bizcochuelo_sin_gluten.jpg"
+    },
+    {
         "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\drawable_ic_especial.xml.flat",
         "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\drawable\\ic_especial.xml"
+    },
+    {
+        "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\mipmap-xhdpi\\ic_launcher.webp"
     },
     {
         "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
         "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\mipmap-xxxhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\mipmap-xhdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\mipmap-xhdpi\\ic_launcher.webp"
+        "merged": "com.example.appmilsabores.app-debug-4:/drawable_torta_circular_chocolate.jpg.flat",
+        "source": "com.example.appmilsabores.app-main-6:/drawable/torta_circular_chocolate.jpg"
     },
     {
         "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
@@ -64,10 +72,6 @@
         "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\drawable\\ic_launcher_background.xml"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-4:/drawable_profile_picture_female.png.flat",
-        "source": "com.example.appmilsabores.app-main-6:/drawable/profile_picture_female.png"
-    },
-    {
         "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
         "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\mipmap-anydpi-v26\\ic_launcher.xml"
     },
@@ -88,6 +92,10 @@
         "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\drawable\\cheesecake_sin_azucar.avif"
     },
     {
+        "merged": "com.example.appmilsabores.app-debug-4:/drawable_torta_cuadrada_vainilla.jpg.flat",
+        "source": "com.example.appmilsabores.app-main-6:/drawable/torta_cuadrada_vainilla.jpg"
+    },
+    {
         "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\mipmap-xxhdpi_ic_launcher.webp.flat",
         "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\mipmap-xxhdpi\\ic_launcher.webp"
     },
@@ -102,6 +110,14 @@
     {
         "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\drawable_fundadora.jpg.flat",
         "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\drawable\\fundadora.jpg"
+    },
+    {
+        "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\drawable_profile_picture_male.png.flat",
+        "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\drawable\\profile_picture_male.png"
+    },
+    {
+        "merged": "com.example.appmilsabores.app-debug-4:/drawable_torta_circular_frutas.jpg.flat",
+        "source": "com.example.appmilsabores.app-main-6:/drawable/torta_circular_frutas.jpg"
     },
     {
         "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\drawable_torta_cuadrada_chocolate.png.flat",
@@ -130,6 +146,10 @@
     {
         "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\mipmap-xhdpi_ic_launcher_round.webp.flat",
         "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\mipmap-xhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.appmilsabores.app-debug-4:/drawable_brownie_vegano.jpg.flat",
+        "source": "com.example.appmilsabores.app-main-6:/drawable/brownie_vegano.jpg"
     },
     {
         "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\drawable_bald.avif.flat",
@@ -180,12 +200,16 @@
         "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\drawable\\galletas_vegana.jpg"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-4:/drawable_profile_picture_male.png.flat",
-        "source": "com.example.appmilsabores.app-main-6:/drawable/profile_picture_male.png"
+        "merged": "com.example.appmilsabores.app-debug-4:/drawable_torta_vegana_vainilla.jpg.flat",
+        "source": "com.example.appmilsabores.app-main-6:/drawable/torta_vegana_vainilla.jpg"
     },
     {
         "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\drawable_ic_cookie.xml.flat",
         "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\drawable\\ic_cookie.xml"
+    },
+    {
+        "merged": "com.example.appmilsabores.app-debug-4:/drawable_torta_vegana_manjar.jpg.flat",
+        "source": "com.example.appmilsabores.app-main-6:/drawable/torta_vegana_manjar.jpg"
     },
     {
         "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\mipmap-mdpi_ic_launcher.webp.flat",
@@ -198,6 +222,10 @@
     {
         "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\xml_data_extraction_rules.xml.flat",
         "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\xml\\data_extraction_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\drawable_profile_picture_female.png.flat",
+        "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\drawable\\profile_picture_female.png"
     },
     {
         "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\drawable_kirby.avif.flat",

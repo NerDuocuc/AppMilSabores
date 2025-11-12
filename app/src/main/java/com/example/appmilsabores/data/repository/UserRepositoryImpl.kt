@@ -170,6 +170,7 @@ class UserRepositoryImpl(
             region = sanitizedRegion,
             comuna = sanitizedComuna,
             address = sanitizedAddress,
+            promoCode = null,
             referralCode = referralCode?.trim().takeUnless { it.isNullOrBlank() },
             hasLifetimeDiscount = hasDuocLifetimeBenefit(normalizedEmail),
             isSuperAdmin = false,
@@ -227,6 +228,12 @@ class UserRepositoryImpl(
         } else {
             userDao.updatePhoto(targetUser.id, photoUri)
         }
+    }
+
+    override suspend fun setPromoCodeForCurrentUser(promoCode: String?) {
+        val session = sessionPrefs.sessionFlow.first()
+        val userId = session.userId ?: return
+        userDao.updatePromoCode(userId, promoCode?.trim().takeUnless { it.isNullOrBlank() })
     }
     private suspend fun incrementUserOrderCount() {
         val session = sessionPrefs.sessionFlow.first()

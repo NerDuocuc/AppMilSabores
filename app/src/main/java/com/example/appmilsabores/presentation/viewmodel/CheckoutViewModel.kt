@@ -34,6 +34,9 @@ data class CheckoutUiState(
     val subtotal: Double = 0.0,
     val shippingCost: Double = 0.0,
     val total: Double = 0.0,
+    val promoCode: String? = null,
+    val promoApplied: Boolean = false,
+    val promoDiscount: Double = 0.0,
     val isProcessing: Boolean = false,
     val isLoadingSelections: Boolean = true,
     val errorMessage: String? = null
@@ -55,6 +58,21 @@ class CheckoutViewModel(
     init {
         observeCart()
         refreshSelections()
+        observeUserPromo()
+    }
+
+    private fun observeUserPromo() {
+        viewModelScope.launch {
+            try {
+                val profile = userRepository.getUserProfile()
+                val promo = profile?.promoCode
+                if (!promo.isNullOrBlank()) {
+                    _uiState.update { it.copy(promoCode = promo) }
+                }
+            } catch (_: Exception) {
+                // ignore
+            }
+        }
     }
 
     private fun observeCart() {
@@ -68,15 +86,25 @@ class CheckoutViewModel(
     private fun updateTotals(items: List<CartItem>) {
         val subtotal = items.sumOf { it.price * it.quantity }
         val shipping = if (subtotal > 0) SHIPPING_FEE_CLP else 0.0
-        val total = subtotal + shipping
+        val currentPromo = _uiState.value.promoCode
+        val isApplied = _uiState.value.promoApplied
+        val discount = if (isApplied && !currentPromo.isNullOrBlank() && isValidPromo(currentPromo)) {
+            subtotal * PROMO_DISCOUNT_RATE
+        } else 0.0
+        val total = subtotal + shipping - discount
         _uiState.update { state ->
             state.copy(
                 items = items,
                 subtotal = subtotal,
                 shippingCost = shipping,
-                total = total
+                total = total,
+                promoDiscount = discount
             )
         }
+    }
+
+    private fun isValidPromo(code: String): Boolean {
+        return code.equals("DuocUc", ignoreCase = true)
     }
 
     fun refreshSelections() {
@@ -144,8 +172,34 @@ class CheckoutViewModel(
         }
     }
 
+    fun applyPromoCode(inputCode: String) {
+        val code = inputCode.trim()
+        if (!isValidPromo(code)) {
+            _uiState.update { it.copy(errorMessage = "Código promocional inválido") }
+            return
+        }
+
+        viewModelScope.launch {
+            try {
+                // persist on account (if logged in)
+                userRepository.setPromoCodeForCurrentUser(code)
+                _uiState.update { it.copy(promoCode = code, promoApplied = true) }
+                // recalc totals
+                updateTotals(_uiState.value.items)
+            } catch (e: Exception) {
+                _uiState.update { it.copy(errorMessage = "No fue posible aplicar el código") }
+            }
+        }
+    }
+
+    fun toggleUsePromo(apply: Boolean) {
+        _uiState.update { it.copy(promoApplied = apply) }
+        updateTotals(_uiState.value.items)
+    }
+
     companion object {
         private const val SHIPPING_FEE_CLP = 5990.0
         private const val PAYMENT_SIMULATION_DELAY_MS = 1200L
+        private const val PROMO_DISCOUNT_RATE = 0.10 // 10% discount
     }
 }

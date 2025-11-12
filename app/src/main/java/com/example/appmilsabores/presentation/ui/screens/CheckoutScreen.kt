@@ -16,6 +16,10 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
+import androidx.compose.material3.Switch
+import androidx.compose.material3.SwitchDefaults
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -114,7 +118,9 @@ fun CheckoutScreen(
                             popUpTo(Destinations.Cart.route) { inclusive = true }
                         }
                     }
-                }
+                },
+                onApplyPromo = { code -> viewModel.applyPromoCode(code) },
+                onTogglePromo = { apply -> viewModel.toggleUsePromo(apply) }
             )
         }
     }
@@ -128,6 +134,8 @@ private fun CheckoutContent(
     onManageAddress: () -> Unit,
     onManagePayment: () -> Unit,
     onConfirm: () -> Unit
+    , onApplyPromo: (String) -> Unit,
+    onTogglePromo: (Boolean) -> Unit
 ) {
     LazyColumn(
         modifier = Modifier
@@ -175,10 +183,52 @@ private fun CheckoutContent(
         }
 
         item {
+            // Promo section: allow entering/applying promo and toggling its use
+            CheckoutSectionCard(title = "Código promocional") {
+                Column {
+                    val currentPromo = state.promoCode ?: ""
+                    if (state.promoCode != null) {
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Text("Código: ${state.promoCode}", color = Color.White, modifier = Modifier.weight(1f))
+                            Spacer(modifier = Modifier.width(8.dp))
+                            TextButton(onClick = { /* already saved */ }) {
+                                Text("Guardado", color = PrimaryPurple)
+                            }
+                        }
+                        Spacer(modifier = Modifier.height(8.dp))
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Text("Usar código promocional", color = Color.White, modifier = Modifier.weight(1f))
+                            Switch(
+                                checked = state.promoApplied,
+                                onCheckedChange = { onTogglePromo(it) },
+                                colors = SwitchDefaults.colors(checkedThumbColor = PrimaryPurple)
+                            )
+                        }
+                    } else {
+                        // input for applying promo (not yet saved)
+                        var promoInput by remember { androidx.compose.runtime.mutableStateOf("") }
+                        Row {
+                            OutlinedTextField(
+                                value = promoInput,
+                                onValueChange = { promoInput = it },
+                                label = { Text("Código", color = Color.LightGray) },
+                                modifier = Modifier.weight(1f),
+                                singleLine = true
+                            )
+                            Spacer(modifier = Modifier.width(8.dp))
+                            Button(onClick = { onApplyPromo(promoInput) }, modifier = Modifier.height(48.dp)) {
+                                Text("Aplicar")
+                            }
+                        }
+                    }
+                }
+            }
+
             SummarySection(
                 subtotal = state.subtotal,
                 shippingCost = state.shippingCost,
-                total = state.total
+                total = state.total,
+                discount = state.promoDiscount
             )
         }
 

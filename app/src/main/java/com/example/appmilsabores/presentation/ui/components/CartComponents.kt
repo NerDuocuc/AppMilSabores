@@ -111,6 +111,7 @@ fun SummarySection(
     subtotal: Double,
     shippingCost: Double,
     total: Double,
+    discount: Double = 0.0,
     modifier: Modifier = Modifier,
     contentPadding: PaddingValues = PaddingValues(16.dp)
 ) {
@@ -121,6 +122,9 @@ fun SummarySection(
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         SummaryRow("Subtotal", subtotal)
+        if (discount > 0.0) {
+            SummaryRow("Descuento", -discount)
+        }
         SummaryRow("Envío", shippingCost)
         HorizontalDivider(color = Color.Gray.copy(alpha = 0.3f))
         SummaryRow("Total", total, isTotal = true)

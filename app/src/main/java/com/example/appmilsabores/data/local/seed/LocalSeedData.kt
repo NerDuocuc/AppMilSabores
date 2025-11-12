@@ -78,6 +78,85 @@ object LocalSeedData {
             description = "Frescura y color. Bizcocho de yogur natural cubierto con crema pastelera y una selección de frutas frescas de la temporada."
         ),
 
+        // Additional seeded products from user-provided images
+        ProductEntity(
+            id = 18,
+            name = "Torta Circular de Chocolate",
+            price = 23990.0,
+            oldPrice = null,
+            rating = 4.8f,
+            reviews = 78,
+            imageRes = R.drawable.torta_circular_chocolate,
+            category = "Tortas Circulares",
+            description = "Torta circular de chocolate, bizcocho húmedo y relleno de ganache de chocolate. Ideal para celebraciones y amantes del chocolate."
+        ),
+        ProductEntity(
+            id = 20,
+            name = "Torta Circular de Frutas",
+            price = 24990.0,
+            oldPrice = null,
+            rating = 4.7f,
+            reviews = 64,
+            imageRes = R.drawable.torta_circular_frutas,
+            category = "Tortas Circulares",
+            description = "Bizcocho esponjoso con capas de crema y frutas frescas, decorada con frutas de temporada encima. Fresca y elegante."
+        ),
+        ProductEntity(
+            id = 21,
+            name = "Torta Cuadrada de Vainilla",
+            price = 22990.0,
+            oldPrice = null,
+            rating = 4.6f,
+            reviews = 50,
+            imageRes = R.drawable.torta_cuadrada_vainilla,
+            category = "Tortas Cuadradas",
+            description = "Clásica torta cuadrada de vainilla, rellena de crema y cubierta con merengue suave. Perfecta para reuniones familiares."
+        ),
+        ProductEntity(
+            id = 22,
+            name = "Torta Vegana de Manjar",
+            price = 26990.0,
+            oldPrice = null,
+            rating = 4.7f,
+            reviews = 34,
+            imageRes = R.drawable.torta_vegana_manjar,
+            category = "Productos Veganos",
+            description = "Torta vegana con relleno de manjar vegano, bizcocho a base de ingredientes 100% vegetales y cobertura cremosa sin lácteos."
+        ),
+        ProductEntity(
+            id = 23,
+            name = "Torta Vegana de Vainilla",
+            price = 24990.0,
+            oldPrice = null,
+            rating = 4.5f,
+            reviews = 28,
+            imageRes = R.drawable.torta_vegana_vainilla,
+            category = "Productos Veganos",
+            description = "Una opción vegana suave y esponjosa con esencia de vainilla y relleno cremoso a base de plantas. Ideal para quienes prefieren alternativas vegetales."
+        ),
+        ProductEntity(
+            id = 24,
+            name = "Brownie Vegano",
+            price = 3490.0,
+            oldPrice = null,
+            rating = 4.6f,
+            reviews = 40,
+            imageRes = R.drawable.brownie_vegano,
+            category = "Productos Veganos",
+            description = "Brownie vegano con textura fudgy, hecho con ingredientes de origen vegetal y trozos de chocolate. Perfecto para un antojo responsable."
+        ),
+        ProductEntity(
+            id = 25,
+            name = "Bizcochuelo Sin Gluten",
+            price = 19990.0,
+            oldPrice = null,
+            rating = 4.4f,
+            reviews = 22,
+            imageRes = R.drawable.bizcochuelo_sin_gluten,
+            category = "Productos sin Gluten",
+            description = "Bizcochuelo esponjoso y liviano, elaborado con harinas sin gluten para quienes buscan opciones libres de gluten sin sacrificar sabor."
+        ),
+
         // --- Postres Individuales ---
         ProductEntity(
             id = 7,
@@ -246,6 +325,7 @@ object LocalSeedData {
             region = region.trim().ifBlank { null },
             comuna = comuna.trim().ifBlank { null },
             address = direccion.trim().ifBlank { null },
+            promoCode = null,
             referralCode = referral?.trim().takeUnless { it.isNullOrBlank() },
             hasLifetimeDiscount = descuentoVitalicio,
             isSuperAdmin = isSystem || roleIsAdmin,

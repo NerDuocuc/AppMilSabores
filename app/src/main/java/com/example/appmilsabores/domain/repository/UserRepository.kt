@@ -24,6 +24,7 @@ interface UserRepository {
         address: String,
         referralCode: String?
     ): User
+    suspend fun setPromoCodeForCurrentUser(promoCode: String?)
     suspend fun logout()
     suspend fun updateUser(fullName: String, email: String, newPassword: String?)
     suspend fun updateProfilePhoto(photoUri: String)
