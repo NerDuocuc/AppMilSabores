@@ -9,6 +9,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import com.example.appmilsabores.presentation.ui.theme.MainTextColor
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.input.KeyboardType
@@ -19,6 +20,7 @@ import androidx.compose.ui.unit.dp
 import com.example.appmilsabores.R
 import com.example.appmilsabores.domain.model.CardType
 import com.example.appmilsabores.presentation.ui.screens.getTextFieldColors
+import com.example.appmilsabores.presentation.ui.theme.PrimaryPurple
 import com.example.appmilsabores.presentation.viewmodel.AddPaymentUiState
 
 @Composable
@@ -153,8 +155,9 @@ private class ExpiryDateVisualTransformation : VisualTransformation {
 }
 @Composable
 fun paymentTextFieldColors(): TextFieldColors {
-    val backgroundColor = Color.DarkGray.copy(alpha = 0.3f)
-    val textColor = Color.White
+    // Make the text fields white with dark text so card details are readable over the form
+    val backgroundColor = Color.White
+    val textColor = MainTextColor
     return TextFieldDefaults.colors(
         focusedContainerColor = backgroundColor,
         unfocusedContainerColor = backgroundColor,
@@ -162,8 +165,9 @@ fun paymentTextFieldColors(): TextFieldColors {
         focusedIndicatorColor = Color.Gray,
         unfocusedIndicatorColor = Color.Gray,
         focusedLabelColor = textColor,
-        unfocusedLabelColor = textColor,
+        unfocusedLabelColor = textColor.copy(alpha = 0.7f),
         focusedTextColor = textColor,
-        unfocusedTextColor = textColor
+        unfocusedTextColor = textColor,
+        cursorColor = PrimaryPurple
     )
 }

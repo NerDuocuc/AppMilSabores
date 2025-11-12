@@ -70,7 +70,13 @@ fun RegistroScreen(
         }
     }
 
-    // Region/comuna fields removed — registration no longer requires region, comuna or address
+    var regionExpanded by rememberSaveable { mutableStateOf(false) }
+    var comunaExpanded by rememberSaveable { mutableStateOf(false) }
+    val regionNames = remember { ChileanRegionsData.regions.map { it.name } }
+    val regionMap = remember { ChileanRegionsData.regionToCommunes }
+    val availableCommunes = remember(state.region) {
+        regionMap[state.region].orEmpty()
+    }
 
     LaunchedEffect(state.isRegisterSuccessful) {
         if (state.isRegisterSuccessful) {
@@ -367,12 +373,12 @@ fun RegistroScreen(
 
                     Spacer(modifier = Modifier.height(12.dp))
 
-                    // Código promocional (opcional)
+                    // Código de referido (opcional)
                     OutlinedTextField(
                         value = state.referralCode,
                         onValueChange = viewModel::onReferralCodeChange,
-                        label = { Text("Código promocional(opcional)", color = Color.LightGray) },
-                        placeholder = { Text("Example", color = Color.Gray) },
+                        label = { Text("Código de referido (opcional)", color = Color.LightGray) },
+                        placeholder = { Text("LUG-XXXXX", color = Color.Gray) },
                         modifier = Modifier.fillMaxWidth(),
                         shape = RoundedCornerShape(12.dp),
                         keyboardOptions = KeyboardOptions(
@@ -391,11 +397,7 @@ fun RegistroScreen(
                         singleLine = true
                     )
 
-                    // Mostrar error de código promocional si existe
-                    state.errors.referralCodeError?.let {
-                        Spacer(modifier = Modifier.height(4.dp))
-                        Text(text = it, color = Color(0xFFFF6B6B), fontSize = 12.sp)
-                    } ?: Spacer(modifier = Modifier.height(4.dp))
+                    Spacer(modifier = Modifier.height(4.dp))
 
                     Text(
                         text = "Si alguien te invitó, ingresa su código para desbloquear puntos extra.",
@@ -405,7 +407,153 @@ fun RegistroScreen(
 
                     Spacer(modifier = Modifier.height(16.dp))
 
-                    // Region, comuna and address removed from registration per request — these fields are optional now
+                    // Región y comuna
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(12.dp)
+                    ) {
+                        ExposedDropdownMenuBox(
+                            expanded = regionExpanded,
+                            onExpandedChange = {
+                                regionExpanded = !regionExpanded
+                                if (!regionExpanded) {
+                                    comunaExpanded = false
+                                }
+                            },
+                            modifier = Modifier.weight(1f)
+                        ) {
+                            OutlinedTextField(
+                                value = state.region,
+                                onValueChange = {},
+                                readOnly = true,
+                                label = { Text("Región", color = Color.LightGray) },
+                                placeholder = { Text("Selecciona una región", color = Color.Gray) },
+                                trailingIcon = {
+                                    ExposedDropdownMenuDefaults.TrailingIcon(expanded = regionExpanded)
+                                },
+                                modifier = Modifier
+                                    .menuAnchor(MenuAnchorType.PrimaryNotEditable)
+                                    .fillMaxWidth(),
+                                shape = RoundedCornerShape(12.dp),
+                                colors = TextFieldDefaults.colors(
+                                    focusedContainerColor = Color.Transparent,
+                                    unfocusedContainerColor = Color.Transparent,
+                                    focusedIndicatorColor = PrimaryPurple,
+                                    unfocusedIndicatorColor = PrimaryPurple.copy(alpha = 0.5f),
+                                    focusedTextColor = Color.White,
+                                    unfocusedTextColor = Color.White
+                                ),
+                                singleLine = true
+                            )
+                            ExposedDropdownMenu(
+                                expanded = regionExpanded,
+                                onDismissRequest = { regionExpanded = false }
+                            ) {
+                                regionNames.forEach { regionName ->
+                                    DropdownMenuItem(
+                                        text = { Text(regionName) },
+                                        onClick = {
+                                            regionExpanded = false
+                                            comunaExpanded = false
+                                            viewModel.onRegionChange(regionName)
+                                        }
+                                    )
+                                }
+                            }
+                        }
+
+                        ExposedDropdownMenuBox(
+                            expanded = comunaExpanded,
+                            onExpandedChange = {
+                                if (availableCommunes.isNotEmpty()) {
+                                    comunaExpanded = !comunaExpanded
+                                }
+                            },
+                            modifier = Modifier.weight(1f)
+                        ) {
+                            OutlinedTextField(
+                                value = state.comuna,
+                                onValueChange = {},
+                                readOnly = true,
+                                enabled = availableCommunes.isNotEmpty(),
+                                label = { Text("Comuna", color = Color.LightGray) },
+                                placeholder = { Text("Selecciona una comuna", color = Color.Gray) },
+                                trailingIcon = {
+                                    ExposedDropdownMenuDefaults.TrailingIcon(expanded = comunaExpanded)
+                                },
+                                modifier = Modifier
+                                    .menuAnchor(
+                                        type = MenuAnchorType.PrimaryNotEditable,
+                                        enabled = availableCommunes.isNotEmpty()
+                                    )
+                                    .fillMaxWidth(),
+                                shape = RoundedCornerShape(12.dp),
+                                colors = TextFieldDefaults.colors(
+                                    focusedContainerColor = Color.Transparent,
+                                    unfocusedContainerColor = Color.Transparent,
+                                    disabledContainerColor = Color.Transparent,
+                                    focusedIndicatorColor = PrimaryPurple,
+                                    unfocusedIndicatorColor = PrimaryPurple.copy(alpha = 0.5f),
+                                    focusedTextColor = Color.White,
+                                    unfocusedTextColor = Color.White,
+                                    disabledIndicatorColor = PrimaryPurple.copy(alpha = 0.3f),
+                                    disabledTextColor = Color.LightGray
+                                ),
+                                singleLine = true
+                            )
+                            ExposedDropdownMenu(
+                                expanded = comunaExpanded,
+                                onDismissRequest = { comunaExpanded = false }
+                            ) {
+                                availableCommunes.forEach { comunaName ->
+                                    DropdownMenuItem(
+                                        text = { Text(comunaName) },
+                                        onClick = {
+                                            comunaExpanded = false
+                                            viewModel.onComunaChange(comunaName)
+                                        }
+                                    )
+                                }
+                            }
+                        }
+                    }
+
+                    state.errors.regionError?.let {
+                        Text(text = it, color = Color(0xFFFF6B6B), fontSize = 12.sp)
+                    }
+                    state.errors.comunaError?.let {
+                        Text(text = it, color = Color(0xFFFF6B6B), fontSize = 12.sp)
+                    }
+
+                    Spacer(modifier = Modifier.height(12.dp))
+
+                    // Dirección principal
+                    OutlinedTextField(
+                        value = state.address,
+                        onValueChange = viewModel::onAddressChange,
+                        label = { Text("Dirección principal", color = Color.LightGray) },
+                        placeholder = { Text("Ej: Av. Siempre Viva 742, Springfield", color = Color.Gray) },
+                        modifier = Modifier.fillMaxWidth(),
+                        shape = RoundedCornerShape(12.dp),
+                        keyboardOptions = KeyboardOptions(
+                            keyboardType = KeyboardType.Text,
+                            capitalization = KeyboardCapitalization.Sentences,
+                            imeAction = ImeAction.Next
+                        ),
+                        colors = TextFieldDefaults.colors(
+                            focusedContainerColor = Color.Transparent,
+                            unfocusedContainerColor = Color.Transparent,
+                            focusedIndicatorColor = PrimaryPurple,
+                            unfocusedIndicatorColor = PrimaryPurple.copy(alpha = 0.5f),
+                            focusedTextColor = Color.White,
+                            unfocusedTextColor = Color.White
+                        ),
+                        minLines = 2,
+                        maxLines = 3
+                    )
+                    state.errors.addressError?.let {
+                        Text(text = it, color = Color(0xFFFF6B6B), fontSize = 12.sp)
+                    }
 
                     Spacer(modifier = Modifier.height(12.dp))
 

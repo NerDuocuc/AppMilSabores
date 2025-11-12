@@ -16,10 +16,6 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
-import androidx.compose.material3.Switch
-import androidx.compose.material3.SwitchDefaults
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -118,9 +114,7 @@ fun CheckoutScreen(
                             popUpTo(Destinations.Cart.route) { inclusive = true }
                         }
                     }
-                },
-                onApplyPromo = { code -> viewModel.applyPromoCode(code) },
-                onTogglePromo = { apply -> viewModel.toggleUsePromo(apply) }
+                }
             )
         }
     }
@@ -134,8 +128,6 @@ private fun CheckoutContent(
     onManageAddress: () -> Unit,
     onManagePayment: () -> Unit,
     onConfirm: () -> Unit
-    , onApplyPromo: (String) -> Unit,
-    onTogglePromo: (Boolean) -> Unit
 ) {
     LazyColumn(
         modifier = Modifier
@@ -183,41 +175,10 @@ private fun CheckoutContent(
         }
 
         item {
-            // Promo section: sólo mostrar y permitir usar el código promocional guardado en la cuenta.
-            CheckoutSectionCard(title = "Código promocional") {
-                Column {
-                    if (state.promoCode != null) {
-                        Row(verticalAlignment = Alignment.CenterVertically) {
-                            Text("Código: ${state.promoCode}", color = Color.White, modifier = Modifier.weight(1f))
-                            Spacer(modifier = Modifier.width(8.dp))
-                            TextButton(onClick = { /* código ya guardado en la cuenta */ }) {
-                                Text("Guardado", color = PrimaryPurple)
-                            }
-                        }
-                        Spacer(modifier = Modifier.height(8.dp))
-                        Row(verticalAlignment = Alignment.CenterVertically) {
-                            Text("Usar código promocional", color = Color.White, modifier = Modifier.weight(1f))
-                            Switch(
-                                checked = state.promoApplied,
-                                onCheckedChange = { onTogglePromo(it) },
-                                colors = SwitchDefaults.colors(checkedThumbColor = PrimaryPurple)
-                            )
-                        }
-                    } else {
-                        // No se permite ingresar códigos en el carrito; sólo se usan los guardados en la cuenta.
-                        Text(
-                            text = "No tienes código promocional guardado en tu cuenta.",
-                            color = Color.Gray
-                        )
-                    }
-                }
-            }
-
             SummarySection(
                 subtotal = state.subtotal,
                 shippingCost = state.shippingCost,
-                total = state.total,
-                discount = state.promoDiscount
+                total = state.total
             )
         }
 

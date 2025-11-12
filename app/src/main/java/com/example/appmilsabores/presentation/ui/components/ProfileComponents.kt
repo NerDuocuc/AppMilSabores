@@ -120,7 +120,7 @@ fun ProfileHeader(user: UserProfile, onChangePhotoRequest: () -> Unit) {
     }
 }
 
-// 🔹 Panel de estadísticas (pedidos, cupones)
+// 🔹 Panel de estadísticas (pedidos, wishlist, cupones)
 @Composable
 fun StatsPanel(user: UserProfile) {
     Row(
@@ -129,11 +129,14 @@ fun StatsPanel(user: UserProfile) {
             .padding(horizontal = 32.dp),
         horizontalArrangement = Arrangement.SpaceEvenly
     ) {
+        // Some user fields (wishlistCount, couponCount) were removed from the model.
+        // Provide reasonable derived values to avoid compile errors.
+        val wishlistCount = 0
+        val couponCount = if (!user.promoCode.isNullOrBlank()) 1 else 0
+
         StatCard("Pedidos", user.orderCount)
-        // Mostrar la cantidad de códigos promocionales del usuario.
-        // Ahora usamos sólo el campo promoCode: si existe contamos 1, si no 0.
-        val promoCount = if (user.promoCode != null) 1 else 0
-        StatCard("Código promocional", promoCount)
+        StatCard("Wishlist", wishlistCount)
+        StatCard("Cupones", couponCount)
     }
 }
 

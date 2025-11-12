@@ -26,12 +26,12 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Category
-// Favorite icon removed from landing since favorites feature disabled
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material.icons.outlined.Category
-// outlined Favorite removed
+import androidx.compose.material.icons.outlined.Favorite
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material.icons.outlined.ShoppingCart
@@ -75,11 +75,6 @@ import com.example.appmilsabores.presentation.ui.theme.PureBlackBackground
 import com.example.appmilsabores.presentation.ui.theme.MainTextColor
 import com.example.appmilsabores.presentation.viewmodel.CartViewModel
 import com.example.appmilsabores.presentation.viewmodel.LandingViewModel
-import com.example.appmilsabores.data.repository.ProductRepositoryImpl
-import com.example.appmilsabores.domain.model.ProductSummary
-import kotlinx.coroutines.launch
-import java.util.Locale
-import java.text.NumberFormat
 
 private enum class MainDestination { Home, Categories, Cart, Favorites, Profile }
 
@@ -134,28 +129,9 @@ fun LandingPageScreen(
     val recentlyViewed = remember(landingState.featured, landingState.newProducts) {
         if (landingState.featured.isNotEmpty()) landingState.featured else landingState.newProducts
     }
-    // We'll compute dynamic lists for the two sections: suggestions (Postres Individuales)
-    // and popular options (random category, different from suggestions' category).
-    val curatedRecommendationsState = remember { mutableStateOf<List<ProductSummary>>(emptyList()) }
-    val popularOptionsState = remember { mutableStateOf<List<ProductSummary>>(emptyList()) }
-
-    val curatedRecommendations = curatedRecommendationsState.value
-    val popularOptions = popularOptionsState.value
-
-    // Helper: format price like previous summaries (no cents)
-    fun formatPrice(value: Double): String {
-        return try {
-            val fmt = NumberFormat.getCurrencyInstance(Locale("es", "CL"))
-            // Remove cents
-            fmt.maximumFractionDigits = 0
-            fmt.currency = java.util.Currency.getInstance("CLP")
-            fmt.format(value)
-        } catch (_: Exception) {
-            "$${value.toInt()}"
-        }
+    val curatedRecommendations = remember(landingState.newProducts, landingState.featured) {
+        if (landingState.newProducts.isNotEmpty()) landingState.newProducts else landingState.featured
     }
-
-    // NOTE: product selection LaunchedEffect moved below (after backStackEntry is available)
 
     var selectedDestination by rememberSaveable { mutableStateOf(MainDestination.Home) }
     val backStackEntry by navController.currentBackStackEntryAsState()
@@ -166,44 +142,6 @@ fun LandingPageScreen(
             Destinations.Cart.route -> MainDestination.Cart
             Destinations.Profile.route -> MainDestination.Profile
             else -> MainDestination.Home
-        }
-    }
-
-    // When entering the Landing screen (route changes), pick fresh products
-    LaunchedEffect(backStackEntry?.destination?.route, landingState.categories, landingState.desserts) {
-        // 1) Te podría gustar -> always use Postres Individuales (landingState.desserts) shuffled
-        curatedRecommendationsState.value = landingState.desserts.shuffled()
-
-        // 2) Opciones populares -> pick a random category different from "Postres Individuales"
-        val categories = landingState.categories.map { it.name }.filter { it.isNotBlank() }
-        val preferred = "Postres Individuales"
-        val available = categories.filter { !it.equals(preferred, ignoreCase = true) }
-        if (available.isEmpty()) {
-            // Fallback to featured/newProducts if no other categories
-            popularOptionsState.value = (landingState.featured + landingState.newProducts).distinctBy { it.id }
-        } else {
-            // pick a random category name
-            val randomCategory = available.shuffled().first()
-            // fetch products for that category from repository and map to ProductSummary
-            val repo = ProductRepositoryImpl()
-            val products = try {
-                repo.getProductsByCategory(randomCategory)
-            } catch (e: Exception) {
-                emptyList()
-            }
-
-            if (products.isEmpty()) {
-                popularOptionsState.value = (landingState.featured + landingState.newProducts).distinctBy { it.id }
-            } else {
-                popularOptionsState.value = products.map { p ->
-                    ProductSummary(
-                        id = p.id,
-                        name = p.name,
-                        price = formatPrice(p.price),
-                        imageRes = p.imageRes
-                    )
-                }
-            }
         }
     }
 
@@ -220,8 +158,8 @@ fun LandingPageScreen(
         if (existingIndex >= 0) {
             recentSearches.removeAt(existingIndex)
         }
-        recentSearches.add(0, normalized)
-        if (recentSearches.size > 6) {
+    recentSearches.add(0, normalized)
+    if (recentSearches.size > 6) {
             recentSearches.removeAt(recentSearches.lastIndex)
         }
 
@@ -245,6 +183,7 @@ fun LandingPageScreen(
                 }
             )
         },
+        
         containerColor = PureBlackBackground
     ) { paddingValues ->
         Box(modifier = Modifier.fillMaxSize()) {
@@ -268,8 +207,7 @@ fun LandingPageScreen(
                 item {
                     SectionTitle(
                         title = "Categorías Populares",
-                        modifier = Modifier.padding(top = 4.dp),
-                        titleColor = Color.Black
+                        modifier = Modifier.padding(top = 4.dp)
                     )
                 }
                 item {
@@ -278,17 +216,24 @@ fun LandingPageScreen(
                         navController = navController
                     )
                 }
-                    item { SectionTitle(title = "Opciones populares", titleColor = Color.Black) }
+                item { SectionTitle(title = "Visto recientemente") }
                 item {
                     ProductShowcaseRow(
-                        products = popularOptions,
+                        products = recentlyViewed,
                         navController = navController
                     )
                 }
-                    item { SectionTitle(title = "Te podría gustar", titleColor = Color.Black) }
+                item { SectionTitle(title = "Te podría gustar") }
                 item {
                     ProductShowcaseRow(
                         products = curatedRecommendations,
+                        navController = navController
+                    )
+                }
+                item { SectionTitle(title = "Nuevos lanzamientos") }
+                item {
+                    ProductShowcaseRow(
+                        products = landingState.newProducts,
                         navController = navController
                     )
                 }

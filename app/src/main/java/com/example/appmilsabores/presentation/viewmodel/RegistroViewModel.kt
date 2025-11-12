@@ -260,7 +260,7 @@ class RegistroViewModel(
     }
 
     private fun isValidPromo(code: String): Boolean {
-        return code.equals("DuocUc", ignoreCase = true)
+        return code.equals("Felices50", ignoreCase = true)
     }
 
     private fun parseBirthDate(raw: String): Calendar? {

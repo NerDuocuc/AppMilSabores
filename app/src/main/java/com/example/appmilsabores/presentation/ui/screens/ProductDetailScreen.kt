@@ -108,7 +108,12 @@ fun ProductDetailScreen(
                 .padding(paddingValues)
         ) {
             item { ProductImageCarousel(product = product) }
-            item { ProductHeader(product = product, reviews = state.reviews) }
+            item {
+                ProductHeader(
+                    product = product,
+                    reviews = state.reviews
+                )
+            }
             item { DetailPrice(price = product.price, oldPrice = product.oldPrice) }
             item {
                 DetailQuantityControl(

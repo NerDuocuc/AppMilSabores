@@ -111,7 +111,6 @@ fun SummarySection(
     subtotal: Double,
     shippingCost: Double,
     total: Double,
-    discount: Double = 0.0,
     modifier: Modifier = Modifier,
     contentPadding: PaddingValues = PaddingValues(16.dp)
 ) {
@@ -122,9 +121,6 @@ fun SummarySection(
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         SummaryRow("Subtotal", subtotal)
-        if (discount > 0.0) {
-            SummaryRow("Descuento", -discount)
-        }
         SummaryRow("Envío", shippingCost)
         HorizontalDivider(color = Color.Gray.copy(alpha = 0.3f))
         SummaryRow("Total", total, isTotal = true)
@@ -133,8 +129,7 @@ fun SummarySection(
 
 @Composable
 fun SummaryRow(label: String, value: Double, isTotal: Boolean = false) {
-    // Use white for all summary text so it is readable over the dark cart bottom bar
-    val color = Color.White
+    val color = if (isTotal) MainTextColor else Color.LightGray
     val fontWeight = if (isTotal) FontWeight.Bold else FontWeight.Normal
     val fontSize = if (isTotal) 20.sp else 16.sp
 
@@ -153,11 +148,9 @@ fun CartBottomBar(
     total: Double,
     onCheckout: () -> Unit
 ) {
-    // Use an opaque background for the cart bottom bar so underlying white content
-    // doesn't show through the translucent top bar color.
     Surface(
-        color = TopBarAndDrawerColor.copy(alpha = 1f),
-        shadowElevation = 0.dp
+        color = TopBarAndDrawerColor,
+        shadowElevation = 12.dp
     ) {
         Column(
             modifier = Modifier
