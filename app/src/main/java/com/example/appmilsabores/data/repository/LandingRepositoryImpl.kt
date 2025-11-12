@@ -13,12 +13,15 @@ class LandingRepositoryImpl : LandingRepository {
     )
 
     override fun getCategories() = listOf(
-        // Provide representative images where available. Keep iconRes as fallback.
-        Category("Tortas Especiales", R.drawable.ic_especial, imageRes = R.drawable.torta_especial_cumpleanos), // imagen específica
-        Category("Tortas Tradicionales", R.drawable.ic_cake, imageRes = R.drawable.torta_cuadrada_chocolate),
-        Category("Postres", R.drawable.ic_cookie, imageRes = R.drawable.tiramisu),
-        Category("Saludables", R.drawable.ic_vegan, imageRes = R.drawable.torta_sin_azucar_naranja),
-        Category("Pastelería Chilena", R.drawable.ic_chile, imageRes = R.drawable.tarta_santiago)
+        // Categories aligned with the web JSON
+        Category("Tortas Cuadradas", R.drawable.ic_cake),
+        Category("Tortas Circulares", R.drawable.ic_cake),
+        Category("Postres Individuales", R.drawable.ic_cookie),
+        Category("Productos sin Azúcar", R.drawable.ic_vegan),
+        Category("Pastelería Tradicional", R.drawable.ic_cake),
+        Category("Productos sin Gluten", R.drawable.ic_cookie),
+        Category("Productos Veganos", R.drawable.ic_vegan),
+        Category("Tortas Especiales", R.drawable.ic_especial)
     )
 
     override fun getFeaturedProducts() = listOf(

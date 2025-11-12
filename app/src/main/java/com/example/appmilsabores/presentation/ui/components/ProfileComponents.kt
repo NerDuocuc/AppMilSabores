@@ -120,7 +120,7 @@ fun ProfileHeader(user: UserProfile, onChangePhotoRequest: () -> Unit) {
     }
 }
 
-// 🔹 Panel de estadísticas (pedidos, wishlist, cupones)
+// 🔹 Panel de estadísticas (pedidos, cupones)
 @Composable
 fun StatsPanel(user: UserProfile) {
     Row(
@@ -130,8 +130,7 @@ fun StatsPanel(user: UserProfile) {
         horizontalArrangement = Arrangement.SpaceEvenly
     ) {
         StatCard("Pedidos", user.orderCount)
-        StatCard("Wishlist", user.wishlistCount)
-        StatCard("Cupones", user.couponCount)
+        StatCard("Beneficios", user.couponCount)
     }
 }
 

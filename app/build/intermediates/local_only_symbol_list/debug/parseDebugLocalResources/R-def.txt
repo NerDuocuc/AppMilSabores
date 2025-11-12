@@ -31,6 +31,8 @@ drawable logo
 drawable logo_pasteleria
 drawable mousse_chocolate
 drawable pan_sin_gluten
+drawable profile_picture_female
+drawable profile_picture_male
 drawable splash_logo
 drawable street
 drawable tarta_santiago

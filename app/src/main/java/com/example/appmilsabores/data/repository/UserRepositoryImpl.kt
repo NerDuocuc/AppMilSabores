@@ -12,6 +12,7 @@ import com.example.appmilsabores.domain.model.UserProfile
 import com.example.appmilsabores.domain.exceptions.EmailAlreadyInUseException
 import com.example.appmilsabores.domain.repository.UserRepository
 import com.example.appmilsabores.utils.SecurityUtils
+import kotlin.random.Random
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flatMapLatest
@@ -143,20 +144,10 @@ class UserRepositoryImpl(
             throw IllegalArgumentException("La edad debe estar entre $MIN_AGE y $MAX_AGE años")
         }
 
-        val sanitizedRegion = region.trim()
-        if (sanitizedRegion.isBlank()) {
-            throw IllegalArgumentException("La región es obligatoria")
-        }
-
-        val sanitizedComuna = comuna.trim()
-        if (sanitizedComuna.isBlank()) {
-            throw IllegalArgumentException("La comuna es obligatoria")
-        }
-
-        val sanitizedAddress = address.trim()
-        if (sanitizedAddress.isBlank()) {
-            throw IllegalArgumentException("La dirección es obligatoria")
-        }
+        // Region, comuna and address are optional now. Accept blank values and persist as null when empty.
+        val sanitizedRegion = region.trim().ifBlank { null }
+        val sanitizedComuna = comuna.trim().ifBlank { null }
+        val sanitizedAddress = address.trim().ifBlank { null }
 
         val existingUser = userDao.findByEmail(normalizedEmail)
         if (existingUser != null) {
@@ -172,7 +163,7 @@ class UserRepositoryImpl(
             lastName = cleanedLastName,
             email = normalizedEmail,
             passwordHash = hashedPassword,
-            avatarRes = R.drawable.avatar_placeholder,
+            avatarRes = if (Random.nextBoolean()) R.drawable.profile_picture_female else R.drawable.profile_picture_male,
             profileRole = "Cliente",
             birthDate = sanitizedBirthDate,
             run = sanitizedRun,

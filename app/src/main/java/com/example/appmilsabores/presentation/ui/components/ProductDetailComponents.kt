@@ -23,7 +23,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 // removed favorite icons since favorites feature disabled in UI
-import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -78,7 +77,8 @@ fun ProductDetailTopBar(
             navigationIconContentColor = Color.White
         ),
         actions = {
-            CartActionButton(count = cartCount, onClick = onCartClick)
+            // Ensure the cart icon in the product detail top bar is white for better contrast
+            CartActionButton(count = cartCount, onClick = onCartClick, tint = Color.White)
         }
     )
 }
@@ -126,7 +126,8 @@ fun ProductImageCarousel(product: Product) {
 }
 
 @Composable
-fun ProductHeader(product: Product) {
+fun ProductHeader(product: Product, reviews: List<ProductReview>) {
+    // Star rating UI has been removed per request; keep reviews data intact
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -137,9 +138,8 @@ fun ProductHeader(product: Product) {
         Column(modifier = Modifier.weight(1f)) {
             Text(product.name, fontWeight = FontWeight.Bold, fontSize = 24.sp, color = Color.White)
             Spacer(modifier = Modifier.height(8.dp))
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Icon(Icons.Default.Star, contentDescription = null, tint = Color.Yellow)
-                Text("${product.rating}", color = Color.White, fontWeight = FontWeight.SemiBold)
+            if (reviews.isNotEmpty()) {
+                Text("${reviews.size} reseñas", color = Color.LightGray, fontSize = 14.sp)
             }
         }
     }
@@ -254,8 +254,7 @@ private fun ReviewCard(review: ProductReview) {
             }
             Spacer(Modifier.height(6.dp))
             Row(verticalAlignment = Alignment.CenterVertically) {
-                Icon(Icons.Default.Star, contentDescription = null, tint = Color.Yellow, modifier = Modifier.size(16.dp))
-                Spacer(Modifier.width(4.dp))
+                // Star icons removed — show numeric rating instead
                 Text("${review.rating}", color = Color.White, fontWeight = FontWeight.SemiBold, fontSize = 14.sp)
             }
             Spacer(Modifier.height(8.dp))

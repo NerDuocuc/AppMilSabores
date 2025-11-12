@@ -59,9 +59,9 @@ fun CategoryScreen(
                 horizontalArrangement = Arrangement.spacedBy(16.dp)
             ) {
                 items(state.categories) { category ->
-                    CategoryCard(category) {
+                    CategoryCard(category, onClick = {
                         navController.navigate("productos/${category.name}")
-                    }
+                    }, darkOverlay = true)
                 }
             }
         }

@@ -6,7 +6,6 @@ data class UserProfile(
     val avatarRes: Int,
     val photoUri: String?,
     val orderCount: Int,
-    val wishlistCount: Int,
     val couponCount: Int,
     val run: String? = null,
     val profileRole: String? = null,

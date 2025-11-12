@@ -7,14 +7,14 @@ import com.example.appmilsabores.domain.model.UserProfile
 
 object UserMapper {
 	fun toProfile(entity: UserEntity): UserProfile {
-		val avatar = entity.avatarRes ?: R.drawable.avatar_placeholder
+		// If avatar is missing, use a default profile picture (not avatar_placeholder)
+		val avatar = entity.avatarRes ?: R.drawable.profile_picture_female
 		return UserProfile(
 			name = entity.fullName,
 			email = entity.email,
 			avatarRes = avatar,
 			photoUri = entity.photoUri,
 			orderCount = entity.orderCount,
-			wishlistCount = entity.wishlistCount,
 			couponCount = entity.couponCount,
 			run = entity.run,
 			profileRole = entity.profileRole,

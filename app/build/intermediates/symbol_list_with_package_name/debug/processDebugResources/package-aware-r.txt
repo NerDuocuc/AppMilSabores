@@ -120,6 +120,8 @@ drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
 drawable pan_sin_gluten
+drawable profile_picture_female
+drawable profile_picture_male
 drawable splash_logo
 drawable street
 drawable tarta_santiago

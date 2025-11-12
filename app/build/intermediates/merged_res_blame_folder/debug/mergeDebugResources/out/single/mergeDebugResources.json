@@ -1,218 +1,226 @@
 [
     {
-        "merged": "com.example.appmilsabores.app-debug-4:/drawable_ic_launcher_foreground.xml.flat",
-        "source": "com.example.appmilsabores.app-main-6:/drawable/ic_launcher_foreground.xml"
+        "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\drawable_avatar_placeholder.png.flat",
+        "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\drawable\\avatar_placeholder.png"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-4:/drawable_empanada_manzana.jpg.flat",
-        "source": "com.example.appmilsabores.app-main-6:/drawable/empanada_manzana.jpg"
+        "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\drawable_street.avif.flat",
+        "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\drawable\\street.avif"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-4:/drawable_ic_especial.xml.flat",
-        "source": "com.example.appmilsabores.app-main-6:/drawable/ic_especial.xml"
+        "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\drawable_splash_logo.png.flat",
+        "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\drawable\\splash_logo.png"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-4:/mipmap-mdpi_ic_launcher.webp.flat",
-        "source": "com.example.appmilsabores.app-main-6:/mipmap-mdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\mipmap-mdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-4:/drawable_tarta_santiago.png.flat",
-        "source": "com.example.appmilsabores.app-main-6:/drawable/tarta_santiago.png"
+        "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\drawable_vitrinareposteria.jpg.flat",
+        "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\drawable\\vitrinareposteria.jpg"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-4:/drawable_bald.avif.flat",
-        "source": "com.example.appmilsabores.app-main-6:/drawable/bald.avif"
+        "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\drawable_ic_chile.xml.flat",
+        "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\drawable\\ic_chile.xml"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-4:/drawable_ic_vegan.xml.flat",
-        "source": "com.example.appmilsabores.app-main-6:/drawable/ic_vegan.xml"
+        "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\drawable_ic_especial.xml.flat",
+        "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\drawable\\ic_especial.xml"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-4:/drawable_tiramisu.jpg.flat",
-        "source": "com.example.appmilsabores.app-main-6:/drawable/tiramisu.jpg"
+        "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\mipmap-xxxhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-4:/drawable_kirby.avif.flat",
-        "source": "com.example.appmilsabores.app-main-6:/drawable/kirby.avif"
+        "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\mipmap-xhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-4:/drawable_splash_logo.png.flat",
-        "source": "com.example.appmilsabores.app-main-6:/drawable/splash_logo.png"
+        "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-4:/drawable_ic_mastercard.png.flat",
-        "source": "com.example.appmilsabores.app-main-6:/drawable/ic_mastercard.png"
+        "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\drawable_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\drawable\\ic_launcher_foreground.xml"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-4:/drawable_torta_cuadrada_chocolate.png.flat",
-        "source": "com.example.appmilsabores.app-main-6:/drawable/torta_cuadrada_chocolate.png"
+        "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\drawable_tarta_santiago.png.flat",
+        "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\drawable\\tarta_santiago.png"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-4:/drawable_ic_cookie.xml.flat",
-        "source": "com.example.appmilsabores.app-main-6:/drawable/ic_cookie.xml"
+        "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\xml_backup_rules.xml.flat",
+        "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\xml\\backup_rules.xml"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-4:/drawable_logo.png.flat",
-        "source": "com.example.appmilsabores.app-main-6:/drawable/logo.png"
+        "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\drawable_background.jpg.flat",
+        "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\drawable\\background.jpg"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-4:/drawable_torta_circular_manjar.jpg.flat",
-        "source": "com.example.appmilsabores.app-main-6:/drawable/torta_circular_manjar.jpg"
+        "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\xml_file_paths.xml.flat",
+        "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\xml\\file_paths.xml"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-4:/drawable_vegana_chocolate.jpg.flat",
-        "source": "com.example.appmilsabores.app-main-6:/drawable/vegana_chocolate.jpg"
+        "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\drawable_ic_launcher_background.xml.flat",
+        "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\drawable\\ic_launcher_background.xml"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-4:/drawable_ic_chile.xml.flat",
-        "source": "com.example.appmilsabores.app-main-6:/drawable/ic_chile.xml"
+        "merged": "com.example.appmilsabores.app-debug-4:/drawable_profile_picture_female.png.flat",
+        "source": "com.example.appmilsabores.app-main-6:/drawable/profile_picture_female.png"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-4:/drawable_ic_cake.xml.flat",
-        "source": "com.example.appmilsabores.app-main-6:/drawable/ic_cake.xml"
+        "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\mipmap-anydpi-v26\\ic_launcher.xml"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-4:/drawable_torta_especial_boda.jpeg.flat",
-        "source": "com.example.appmilsabores.app-main-6:/drawable/torta_especial_boda.jpeg"
+        "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-4:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.appmilsabores.app-main-6:/mipmap-xxxhdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\drawable_torta_especial_cumpleanos.png.flat",
+        "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\drawable\\torta_especial_cumpleanos.png"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-4:/drawable_torta_especial_cumpleanos.png.flat",
-        "source": "com.example.appmilsabores.app-main-6:/drawable/torta_especial_cumpleanos.png"
+        "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\drawable_torta_cuadrada_frutas.jpg.flat",
+        "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\drawable\\torta_cuadrada_frutas.jpg"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-4:/drawable_background.jpg.flat",
-        "source": "com.example.appmilsabores.app-main-6:/drawable/background.jpg"
+        "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\drawable_cheesecake_sin_azucar.avif.flat",
+        "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\drawable\\cheesecake_sin_azucar.avif"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-4:/drawable_teclados.avif.flat",
-        "source": "com.example.appmilsabores.app-main-6:/drawable/teclados.avif"
+        "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\mipmap-xxhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-4:/drawable_logo_pasteleria.png.flat",
-        "source": "com.example.appmilsabores.app-main-6:/drawable/logo_pasteleria.png"
+        "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\drawable_logo_pasteleria.png.flat",
+        "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\drawable\\logo_pasteleria.png"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-4:/drawable_torta_circular_vainilla.jpg.flat",
-        "source": "com.example.appmilsabores.app-main-6:/drawable/torta_circular_vainilla.jpg"
+        "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\drawable_brownie_sin_gluten.jpg.flat",
+        "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\drawable\\brownie_sin_gluten.jpg"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-4:/mipmap-mdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.appmilsabores.app-main-6:/mipmap-mdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\drawable_fundadora.jpg.flat",
+        "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\drawable\\fundadora.jpg"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-4:/mipmap-xxhdpi_ic_launcher.webp.flat",
-        "source": "com.example.appmilsabores.app-main-6:/mipmap-xxhdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\drawable_torta_cuadrada_chocolate.png.flat",
+        "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\drawable\\torta_cuadrada_chocolate.png"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-4:/drawable_brownie_sin_gluten.jpg.flat",
-        "source": "com.example.appmilsabores.app-main-6:/drawable/brownie_sin_gluten.jpg"
+        "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\drawable_tiramisu_2.jpg.flat",
+        "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\drawable\\tiramisu_2.jpg"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-4:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.appmilsabores.app-main-6:/mipmap-xxhdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\drawable_brownie.jpg.flat",
+        "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\drawable\\brownie.jpg"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-4:/xml_data_extraction_rules.xml.flat",
-        "source": "com.example.appmilsabores.app-main-6:/xml/data_extraction_rules.xml"
+        "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\drawable_mousse_chocolate.png.flat",
+        "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\drawable\\mousse_chocolate.png"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-4:/drawable_tiramisu_2.jpg.flat",
-        "source": "com.example.appmilsabores.app-main-6:/drawable/tiramisu_2.jpg"
+        "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\drawable_logo.png.flat",
+        "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\drawable\\logo.png"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-4:/mipmap-xhdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.appmilsabores.app-main-6:/mipmap-xhdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\drawable_pan_sin_gluten.jpg.flat",
+        "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\drawable\\pan_sin_gluten.jpg"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-4:/mipmap-hdpi_ic_launcher.webp.flat",
-        "source": "com.example.appmilsabores.app-main-6:/mipmap-hdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\mipmap-xhdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-4:/drawable_avatar_placeholder.png.flat",
-        "source": "com.example.appmilsabores.app-main-6:/drawable/avatar_placeholder.png"
+        "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\drawable_bald.avif.flat",
+        "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\drawable\\bald.avif"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-4:/drawable_cheesecake_sin_azucar.avif.flat",
-        "source": "com.example.appmilsabores.app-main-6:/drawable/cheesecake_sin_azucar.avif"
+        "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\mipmap-xxhdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-4:/xml_file_paths.xml.flat",
-        "source": "com.example.appmilsabores.app-main-6:/xml/file_paths.xml"
+        "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\drawable_ic_cake.xml.flat",
+        "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\drawable\\ic_cake.xml"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-4:/mipmap-xxxhdpi_ic_launcher.webp.flat",
-        "source": "com.example.appmilsabores.app-main-6:/mipmap-xxxhdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\drawable_brownie_2.jpeg.flat",
+        "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\drawable\\brownie_2.jpeg"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-4:/drawable_torta_sin_azucar_naranja.png.flat",
-        "source": "com.example.appmilsabores.app-main-6:/drawable/torta_sin_azucar_naranja.png"
+        "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\drawable_torta_circular_vainilla.jpg.flat",
+        "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\drawable\\torta_circular_vainilla.jpg"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-4:/drawable_brownie.jpg.flat",
-        "source": "com.example.appmilsabores.app-main-6:/drawable/brownie.jpg"
+        "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\drawable_torta_sin_azucar_naranja.png.flat",
+        "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\drawable\\torta_sin_azucar_naranja.png"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-4:/mipmap-hdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.appmilsabores.app-main-6:/mipmap-hdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\mipmap-hdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-4:/drawable_fundadora.jpg.flat",
-        "source": "com.example.appmilsabores.app-main-6:/drawable/fundadora.jpg"
+        "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\drawable_vegana_chocolate.jpg.flat",
+        "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\drawable\\vegana_chocolate.jpg"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-4:/mipmap-xhdpi_ic_launcher.webp.flat",
-        "source": "com.example.appmilsabores.app-main-6:/mipmap-xhdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\drawable_torta_circular_manjar.jpg.flat",
+        "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\drawable\\torta_circular_manjar.jpg"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-4:/drawable_torta_cuadrada_frutas.jpg.flat",
-        "source": "com.example.appmilsabores.app-main-6:/drawable/torta_cuadrada_frutas.jpg"
+        "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\drawable_ic_mastercard.png.flat",
+        "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\drawable\\ic_mastercard.png"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-4:/drawable_ic_launcher_background.xml.flat",
-        "source": "com.example.appmilsabores.app-main-6:/drawable/ic_launcher_background.xml"
+        "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\drawable_ic_visa.png.flat",
+        "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\drawable\\ic_visa.png"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-4:/drawable_galletas_vegana.jpg.flat",
-        "source": "com.example.appmilsabores.app-main-6:/drawable/galletas_vegana.jpg"
+        "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\drawable_galletas_vegana.jpg.flat",
+        "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\drawable\\galletas_vegana.jpg"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-4:/xml_backup_rules.xml.flat",
-        "source": "com.example.appmilsabores.app-main-6:/xml/backup_rules.xml"
+        "merged": "com.example.appmilsabores.app-debug-4:/drawable_profile_picture_male.png.flat",
+        "source": "com.example.appmilsabores.app-main-6:/drawable/profile_picture_male.png"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-4:/drawable_ic_visa.png.flat",
-        "source": "com.example.appmilsabores.app-main-6:/drawable/ic_visa.png"
+        "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\drawable_ic_cookie.xml.flat",
+        "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\drawable\\ic_cookie.xml"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-4:/drawable_brownie_2.jpeg.flat",
-        "source": "com.example.appmilsabores.app-main-6:/drawable/brownie_2.jpeg"
+        "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\mipmap-mdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-4:/mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "com.example.appmilsabores.app-main-6:/mipmap-anydpi-v26/ic_launcher.xml"
+        "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\mipmap-hdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-4:/drawable_pan_sin_gluten.jpg.flat",
-        "source": "com.example.appmilsabores.app-main-6:/drawable/pan_sin_gluten.jpg"
+        "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\xml_data_extraction_rules.xml.flat",
+        "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\xml\\data_extraction_rules.xml"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-4:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "com.example.appmilsabores.app-main-6:/mipmap-anydpi-v26/ic_launcher_round.xml"
+        "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\drawable_kirby.avif.flat",
+        "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\drawable\\kirby.avif"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-4:/drawable_vitrinareposteria.jpg.flat",
-        "source": "com.example.appmilsabores.app-main-6:/drawable/vitrinareposteria.jpg"
+        "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\drawable_tiramisu.jpg.flat",
+        "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\drawable\\tiramisu.jpg"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-4:/drawable_street.avif.flat",
-        "source": "com.example.appmilsabores.app-main-6:/drawable/street.avif"
+        "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\drawable_teclados.avif.flat",
+        "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\drawable\\teclados.avif"
     },
     {
-        "merged": "com.example.appmilsabores.app-debug-4:/drawable_mousse_chocolate.png.flat",
-        "source": "com.example.appmilsabores.app-main-6:/drawable/mousse_chocolate.png"
+        "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\drawable_ic_vegan.xml.flat",
+        "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\drawable\\ic_vegan.xml"
+    },
+    {
+        "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\drawable_torta_especial_boda.jpeg.flat",
+        "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\drawable\\torta_especial_boda.jpeg"
+    },
+    {
+        "merged": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-debug-4:\\drawable_empanada_manzana.jpg.flat",
+        "source": "C:\\Users\\matia\\.gradle\\daemon\\8.13\\com.example.appmilsabores.app-main-6:\\drawable\\empanada_manzana.jpg"
     }
 ]

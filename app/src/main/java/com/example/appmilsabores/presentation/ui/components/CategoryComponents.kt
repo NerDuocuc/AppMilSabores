@@ -4,12 +4,14 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.background
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -20,7 +22,7 @@ import com.example.appmilsabores.presentation.ui.theme.CardBackgroundColor
 import com.example.appmilsabores.presentation.ui.theme.PrimaryPurple
 
 @Composable
-fun CategoryCard(category: CategoryInfo, onClick: () -> Unit) {
+fun CategoryCard(category: CategoryInfo, onClick: () -> Unit, darkOverlay: Boolean = false) {
     Card(
         modifier = Modifier
             .clickable(onClick = onClick)
@@ -39,6 +41,13 @@ fun CategoryCard(category: CategoryInfo, onClick: () -> Unit) {
                         .fillMaxSize(),
                     contentScale = ContentScale.Crop
                 )
+
+                // Optional dark overlay to improve text readability on top of images
+                if (darkOverlay) {
+                    Box(modifier = Modifier
+                        .fillMaxSize()
+                        .background(Color.Black.copy(alpha = 0.36f)))
+                }
 
                 // Overlay with gradient-like scrim could be added; for simplicity show title at top.
                 Box(

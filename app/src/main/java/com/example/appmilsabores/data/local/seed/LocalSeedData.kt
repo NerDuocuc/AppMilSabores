@@ -32,7 +32,7 @@ object LocalSeedData {
             description = "Elegancia y sabor en una torta de varios pisos. Sabores a elección, cubierta de fondant artesanal y detalles florales."
         ),
 
-        // --- Tortas Tradicionales ---
+        // --- Tortas Circulares ---
         ProductEntity(
             id = 3,
             name = "Torta Circular de Vainilla",
@@ -41,7 +41,7 @@ object LocalSeedData {
             rating = 4.7f,
             reviews = 112,
             imageRes = R.drawable.torta_circular_vainilla, // <- TU IMAGEN
-            category = "Tortas Tradicionales",
+            category = "Tortas Circulares",
             description = "Un clásico que nunca falla. Bizcocho de vainilla húmedo y esponjoso, relleno de manjar casero y cubierto con merengue."
         ),
         ProductEntity(
@@ -52,7 +52,7 @@ object LocalSeedData {
             rating = 4.8f,
             reviews = 130,
             imageRes = R.drawable.torta_circular_manjar, // <- TU IMAGEN
-            category = "Tortas Tradicionales",
+            category = "Tortas Circulares",
             description = "Para los amantes del manjar. Múltiples capas de bizcocho fino intercaladas con abundante manjar y nueces tostadas."
         ),
         ProductEntity(
@@ -63,7 +63,7 @@ object LocalSeedData {
             rating = 4.9f,
             reviews = 155,
             imageRes = R.drawable.torta_cuadrada_chocolate, // <- TU IMAGEN
-            category = "Tortas Tradicionales",
+            category = "Tortas Cuadradas",
             description = "Intensidad y textura. Bizcocho de chocolate 70% cacao, relleno de ganache y cubierto con trozos de chocolate belga."
         ),
         ProductEntity(
@@ -74,11 +74,11 @@ object LocalSeedData {
             rating = 4.6f,
             reviews = 95,
             imageRes = R.drawable.torta_cuadrada_frutas, // <- TU IMAGEN
-            category = "Tortas Tradicionales",
+            category = "Tortas Cuadradas",
             description = "Frescura y color. Bizcocho de yogur natural cubierto con crema pastelera y una selección de frutas frescas de la temporada."
         ),
 
-        // --- Postres y Dulces ---
+        // --- Postres Individuales ---
         ProductEntity(
             id = 7,
             name = "Postre de Tiramisú Clásico",
@@ -87,7 +87,7 @@ object LocalSeedData {
             rating = 4.9f,
             reviews = 210,
             imageRes = R.drawable.tiramisu, // <- TU IMAGEN (principal)
-            category = "Postres y Dulces",
+            category = "Postres Individuales",
             description = "Capas de galletas de champaña bañadas en café de grano y licor, intercaladas con una suave crema de queso mascarpone."
         ),
         ProductEntity(
@@ -98,7 +98,7 @@ object LocalSeedData {
             rating = 4.8f,
             reviews = 90,
             imageRes = R.drawable.tiramisu_2, // <- TU IMAGEN (alternativa)
-            category = "Postres y Dulces",
+            category = "Postres Individuales",
             description = "El mismo sabor clásico de nuestro tiramisú, en un formato más grande ideal para compartir en una ocasión especial."
         ),
         ProductEntity(
@@ -109,7 +109,7 @@ object LocalSeedData {
             rating = 4.8f,
             reviews = 180,
             imageRes = R.drawable.mousse_chocolate, // <- TU IMAGEN
-            category = "Postres y Dulces",
+            category = "Postres Individuales",
             description = "Una mousse aireada y potente, hecha con chocolate de origen y un toque de sal marina para realzar su sabor."
         ),
         ProductEntity(
@@ -120,7 +120,7 @@ object LocalSeedData {
             rating = 4.7f,
             reviews = 250,
             imageRes = R.drawable.brownie, // <- TU IMAGEN
-            category = "Postres y Dulces",
+            category = "Postres Individuales",
             description = "Húmedo por dentro, con una capa crujiente por fuera y lleno de trozos de nueces y chocolate. Un clásico irresistible."
         ),
         ProductEntity(
@@ -131,11 +131,11 @@ object LocalSeedData {
             rating = 4.8f,
             reviews = 190,
             imageRes = R.drawable.brownie_2, // <- TU IMAGEN
-            category = "Postres y Dulces",
+            category = "Postres Individuales",
             description = "Nuestra receta de brownie elevada al siguiente nivel, con doble carga de chocolate semi-amargo y una textura extra fudgy."
         ),
 
-        // --- Opciones Saludables / Especiales ---
+        // --- Productos sin Azúcar / sin Gluten / Veganos ---
         ProductEntity(
             id = 12,
             name = "Torta Sin Azúcar de Naranja",
@@ -144,7 +144,7 @@ object LocalSeedData {
             rating = 4.5f,
             reviews = 65,
             imageRes = R.drawable.torta_sin_azucar_naranja, // <- TU IMAGEN
-            category = "Opciones Saludables",
+            category = "Productos sin Azúcar",
             description = "Bizcocho húmedo de naranja endulzado naturalmente, ideal para quienes buscan una opción deliciosa y sin azúcar añadida."
         ),
         ProductEntity(
@@ -155,7 +155,7 @@ object LocalSeedData {
             rating = 4.6f,
             reviews = 80,
             imageRes = R.drawable.brownie_sin_gluten, // <- TU IMAGEN
-            category = "Opciones Saludables",
+            category = "Productos sin Gluten",
             description = "El mismo sabor intenso de nuestro brownie, pero elaborado con una mezcla de harinas sin gluten para que todos puedan disfrutarlo."
         ),
         ProductEntity(
@@ -166,7 +166,7 @@ object LocalSeedData {
             rating = 4.4f,
             reviews = 55,
             imageRes = R.drawable.pan_sin_gluten, // <- TU IMAGEN
-            category = "Opciones Saludables",
+            category = "Productos sin Gluten",
             description = "Pan artesanal sin gluten, de miga suave y corteza dorada. Perfecto para sándwiches o tostadas."
         ),
         ProductEntity(
@@ -177,11 +177,11 @@ object LocalSeedData {
             rating = 4.7f,
             reviews = 92,
             imageRes = R.drawable.vegana_chocolate, // <- TU IMAGEN
-            category = "Opciones Saludables",
+            category = "Productos Veganos",
             description = "Cremoso pastel de chocolate hecho a base de palta y cacao, endulzado con sirope de agave. 100% origen vegetal."
         ),
 
-        // --- Pastelería Chilena ---
+        // --- Pastelería Tradicional ---
         ProductEntity(
             id = 16,
             name = "Empanada de Manzana",
@@ -190,7 +190,7 @@ object LocalSeedData {
             rating = 4.8f,
             reviews = 140,
             imageRes = R.drawable.empanada_manzana, // <- TU IMAGEN
-            category = "Pastelería Chilena",
+            category = "Pastelería Tradicional",
             description = "Masa horneada rellena de compota de manzana casera, con un toque de canela y pasas. Un clásico del sur de Chile."
         ),
         ProductEntity(
@@ -201,7 +201,7 @@ object LocalSeedData {
             rating = 4.9f,
             reviews = 105,
             imageRes = R.drawable.tarta_santiago, // <- TU IMAGEN
-            category = "Pastelería Chilena",
+            category = "Pastelería Tradicional",
             description = "Exquisita tarta de almendras molidas, de origen gallego pero adoptada en la repostería chilena. Densa, húmeda y sin harina de trigo."
         )
     )
@@ -230,7 +230,8 @@ object LocalSeedData {
             .ifBlank { cleanedFirstName }
         val normalizedEmail = correo.trim().lowercase()
         val roleIsAdmin = perfil.equals("Administrador", ignoreCase = true)
-        val placeholderAvatar = R.drawable.avatar_placeholder
+    // Choose a random default avatar between male/female profile pictures
+    val placeholderAvatar = if (kotlin.random.Random.nextBoolean()) R.drawable.profile_picture_female else R.drawable.profile_picture_male
         return UserEntity(
             id = id,
             run = run.trim().ifBlank { null },

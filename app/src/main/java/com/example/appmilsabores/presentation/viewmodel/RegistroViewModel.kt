@@ -216,9 +216,7 @@ class RegistroViewModel(
         } else if (!isValidRun(state.run)) {
             runError = "RUN inválido"
         }
-        if (state.region.isBlank()) regionError = "Selecciona una región"
-        if (state.comuna.isBlank()) comunaError = "Selecciona una comuna"
-        if (state.address.isBlank()) addressError = "La dirección es obligatoria"
+    // region, comuna and address are optional now; do not enforce validation errors for them
         if (!state.termsAccepted) termsError = "Debes aceptar los términos"
 
         return FormErrors(

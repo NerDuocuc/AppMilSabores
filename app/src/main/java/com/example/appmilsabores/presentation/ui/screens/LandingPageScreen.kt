@@ -75,6 +75,11 @@ import com.example.appmilsabores.presentation.ui.theme.PureBlackBackground
 import com.example.appmilsabores.presentation.ui.theme.MainTextColor
 import com.example.appmilsabores.presentation.viewmodel.CartViewModel
 import com.example.appmilsabores.presentation.viewmodel.LandingViewModel
+import com.example.appmilsabores.data.repository.ProductRepositoryImpl
+import com.example.appmilsabores.domain.model.ProductSummary
+import kotlinx.coroutines.launch
+import java.util.Locale
+import java.text.NumberFormat
 
 private enum class MainDestination { Home, Categories, Cart, Favorites, Profile }
 
@@ -129,9 +134,28 @@ fun LandingPageScreen(
     val recentlyViewed = remember(landingState.featured, landingState.newProducts) {
         if (landingState.featured.isNotEmpty()) landingState.featured else landingState.newProducts
     }
-    val curatedRecommendations = remember(landingState.newProducts, landingState.featured) {
-        if (landingState.newProducts.isNotEmpty()) landingState.newProducts else landingState.featured
+    // We'll compute dynamic lists for the two sections: suggestions (Postres Individuales)
+    // and popular options (random category, different from suggestions' category).
+    val curatedRecommendationsState = remember { mutableStateOf<List<ProductSummary>>(emptyList()) }
+    val popularOptionsState = remember { mutableStateOf<List<ProductSummary>>(emptyList()) }
+
+    val curatedRecommendations = curatedRecommendationsState.value
+    val popularOptions = popularOptionsState.value
+
+    // Helper: format price like previous summaries (no cents)
+    fun formatPrice(value: Double): String {
+        return try {
+            val fmt = NumberFormat.getCurrencyInstance(Locale("es", "CL"))
+            // Remove cents
+            fmt.maximumFractionDigits = 0
+            fmt.currency = java.util.Currency.getInstance("CLP")
+            fmt.format(value)
+        } catch (_: Exception) {
+            "$${value.toInt()}"
+        }
     }
+
+    // NOTE: product selection LaunchedEffect moved below (after backStackEntry is available)
 
     var selectedDestination by rememberSaveable { mutableStateOf(MainDestination.Home) }
     val backStackEntry by navController.currentBackStackEntryAsState()
@@ -142,6 +166,44 @@ fun LandingPageScreen(
             Destinations.Cart.route -> MainDestination.Cart
             Destinations.Profile.route -> MainDestination.Profile
             else -> MainDestination.Home
+        }
+    }
+
+    // When entering the Landing screen (route changes), pick fresh products
+    LaunchedEffect(backStackEntry?.destination?.route, landingState.categories, landingState.desserts) {
+        // 1) Te podría gustar -> always use Postres Individuales (landingState.desserts) shuffled
+        curatedRecommendationsState.value = landingState.desserts.shuffled()
+
+        // 2) Opciones populares -> pick a random category different from "Postres Individuales"
+        val categories = landingState.categories.map { it.name }.filter { it.isNotBlank() }
+        val preferred = "Postres Individuales"
+        val available = categories.filter { !it.equals(preferred, ignoreCase = true) }
+        if (available.isEmpty()) {
+            // Fallback to featured/newProducts if no other categories
+            popularOptionsState.value = (landingState.featured + landingState.newProducts).distinctBy { it.id }
+        } else {
+            // pick a random category name
+            val randomCategory = available.shuffled().first()
+            // fetch products for that category from repository and map to ProductSummary
+            val repo = ProductRepositoryImpl()
+            val products = try {
+                repo.getProductsByCategory(randomCategory)
+            } catch (e: Exception) {
+                emptyList()
+            }
+
+            if (products.isEmpty()) {
+                popularOptionsState.value = (landingState.featured + landingState.newProducts).distinctBy { it.id }
+            } else {
+                popularOptionsState.value = products.map { p ->
+                    ProductSummary(
+                        id = p.id,
+                        name = p.name,
+                        price = formatPrice(p.price),
+                        imageRes = p.imageRes
+                    )
+                }
+            }
         }
     }
 
@@ -216,10 +278,10 @@ fun LandingPageScreen(
                         navController = navController
                     )
                 }
-                    item { SectionTitle(title = "Visto recientemente", titleColor = Color.Black) }
+                    item { SectionTitle(title = "Opciones populares", titleColor = Color.Black) }
                 item {
                     ProductShowcaseRow(
-                        products = recentlyViewed,
+                        products = popularOptions,
                         navController = navController
                     )
                 }

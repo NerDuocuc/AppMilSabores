@@ -7,7 +7,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AddShoppingCart
-import androidx.compose.material.icons.filled.Star
+// star icon removed globally per request
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -100,10 +100,10 @@ fun ProductListItem(
 @Composable
 fun RatingBar(rating: Float, reviewCount: Int) {
     Row(verticalAlignment = Alignment.CenterVertically) {
-        Icon(Icons.Default.Star, contentDescription = null, tint = Color.Yellow, modifier = Modifier.size(16.dp))
-    Spacer(modifier = Modifier.width(4.dp))
-    Text("$rating", fontWeight = FontWeight.Bold, color = MainTextColor, fontSize = 14.sp)
-        Text(" ($reviewCount)", color = Color.Gray, fontSize = 14.sp)
+        // Stars removed — show numeric rating and count
+        Text("$rating", fontWeight = FontWeight.Bold, color = MainTextColor, fontSize = 14.sp)
+        Spacer(modifier = Modifier.width(6.dp))
+        Text("($reviewCount)", color = Color.Gray, fontSize = 14.sp)
     }
 }
 
