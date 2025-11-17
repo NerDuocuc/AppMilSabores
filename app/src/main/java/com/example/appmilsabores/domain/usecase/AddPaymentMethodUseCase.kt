@@ -23,7 +23,8 @@ class AddPaymentMethodUseCase(private val repo: PaymentRepository) {
             cardType = cardType,
             lastFourDigits = lastFour,
             expiryDate = expiry,
-            isDefault = false
+            isDefault = false,
+            cardHolderName = name
         )
         return repo.addPaymentMethod(method)
     }

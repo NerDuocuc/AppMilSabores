@@ -9,6 +9,7 @@ data class PaymentMethodEntity(
     val cardType: String,
     val lastFourDigits: String,
     val expiryDate: String,
+    val cardHolderName: String,
     val isDefault: Boolean,
     val createdAt: Long
 )

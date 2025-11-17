@@ -38,6 +38,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
@@ -73,7 +74,7 @@ fun EditProfileScreen(
     Scaffold(
         topBar = {
             CenterAlignedTopAppBar(
-                title = { Text("Editar perfil", fontWeight = FontWeight.Bold) },
+                title = { Text("Editar perfil", fontWeight = FontWeight.Bold, color = Color.Black) },
                 colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
                     containerColor = PrimaryPurple,
                     titleContentColor = MainTextColor
@@ -114,7 +115,7 @@ fun EditProfileScreen(
                 ) {
                     Text(
                         text = "Actualiza tu información personal",
-                        color = Color.LightGray
+                        color = Color.Black
                     )
 
                     EditProfileTextField(
@@ -202,7 +203,7 @@ private fun EditProfileTextField(
         OutlinedTextField(
             value = value,
             onValueChange = onValueChange,
-            label = { Text(label) },
+            label = { Text(label, color = Color.Black) },
             singleLine = true,
             isError = error != null,
             keyboardOptions = KeyboardOptions(
@@ -230,7 +231,7 @@ private fun textFieldColors() = TextFieldDefaults.colors(
     unfocusedIndicatorColor = Color.Gray,
     focusedLabelColor = Color.White,
     unfocusedLabelColor = Color.LightGray,
-    focusedTextColor = Color.White,
-    unfocusedTextColor = Color.White,
+    focusedTextColor = Color.Black,
+    unfocusedTextColor = Color.Black,
     cursorColor = PrimaryPurple
 )

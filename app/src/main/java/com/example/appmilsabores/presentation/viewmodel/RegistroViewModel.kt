@@ -143,6 +143,14 @@ class RegistroViewModel(
                 )
             }
 
+            val parsedBirthDate = parseBirthDate(state.birthDate)
+            val age = calculateAge(parsedBirthDate!!)
+            val discount = when {
+                age > 50 -> 50 // Descuento del 50% para mayores de 50 años
+                state.referralCode.equals("FELICES50", ignoreCase = true) -> 10 // Descuento del 10% con código promocional
+                else -> 0
+            }
+
             val result = registerUserUseCase(
                 firstName = state.firstName.trim(),
                 lastName = state.lastName.trim(),
@@ -153,7 +161,8 @@ class RegistroViewModel(
                 region = state.region.trim(),
                 comuna = state.comuna.trim(),
                 address = state.address.trim(),
-                referralCode = state.referralCode.trim().takeIf { it.isNotBlank() }
+                referralCode = state.referralCode.trim().takeIf { it.isNotBlank() },
+                discount = discount
             )
 
             when (result) {
