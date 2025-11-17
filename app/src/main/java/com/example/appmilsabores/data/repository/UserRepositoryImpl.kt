@@ -7,6 +7,10 @@ import com.example.appmilsabores.data.local.entity.UserEntity
 import com.example.appmilsabores.data.mapper.UserMapper
 import com.example.appmilsabores.data.prefs.SessionPreferencesDataSource
 import com.example.appmilsabores.domain.model.Order
+import com.example.appmilsabores.data.local.entity.OrderEntity
+import com.example.appmilsabores.data.local.entity.toDomain
+import com.example.appmilsabores.data.local.entity.toEntity
+import com.example.appmilsabores.data.local.dao.OrderDao
 import com.example.appmilsabores.domain.model.User
 import com.example.appmilsabores.domain.model.UserProfile
 import com.example.appmilsabores.domain.exceptions.EmailAlreadyInUseException
@@ -28,6 +32,7 @@ import java.util.Locale
 
 class UserRepositoryImpl(
     private val userDao: UserDao = AppMilSaboresApplication.database.userDao(),
+    private val orderDao: OrderDao = AppMilSaboresApplication.database.orderDao(),
     private val sessionPrefs: SessionPreferencesDataSource = AppMilSaboresApplication.sessionPreferences
 ) : UserRepository {
 
@@ -63,18 +68,16 @@ class UserRepositoryImpl(
     override suspend fun getUserOrders(): List<Order> {
         val session = sessionPrefs.sessionFlow.first()
         val userId = session.userId ?: return emptyList()
-        return synchronized(orderBook) {
-            orderBook[userId]?.toList() ?: emptyList()
-        }
+        val entities = orderDao.getOrdersForUser(userId)
+        return entities.map { it.toDomain() }
     }
 
     override suspend fun addOrder(order: Order) {
         val session = sessionPrefs.sessionFlow.first()
         val userId = session.userId ?: return
-        synchronized(orderBook) {
-            val userOrders = orderBook.getOrPut(userId) { mutableListOf() }
-            userOrders.add(0, order)
-        }
+        // persist to Room
+        val entity = order.toEntity(userId)
+        orderDao.insertOrder(entity)
         incrementUserOrderCount()
     }
 
@@ -189,10 +192,6 @@ class UserRepositoryImpl(
 
         val newId = userDao.insertUser(entity)
         val persisted = userDao.getUserById(newId) ?: entity.copy(id = newId)
-
-        synchronized(orderBook) {
-            orderBook[persisted.id] = mutableListOf()
-        }
 
         return UserMapper.toUser(persisted)
     }
@@ -347,6 +346,5 @@ class UserRepositoryImpl(
     companion object {
         private const val MIN_AGE = 18
         private const val MAX_AGE = 120
-        private val orderBook = mutableMapOf<Long, MutableList<Order>>()
     }
 }

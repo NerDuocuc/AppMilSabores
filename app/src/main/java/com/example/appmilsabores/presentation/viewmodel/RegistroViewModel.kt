@@ -160,10 +160,9 @@ class RegistroViewModel(
                 is RegisterUserUseCase.Result.Success -> {
                     if (state.address.isNotBlank()) {
                         addressRepository.setPrimaryAddress(state.address.trim())
-                    } else {
-                        addressRepository.clearAll()
-                    }
-                    paymentRepository.clearPaymentMethods()
+                        } else {
+                            addressRepository.clearAll()
+                        }
                     _uiState.update {
                         it.copy(
                             isLoading = false,

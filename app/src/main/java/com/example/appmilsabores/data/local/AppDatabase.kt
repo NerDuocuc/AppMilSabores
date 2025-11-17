@@ -16,9 +16,16 @@ import com.example.appmilsabores.data.local.entity.UserEntity
 import com.example.appmilsabores.data.local.seed.LocalSeedData
 
 @Database(
-	entities = [ProductEntity::class, CartItemEntity::class, UserEntity::class, PaymentMethodEntity::class, com.example.appmilsabores.data.local.entity.AddressEntity::class],
-	// bumped version to 7 to apply destructive fallback migration after schema changes
-	version = 7,
+	entities = [
+		ProductEntity::class,
+		CartItemEntity::class,
+		UserEntity::class,
+		PaymentMethodEntity::class,
+		com.example.appmilsabores.data.local.entity.AddressEntity::class,
+		com.example.appmilsabores.data.local.entity.OrderEntity::class
+	],
+	// bumped version to 8 to include orders table
+	version = 8,
 	exportSchema = true
 )
 abstract class AppDatabase : RoomDatabase() {
@@ -28,6 +35,7 @@ abstract class AppDatabase : RoomDatabase() {
 	abstract fun userDao(): UserDao
 	abstract fun paymentMethodDao(): PaymentMethodDao
 	abstract fun addressDao(): AddressDao
+	abstract fun orderDao(): com.example.appmilsabores.data.local.dao.OrderDao
 
 	suspend fun seed() {
 		val productDao = productDao()
