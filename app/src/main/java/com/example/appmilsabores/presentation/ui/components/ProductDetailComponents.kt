@@ -54,14 +54,8 @@ fun ProductDetailTopBar(
     onCartClick: () -> Unit
 ) {
     CenterAlignedTopAppBar(
-        title = {
-            Text(
-                text = title,
-                color = Color.White,
-                fontSize = 18.sp,
-                fontWeight = FontWeight.SemiBold
-            )
-        },
+        // No mostrar el nombre del producto en la barra superior; se mostrará en el encabezado
+        title = {},
         navigationIcon = {
             IconButton(onClick = onBackClick) {
                 Icon(
@@ -128,19 +122,17 @@ fun ProductImageCarousel(product: Product) {
 @Composable
 fun ProductHeader(product: Product, reviews: List<ProductReview>) {
     // Star rating UI has been removed per request; keep reviews data intact
-    Row(
+    // Mostrar el nombre del producto centrado y justo encima del contador de reseñas
+    Column(
         modifier = Modifier
             .fillMaxWidth()
             .padding(16.dp),
-        horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.CenterVertically
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Column(modifier = Modifier.weight(1f)) {
-            Text(product.name, fontWeight = FontWeight.Bold, fontSize = 24.sp, color = Color.White)
-            Spacer(modifier = Modifier.height(8.dp))
-            if (reviews.isNotEmpty()) {
-                Text("${reviews.size} reseñas", color = Color.LightGray, fontSize = 14.sp)
-            }
+        Text(product.name, fontWeight = FontWeight.Bold, fontSize = 24.sp, color = Color.Black)
+        Spacer(modifier = Modifier.height(8.dp))
+        if (reviews.isNotEmpty()) {
+            Text("${reviews.size} reseñas", color = Color.LightGray, fontSize = 14.sp)
         }
     }
 }
@@ -197,7 +189,7 @@ fun ProductDescription(description: String) {
         Box(modifier = Modifier.animateContentSize()) {
             Text(
                 text = description,
-                color = Color.LightGray,
+                color = Color.Black,
                 lineHeight = 22.sp,
                 maxLines = if (expanded) Int.MAX_VALUE else 4
             )
@@ -258,7 +250,7 @@ private fun ReviewCard(review: ProductReview) {
                 Text("${review.rating}", color = Color.White, fontWeight = FontWeight.SemiBold, fontSize = 14.sp)
             }
             Spacer(Modifier.height(8.dp))
-            Text(review.comment, color = Color.LightGray, lineHeight = 20.sp)
+            Text(review.comment, color = Color.White, lineHeight = 20.sp)
         }
     }
 }
