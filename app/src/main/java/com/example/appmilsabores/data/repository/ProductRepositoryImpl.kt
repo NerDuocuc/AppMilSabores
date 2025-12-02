@@ -1,123 +1,59 @@
 package com.example.appmilsabores.data.repository
 
-import com.example.appmilsabores.AppMilSaboresApplication
-import com.example.appmilsabores.data.local.dao.ProductDao
-import com.example.appmilsabores.data.mapper.ProductMapper
-import com.example.appmilsabores.data.source.ProductRemoteDataSource
+import android.util.Log
+import com.example.appmilsabores.data.network.MilSaboresApiService
+import com.example.appmilsabores.data.network.NetworkModule
+import com.example.appmilsabores.data.network.toDomain
 import com.example.appmilsabores.domain.model.Product
 import com.example.appmilsabores.domain.model.ProductFilters
-import com.example.appmilsabores.domain.model.ProductSortOption
 import com.example.appmilsabores.domain.repository.ProductRepository
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.flowOf
 
+/**
+ * Single, clean implementation of ProductRepository backed by the network API.
+ * Keeps behavior simple so tests can inject a mock MilSaboresApiService.
+ */
 class ProductRepositoryImpl(
-    private val productDao: ProductDao = AppMilSaboresApplication.database.productDao(),
-    private val remoteDataSource: ProductRemoteDataSource? = null
+    private val api: MilSaboresApiService = NetworkModule.apiService
 ) : ProductRepository {
 
-    override fun observeProducts(): Flow<List<Product>> {
-        return productDao.observeProducts().map { list ->
-            list.map(ProductMapper::toDomain)
-        }
-    }
+    private val TAG = "ProductRepositoryImpl"
+
+    override fun observeProducts(): Flow<List<Product>> = flowOf(emptyList())
 
     override suspend fun getProducts(filters: ProductFilters): List<Product> {
-        val local = loadLocalProducts(filters)
-        if (local.isNotEmpty() || remoteDataSource == null) {
-            return local
+        return try {
+            val response = api.getAllProducts()
+            if (response.isSuccessful) {
+                response.body()?.map { it.toDomain() } ?: emptyList()
+            } else {
+                Log.e(TAG, "Error API: ${'$'}{response.code()}")
+                emptyList()
+            }
+        } catch (e: Exception) {
+            Log.e(TAG, "Excepción API", e)
+            emptyList()
         }
-
-        fetchRemoteAndCache()
-        return loadLocalProducts(filters)
     }
 
     override suspend fun getProductsByCategory(categoryName: String, filters: ProductFilters): List<Product> {
-        val mergedFilters = filters.ensureCategory(categoryName)
-        val local = loadLocalProducts(mergedFilters)
-        if (local.isNotEmpty() || remoteDataSource == null) {
-            return local
-        }
-
-        fetchRemoteAndCache()
-        return loadLocalProducts(mergedFilters)
+        val all = getProducts(filters)
+        return all.filter { it.category == categoryName }
     }
 
-    override suspend fun getProductById(id: Int): Product? {
-        return productDao.getProductById(id)?.let(ProductMapper::toDomain)
-    }
+    override suspend fun getProductById(id: Int): Product? = getProducts().firstOrNull { it.id == id }
 
     override suspend fun searchProducts(query: String, filters: ProductFilters): List<Product> {
-        val sanitized = query.trim()
+        val sanitized = query.trim().lowercase()
         if (sanitized.isEmpty()) return emptyList()
-
-        val local = loadLocalProducts(filters, sanitized)
-        if (local.isNotEmpty() || remoteDataSource == null) {
-            return local
-        }
-
-        val remoteProducts = fetchRemoteAndCache()
-        return remoteProducts
-            .filterByQuery(sanitized)
-            .applyFilters(filters)
-    }
-
-    private suspend fun loadLocalProducts(filters: ProductFilters, query: String? = null): List<Product> {
-        val entities = when {
-            query != null -> productDao.searchProducts(query)
-            filters.categories.size == 1 -> productDao.getProductsByCategory(filters.categories.first())
-            filters.categories.isNotEmpty() -> productDao.getProductsByCategories(filters.categories.toList())
-            else -> productDao.getAllProducts()
-        }
-
-        val products = entities.map(ProductMapper::toDomain)
-        val filtered = products.applyFilters(filters)
-        return if (query != null) filtered.filterByQuery(query) else filtered
-    }
-
-    private suspend fun fetchRemoteAndCache(): List<Product> {
-        val remoteProducts = remoteDataSource?.fetchProducts().orEmpty()
-        if (remoteProducts.isNotEmpty()) {
-            val entities = remoteProducts.map(ProductMapper::toEntity)
-            productDao.upsertProducts(entities)
-        }
-        return remoteProducts
-    }
-
-    private fun List<Product>.applyFilters(filters: ProductFilters): List<Product> {
-        val filtered = this
-            .filter { filters.categories.isEmpty() || filters.categories.contains(it.category) }
-            .filter { filters.minPrice?.let { min -> it.price >= min } ?: true }
-            .filter { filters.maxPrice?.let { max -> it.price <= max } ?: true }
-            .filter { filters.minRating?.let { rating -> it.rating >= rating } ?: true }
-            .filter { if (filters.onSaleOnly) it.oldPrice != null else true }
-
-        return if (filters.sortOption == ProductSortOption.RELEVANCE) {
-            filtered
-        } else {
-            filtered.sortedWith(filters.sortOption.toComparator())
+        return getProducts(filters).filter { p ->
+            p.name.lowercase().contains(sanitized) || p.description.lowercase().contains(sanitized)
         }
     }
 
-    private fun List<Product>.filterByQuery(query: String): List<Product> {
-        val lowerQuery = query.lowercase()
-        return filter { product ->
-            product.name.lowercase().contains(lowerQuery) ||
-                product.description.lowercase().contains(lowerQuery)
-        }
-    }
-
-    private fun ProductFilters.ensureCategory(categoryName: String): ProductFilters {
-        return if (categories.isEmpty()) copy(categories = setOf(categoryName)) else this
-    }
-
-    private fun ProductSortOption.toComparator(): Comparator<Product> {
-        return when (this) {
-            ProductSortOption.RELEVANCE -> Comparator { _, _ -> 0 }
-            ProductSortOption.PRICE_ASC -> compareBy { it.price }
-            ProductSortOption.PRICE_DESC -> compareByDescending { it.price }
-            ProductSortOption.RATING_DESC -> compareByDescending<Product> { it.rating }
-                .thenByDescending { it.reviews }
-        }
+    override suspend fun updateProductStock(id: Int, stock: Int) {
+        // No backend update implemented yet; log for visibility.
+        Log.i(TAG, "updateProductStock called for id=${'$'}id stock=${'$'}stock (no-op)")
     }
 }

@@ -9,5 +9,6 @@ data class Product(
     val reviews: Int = 0,
     val imageRes: Int,
     val category: String,
-    val description: String = ""
+    val description: String = "",
+    val stock: Int = 0
 )

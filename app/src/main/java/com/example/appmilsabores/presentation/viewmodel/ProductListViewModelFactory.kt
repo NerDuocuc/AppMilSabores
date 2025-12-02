@@ -7,12 +7,14 @@ import com.example.appmilsabores.data.repository.ProductRepositoryImpl
 import com.example.appmilsabores.data.repository.SessionRepositoryImpl
 import com.example.appmilsabores.domain.usecase.AddToCartUseCase
 import com.example.appmilsabores.domain.usecase.GetProductsByCategoryUseCase
+import com.example.appmilsabores.domain.usecase.UpdateProductStockUseCase
 
 class ProductListViewModelFactory : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         val repo = ProductRepositoryImpl()
         val getProducts = GetProductsByCategoryUseCase(repo)
         val addToCart = AddToCartUseCase(CartRepositoryImpl(), SessionRepositoryImpl())
-        return ProductListViewModel(getProducts, addToCart) as T
+        val updateStock = UpdateProductStockUseCase(repo)
+        return ProductListViewModel(getProducts, addToCart, updateStock) as T
     }
 }

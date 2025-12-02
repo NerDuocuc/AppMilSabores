@@ -30,6 +30,7 @@ sealed class Destinations(val route: String) {
     data object Account : Destinations("gestionar_cuenta")
     data object Notifications : Destinations("notificaciones")
     data object EditProfile : Destinations("editar_perfil")
+    data object AdminProducts : Destinations("admin_productos")
 
     // Carrito
     data object Cart : Destinations("carrito")

@@ -13,6 +13,7 @@ import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -215,6 +216,15 @@ fun SettingsMenu(
             color = MainTextColor,
             modifier = Modifier.padding(bottom = 12.dp)
         )
+
+        // Si es superadmin mostrar enlace a admin de productos
+        val sessionFlow = com.example.appmilsabores.AppMilSaboresApplication.sessionPreferences.sessionFlow
+        val session = sessionFlow.collectAsState(initial = com.example.appmilsabores.domain.model.SessionState()).value
+        if (session.email == "system@milsabores.local") {
+            SettingItem("Productos", Icons.Default.List) {
+                navController.navigate(Destinations.AdminProducts.route)
+            }
+        }
 
         SettingItem("Editar Perfil", Icons.Default.Edit) {
             navController.navigate(Destinations.EditProfile.route)

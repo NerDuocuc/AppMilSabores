@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.appmilsabores.domain.model.Product
 import com.example.appmilsabores.domain.model.ProductFilters
 import com.example.appmilsabores.domain.usecase.AddToCartUseCase
+import com.example.appmilsabores.domain.usecase.UpdateProductStockUseCase
 import com.example.appmilsabores.domain.usecase.GetProductsByCategoryUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -23,7 +24,8 @@ data class ProductListUiState(
 
 class ProductListViewModel(
     private val getProductsByCategory: GetProductsByCategoryUseCase,
-    private val addToCartUseCase: AddToCartUseCase
+    private val addToCartUseCase: AddToCartUseCase,
+    private val updateProductStockUseCase: UpdateProductStockUseCase? = null
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(ProductListUiState())
@@ -103,6 +105,28 @@ class ProductListViewModel(
         viewModelScope.launch {
             addToCartUseCase(productId)
             _events.emit(ProductListEvent.ItemAdded)
+        }
+    }
+
+    fun updateStock(productId: Int, delta: Int) {
+        // optimistic UI update
+        val current = _uiState.value.products
+        val updated = current.map { p ->
+            if (p.id == productId) p.copy(stock = (p.stock + delta).coerceAtLeast(0)) else p
+        }
+        _uiState.update { it.copy(products = updated) }
+
+        // persist change
+        val newStock = updated.first { it.id == productId }.stock
+        updateProductStockUseCase?.let { useCase ->
+            viewModelScope.launch {
+                try {
+                    useCase(productId, newStock)
+                } catch (_: Exception) {
+                    // on error, reload products to restore state
+                    loadProducts(currentCategory ?: return@launch)
+                }
+            }
         }
     }
 

@@ -7,7 +7,7 @@ import com.example.appmilsabores.domain.model.ProductReview
 
 object LocalSeedData {
 
-    val defaultProducts = listOf(
+    private val _defaultProducts = listOf(
         // --- Tortas Especiales ---
         ProductEntity(
             id = 1,
@@ -284,6 +284,38 @@ object LocalSeedData {
             description = "Exquisita tarta de almendras molidas, de origen gallego pero adoptada en la repostería chilena. Densa, húmeda y sin harina de trigo."
         )
     )
+
+    // Initial stock per product id. Fallback stock = 10 when id not listed.
+    private val initialStock = mapOf(
+        1 to 5,
+        2 to 2,
+        3 to 8,
+        4 to 6,
+        5 to 10,
+        6 to 7,
+        7 to 20,
+        8 to 10,
+        9 to 15,
+        10 to 12,
+        11 to 9,
+        12 to 4,
+        13 to 11,
+        14 to 3,
+        15 to 6,
+        16 to 25,
+        17 to 14,
+        18 to 8,
+        20 to 9,
+        21 to 7,
+        22 to 5,
+        23 to 5,
+        24 to 30,
+        25 to 6
+    )
+
+    val defaultProducts = _defaultProducts.map { entity ->
+        entity.copy(stock = initialStock[entity.id] ?: 10)
+    }
 
 
     private fun seedUser(

@@ -15,7 +15,8 @@ object ProductMapper {
 			reviews = entity.reviews,
 			imageRes = entity.imageRes,
 			category = entity.category,
-			description = entity.description.orEmpty()
+			description = entity.description.orEmpty(),
+			stock = entity.stock
 		)
 	}
 
@@ -29,7 +30,8 @@ object ProductMapper {
 			reviews = product.reviews,
 				imageRes = product.imageRes,
 				category = product.category,
-				description = product.description
+				description = product.description,
+				stock = product.stock
 		)
 	}
 }

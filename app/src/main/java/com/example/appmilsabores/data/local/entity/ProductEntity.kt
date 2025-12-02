@@ -14,5 +14,6 @@ data class ProductEntity(
 	val reviews: Int,
 	@ColumnInfo(name = "image_res") val imageRes: Int,
 	val category: String,
-	val description: String? = null
+	val description: String? = null,
+	val stock: Int = 0
 )

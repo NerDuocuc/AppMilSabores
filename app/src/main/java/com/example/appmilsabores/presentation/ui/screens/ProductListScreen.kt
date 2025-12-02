@@ -26,6 +26,8 @@ import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -50,6 +52,10 @@ import com.example.appmilsabores.presentation.viewmodel.ProductListEvent
 import com.example.appmilsabores.presentation.viewmodel.ProductListViewModel
 import com.example.appmilsabores.presentation.viewmodel.ProductListViewModelFactory
 import kotlinx.coroutines.flow.collect
+import com.example.appmilsabores.AppMilSaboresApplication
+import com.example.appmilsabores.domain.model.SessionState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -60,6 +66,9 @@ fun ProductListScreen(
 ) {
     val state by viewModel.uiState.collectAsState()
     val snackbarHostState = remember { SnackbarHostState() }
+    // collect session to determine admin privileges
+    val session = AppMilSaboresApplication.sessionPreferences.sessionFlow.collectAsState(initial = SessionState()).value
+    val isAdmin = session.email == "system@milsabores.local"
     var showFilterSheet by remember { mutableStateOf(false) }
 
     LaunchedEffect(categoryName) {
@@ -73,6 +82,9 @@ fun ProductListScreen(
             }
         }
     }
+
+    // pending stock change: Pair(productId, delta)
+    val pendingStockChange = remember { mutableStateOf<Pair<Int, Int>?>(null) }
 
     Scaffold(
         snackbarHost = { SnackbarHost(snackbarHostState) },
@@ -125,7 +137,10 @@ fun ProductListScreen(
                         ProductListItem(
                             product = product,
                             onAddToCart = { viewModel.addProductToCart(product.id) },
-                            navController = navController
+                            navController = navController,
+                            isAdmin = isAdmin,
+                            onIncreaseStock = { id -> pendingStockChange.value = id to 1 },
+                            onDecreaseStock = { id -> pendingStockChange.value = id to -1 }
                         )
                     }
                 }
@@ -141,6 +156,32 @@ fun ProductListScreen(
             onReset = viewModel::resetFilters,
             onDismiss = { showFilterSheet = false }
         )
+    }
+
+    // Confirmation dialog for stock changes
+    val pending = pendingStockChange.value
+    if (pending != null) {
+        val (productId, delta) = pending
+        val product = state.products.firstOrNull { it.id == productId }
+        if (product != null) {
+            AlertDialog(
+                onDismissRequest = { pendingStockChange.value = null },
+                confirmButton = {
+                    TextButton(onClick = {
+                        viewModel.updateStock(productId, delta)
+                        pendingStockChange.value = null
+                    }) { Text("Confirmar") }
+                },
+                dismissButton = {
+                    TextButton(onClick = { pendingStockChange.value = null }) { Text("Cancelar") }
+                },
+                title = { Text(if (delta > 0) "Aumentar stock" else "Disminuir stock") },
+                text = { Text("¿Deseas ${if (delta > 0) "aumentar" else "disminuir"} el stock de '${product.name}' en ${kotlin.math.abs(delta)} unidad(es)?\nStock actual: ${product.stock}") }
+            )
+        } else {
+            // product not found -> clear
+            pendingStockChange.value = null
+        }
     }
 }
 

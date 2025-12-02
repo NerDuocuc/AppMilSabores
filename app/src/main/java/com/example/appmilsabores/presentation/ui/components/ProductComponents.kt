@@ -7,6 +7,8 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AddShoppingCart
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Remove
 // star icon removed globally per request
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
@@ -44,7 +46,10 @@ fun EmptyProductView(categoryName: String) {
 fun ProductListItem(
     product: Product,
     onAddToCart: () -> Unit,
-    navController: NavController
+    navController: NavController,
+    isAdmin: Boolean = false,
+    onIncreaseStock: ((Int) -> Unit)? = null,
+    onDecreaseStock: ((Int) -> Unit)? = null
 ) {
     Card(
         modifier = Modifier.clickable {
@@ -76,6 +81,19 @@ fun ProductListItem(
                 RatingBar(rating = product.rating, reviewCount = product.reviews)
                 Spacer(modifier = Modifier.height(8.dp))
                 Price(price = product.price, oldPrice = product.oldPrice)
+                Spacer(modifier = Modifier.height(6.dp))
+                Text("Stock: ${product.stock}", color = Color.LightGray)
+                if (isAdmin) {
+                    Spacer(modifier = Modifier.height(6.dp))
+                    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                        IconButton(onClick = { onDecreaseStock?.invoke(product.id) }) {
+                            Icon(imageVector = Icons.Default.Remove, contentDescription = "Disminuir stock", tint = PrimaryPurple)
+                        }
+                        IconButton(onClick = { onIncreaseStock?.invoke(product.id) }) {
+                            Icon(imageVector = Icons.Default.Add, contentDescription = "Aumentar stock", tint = PrimaryPurple)
+                        }
+                    }
+                }
             }
 
             Surface(

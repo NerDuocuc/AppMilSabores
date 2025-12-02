@@ -24,8 +24,8 @@ import com.example.appmilsabores.data.local.seed.LocalSeedData
 		com.example.appmilsabores.data.local.entity.AddressEntity::class,
 		com.example.appmilsabores.data.local.entity.OrderEntity::class
 	],
-	// bumped version to 8 to include orders table
-	version = 8,
+	// bumped version to 9 to include `stock` column
+	version = 9,
 	exportSchema = true
 )
 abstract class AppDatabase : RoomDatabase() {

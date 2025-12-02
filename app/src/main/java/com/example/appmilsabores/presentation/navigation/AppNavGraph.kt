@@ -224,6 +224,15 @@ fun AppNavGraph(modifier: Modifier = Modifier) {
             popExitTransition = { backwardExit() }
         ) { EditProfileScreen(navController) }
 
+        // Admin: productos (visible solo si el usuario es superadmin)
+        composable(
+            route = Destinations.AdminProducts.route,
+            enterTransition = { forwardEnter() },
+            exitTransition = { forwardExit() },
+            popEnterTransition = { backwardEnter() },
+            popExitTransition = { backwardExit() }
+        ) { AdminProductsScreen(navController) }
+
         // Carrito
         composable(
             route = Destinations.Cart.route,
