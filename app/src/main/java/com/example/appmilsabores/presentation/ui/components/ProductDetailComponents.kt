@@ -35,6 +35,10 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import coil.compose.AsyncImage
+import coil.request.ImageRequest
+import androidx.compose.ui.platform.LocalContext
+import com.example.appmilsabores.R
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
@@ -90,12 +94,27 @@ fun ProductImageCarousel(product: Product) {
                 .fillMaxWidth()
                 .height(350.dp)
         ) { page ->
-            Image(
-                painter = painterResource(id = images[page]),
-                contentDescription = "Imagen del producto",
-                contentScale = ContentScale.Crop,
-                modifier = Modifier.fillMaxSize()
-            )
+            val context = LocalContext.current
+            if (!product.imageUrl.isNullOrBlank()) {
+                AsyncImage(
+                    model = ImageRequest.Builder(context)
+                        .data(product.imageUrl)
+                        .crossfade(true)
+                        .build(),
+                    contentDescription = "Imagen del producto",
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier.fillMaxSize(),
+                    placeholder = painterResource(id = R.drawable.avatar_placeholder),
+                    error = painterResource(id = R.drawable.avatar_placeholder)
+                )
+            } else {
+                Image(
+                    painter = painterResource(id = images[page]),
+                    contentDescription = "Imagen del producto",
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier.fillMaxSize()
+                )
+            }
         }
 
         Row(

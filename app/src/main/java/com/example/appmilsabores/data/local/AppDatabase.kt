@@ -38,8 +38,8 @@ abstract class AppDatabase : RoomDatabase() {
 	abstract fun orderDao(): com.example.appmilsabores.data.local.dao.OrderDao
 
 	suspend fun seed() {
+		// Do not seed products locally. Products will be synchronized from the remote API.
 		val productDao = productDao()
-		productDao.upsertProducts(LocalSeedData.defaultProducts)
 
 		val userDao = userDao()
 		LocalSeedData.seededUsers.forEach { seed ->

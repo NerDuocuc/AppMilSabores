@@ -10,7 +10,7 @@ import com.example.appmilsabores.domain.usecase.GetProductsByCategoryUseCase
 
 class ProductListViewModelFactory : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        val repo = ProductRepositoryImpl()
+        val repo = com.example.appmilsabores.data.AppDependencyContainer.createProductRepository()
         val getProducts = GetProductsByCategoryUseCase(repo)
         val addToCart = AddToCartUseCase(CartRepositoryImpl(), SessionRepositoryImpl())
         return ProductListViewModel(getProducts, addToCart) as T

@@ -33,4 +33,8 @@ interface ProductDao {
 
 	@Query("SELECT COUNT(*) FROM products")
 	suspend fun countProducts(): Int
+
+	// Remove all products - used when syncing remote data to ensure local seed is replaced
+	@Query("DELETE FROM products")
+	suspend fun clearProducts()
 }

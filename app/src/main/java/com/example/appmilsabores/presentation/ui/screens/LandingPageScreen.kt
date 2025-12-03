@@ -185,7 +185,7 @@ fun LandingPageScreen(
             // pick a random category name
             val randomCategory = available.shuffled().first()
             // fetch products for that category from repository and map to ProductSummary
-            val repo = ProductRepositoryImpl()
+            val repo = com.example.appmilsabores.data.AppDependencyContainer.createProductRepository()
             val products = try {
                 repo.getProductsByCategory(randomCategory)
             } catch (e: Exception) {

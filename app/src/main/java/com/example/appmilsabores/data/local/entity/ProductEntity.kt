@@ -13,6 +13,7 @@ data class ProductEntity(
 	val rating: Float,
 	val reviews: Int,
 	@ColumnInfo(name = "image_res") val imageRes: Int,
+	@ColumnInfo(name = "image_url") val imageUrl: String? = null,
 	val category: String,
 	val description: String? = null
 )

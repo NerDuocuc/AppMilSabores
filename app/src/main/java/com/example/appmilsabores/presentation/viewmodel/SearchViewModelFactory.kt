@@ -10,7 +10,7 @@ import com.example.appmilsabores.domain.usecase.SearchProductsUseCase
 
 class SearchViewModelFactory : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        val productRepository = ProductRepositoryImpl()
+        val productRepository = com.example.appmilsabores.data.AppDependencyContainer.createProductRepository()
         val searchProductsUseCase = SearchProductsUseCase(productRepository)
         val addToCartUseCase = AddToCartUseCase(CartRepositoryImpl(), SessionRepositoryImpl())
         return SearchViewModel(searchProductsUseCase, addToCartUseCase) as T

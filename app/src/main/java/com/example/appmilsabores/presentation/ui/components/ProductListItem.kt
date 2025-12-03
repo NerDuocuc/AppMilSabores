@@ -1,6 +1,10 @@
 package com.example.appmilsabores.presentation.ui.components
 
 import androidx.compose.foundation.Image
+import coil.compose.AsyncImage
+import coil.request.ImageRequest
+import androidx.compose.ui.platform.LocalContext
+import com.example.appmilsabores.R
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -29,13 +33,29 @@ fun ProductListItem(
         shape = RoundedCornerShape(12.dp)
     ) {
         Column(modifier = Modifier.padding(8.dp)) {
-            Image(
-                painter = painterResource(id = product.imageRes),
-                contentDescription = product.name,
-                modifier = Modifier
-                    .height(120.dp)
-                    .fillMaxWidth()
-            )
+            val context = LocalContext.current
+            if (!product.imageUrl.isNullOrBlank()) {
+                AsyncImage(
+                    model = ImageRequest.Builder(context)
+                        .data(product.imageUrl)
+                        .crossfade(true)
+                        .build(),
+                    contentDescription = product.name,
+                    modifier = Modifier
+                        .height(120.dp)
+                        .fillMaxWidth(),
+                    placeholder = painterResource(id = R.drawable.avatar_placeholder),
+                    error = painterResource(id = R.drawable.avatar_placeholder)
+                )
+            } else {
+                Image(
+                    painter = painterResource(id = product.imageRes),
+                    contentDescription = product.name,
+                    modifier = Modifier
+                        .height(120.dp)
+                        .fillMaxWidth()
+                )
+            }
             Spacer(Modifier.height(8.dp))
             Text(
                 text = product.name,

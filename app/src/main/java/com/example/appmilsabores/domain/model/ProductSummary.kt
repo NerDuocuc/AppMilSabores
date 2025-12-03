@@ -4,5 +4,6 @@ data class ProductSummary(
     val id: Int,
     val name: String,
     val price: String,
-    val imageRes: Int
+    val imageRes: Int = 0,
+    val imageUrl: String? = null
 )

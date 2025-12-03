@@ -29,7 +29,9 @@ data class ProductDetailUiState(
 }
 
 class ProductDetailViewModel(
-    private val getProductById: GetProductByIdUseCase = GetProductByIdUseCase(ProductRepositoryImpl()),
+    private val getProductById: GetProductByIdUseCase = GetProductByIdUseCase(
+        com.example.appmilsabores.data.AppDependencyContainer.createProductRepository()
+    ),
     private val addToCart: AddToCartUseCase = AddToCartUseCase(
         CartRepositoryImpl(),
         SessionRepositoryImpl()

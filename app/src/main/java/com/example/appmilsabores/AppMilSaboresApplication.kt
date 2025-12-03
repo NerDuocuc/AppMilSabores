@@ -30,6 +30,8 @@ class AppMilSaboresApplication : Application() {
             try {
                 database.seed()
                 sessionPrefs.seedSuperAdminIfNeeded()
+                // Try to sync remote products into local Room DB. This will upsert products from your backend.
+                com.example.appmilsabores.data.sync.RemoteToLocalSync.syncProducts(database, this@AppMilSaboresApplication)
             } catch (t: Throwable) {
                 // Log and persist the exception to a file so we can inspect crashes that occur during initialization
                 Log.e("AppInit", "Error during app initialization", t)

@@ -8,6 +8,7 @@ data class Product(
     val rating: Float,
     val reviews: Int = 0,
     val imageRes: Int,
+    val imageUrl: String? = null,
     val category: String,
     val description: String = ""
 )
