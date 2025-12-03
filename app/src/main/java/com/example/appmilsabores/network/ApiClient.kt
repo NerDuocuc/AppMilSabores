@@ -4,6 +4,7 @@ import android.util.Log
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import com.example.appmilsabores.network.AuthInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -33,6 +34,7 @@ object ApiClient {
     }
 
     private val client = OkHttpClient.Builder()
+        .addInterceptor(AuthInterceptor())
         .addInterceptor(logging)
         .addInterceptor(debugResponseInterceptor)
         .build()

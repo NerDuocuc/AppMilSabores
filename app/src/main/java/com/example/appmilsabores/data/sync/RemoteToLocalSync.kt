@@ -304,6 +304,8 @@ object RemoteToLocalSync {
 
                 ProductEntity(
                     id = id,
+                    // Persist server product code so remote updates can identify the server record
+                    codigo = dto.codigoProducto,
                     name = name,
                     price = dto.precioProducto?.toDouble() ?: 0.0,
                     oldPrice = null,

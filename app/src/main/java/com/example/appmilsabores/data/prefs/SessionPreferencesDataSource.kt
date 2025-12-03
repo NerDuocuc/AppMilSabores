@@ -129,6 +129,24 @@ class SessionPreferencesDataSource(context: Context) {
         }
     }
 
+    suspend fun saveJwtToken(token: String?) {
+        dataStore.edit { preferences ->
+            if (token.isNullOrBlank()) {
+                preferences.remove(KEY_JWT)
+            } else {
+                preferences[KEY_JWT] = token
+            }
+        }
+
+        // update in-memory token for quick access by interceptors
+        TOKEN = token
+    }
+
+    suspend fun getJwtToken(): String? {
+        val prefs = dataStore.data.first()
+        return prefs[KEY_JWT]
+    }
+
     suspend fun readPrimaryAddress(): Triple<String?, String?, String?> {
         val prefs = dataStore.data.first()
         return Triple(
@@ -154,6 +172,8 @@ class SessionPreferencesDataSource(context: Context) {
                 rememberMe = current.rememberMe
             )
         )
+        // also clear stored JWT
+        saveJwtToken(null)
     }
 
     companion object {
@@ -168,5 +188,10 @@ class SessionPreferencesDataSource(context: Context) {
         private val KEY_PRIMARY_COMUNA = stringPreferencesKey("primary_comuna")
         private val KEY_PRIMARY_REGION = stringPreferencesKey("primary_region")
         private val KEY_VERSION = intPreferencesKey("prefs_version")
+        private val KEY_JWT = stringPreferencesKey("jwt_token")
+
+        // In-memory token to avoid blocking DataStore read from OkHttp interceptor
+        @Volatile
+        var TOKEN: String? = null
     }
 }

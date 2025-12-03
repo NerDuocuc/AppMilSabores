@@ -61,153 +61,154 @@
 37-->D:\DuocUc\SegundoAnio\SegundoSemestre\Desarrollo_Aplicaciones\app\src\main\AndroidManifest.xml:25:9-54
 38        android:supportsRtl="true"
 38-->D:\DuocUc\SegundoAnio\SegundoSemestre\Desarrollo_Aplicaciones\app\src\main\AndroidManifest.xml:26:9-35
-39        android:theme="@style/Theme.AppMilSabores"
-39-->D:\DuocUc\SegundoAnio\SegundoSemestre\Desarrollo_Aplicaciones\app\src\main\AndroidManifest.xml:27:9-51
-40        android:usesCleartextTraffic="true" >
-40-->D:\DuocUc\SegundoAnio\SegundoSemestre\Desarrollo_Aplicaciones\app\src\main\AndroidManifest.xml:19:9-44
-41        <provider
-42            android:name="androidx.core.content.FileProvider"
-42-->D:\DuocUc\SegundoAnio\SegundoSemestre\Desarrollo_Aplicaciones\app\src\main\AndroidManifest.xml:30:13-62
-43            android:authorities="com.example.appmilsabores.fileprovider"
-43-->D:\DuocUc\SegundoAnio\SegundoSemestre\Desarrollo_Aplicaciones\app\src\main\AndroidManifest.xml:31:13-64
-44            android:exported="false"
-44-->D:\DuocUc\SegundoAnio\SegundoSemestre\Desarrollo_Aplicaciones\app\src\main\AndroidManifest.xml:32:13-37
-45            android:grantUriPermissions="true" >
-45-->D:\DuocUc\SegundoAnio\SegundoSemestre\Desarrollo_Aplicaciones\app\src\main\AndroidManifest.xml:33:13-47
-46            <meta-data
-46-->D:\DuocUc\SegundoAnio\SegundoSemestre\Desarrollo_Aplicaciones\app\src\main\AndroidManifest.xml:34:13-36:54
-47                android:name="android.support.FILE_PROVIDER_PATHS"
-47-->D:\DuocUc\SegundoAnio\SegundoSemestre\Desarrollo_Aplicaciones\app\src\main\AndroidManifest.xml:35:17-67
-48                android:resource="@xml/file_paths" />
-48-->D:\DuocUc\SegundoAnio\SegundoSemestre\Desarrollo_Aplicaciones\app\src\main\AndroidManifest.xml:36:17-51
-49        </provider>
-50
-51        <activity
-51-->D:\DuocUc\SegundoAnio\SegundoSemestre\Desarrollo_Aplicaciones\app\src\main\AndroidManifest.xml:39:9-48:20
-52            android:name="com.example.appmilsabores.MainActivity"
-52-->D:\DuocUc\SegundoAnio\SegundoSemestre\Desarrollo_Aplicaciones\app\src\main\AndroidManifest.xml:40:13-41
-53            android:exported="true"
-53-->D:\DuocUc\SegundoAnio\SegundoSemestre\Desarrollo_Aplicaciones\app\src\main\AndroidManifest.xml:41:13-36
-54            android:label="@string/app_name"
-54-->D:\DuocUc\SegundoAnio\SegundoSemestre\Desarrollo_Aplicaciones\app\src\main\AndroidManifest.xml:42:13-45
-55            android:theme="@style/Theme.AppMilSabores" >
-55-->D:\DuocUc\SegundoAnio\SegundoSemestre\Desarrollo_Aplicaciones\app\src\main\AndroidManifest.xml:43:13-55
-56            <intent-filter>
-56-->D:\DuocUc\SegundoAnio\SegundoSemestre\Desarrollo_Aplicaciones\app\src\main\AndroidManifest.xml:44:13-47:29
-57                <action android:name="android.intent.action.MAIN" />
-57-->D:\DuocUc\SegundoAnio\SegundoSemestre\Desarrollo_Aplicaciones\app\src\main\AndroidManifest.xml:45:17-69
-57-->D:\DuocUc\SegundoAnio\SegundoSemestre\Desarrollo_Aplicaciones\app\src\main\AndroidManifest.xml:45:25-66
-58
-59                <category android:name="android.intent.category.LAUNCHER" />
-59-->D:\DuocUc\SegundoAnio\SegundoSemestre\Desarrollo_Aplicaciones\app\src\main\AndroidManifest.xml:46:17-77
-59-->D:\DuocUc\SegundoAnio\SegundoSemestre\Desarrollo_Aplicaciones\app\src\main\AndroidManifest.xml:46:27-74
-60            </intent-filter>
-61        </activity>
-62
-63        <!-- Receiver to manually trigger remote->local sync via adb broadcast -->
-64        <receiver
-64-->D:\DuocUc\SegundoAnio\SegundoSemestre\Desarrollo_Aplicaciones\app\src\main\AndroidManifest.xml:51:9-55:20
-65            android:name="com.example.appmilsabores.sync.RemoteSyncReceiver"
-65-->D:\DuocUc\SegundoAnio\SegundoSemestre\Desarrollo_Aplicaciones\app\src\main\AndroidManifest.xml:51:19-58
-66            android:exported="false" >
-66-->D:\DuocUc\SegundoAnio\SegundoSemestre\Desarrollo_Aplicaciones\app\src\main\AndroidManifest.xml:51:59-83
-67            <intent-filter>
-67-->D:\DuocUc\SegundoAnio\SegundoSemestre\Desarrollo_Aplicaciones\app\src\main\AndroidManifest.xml:52:13-54:29
-68                <action android:name="com.example.appmilsabores.ACTION_SYNC_PRODUCTS" />
-68-->D:\DuocUc\SegundoAnio\SegundoSemestre\Desarrollo_Aplicaciones\app\src\main\AndroidManifest.xml:53:17-89
-68-->D:\DuocUc\SegundoAnio\SegundoSemestre\Desarrollo_Aplicaciones\app\src\main\AndroidManifest.xml:53:25-86
-69            </intent-filter>
-70        </receiver>
-71
-72        <activity
-72-->[androidx.compose.ui:ui-tooling-android:1.9.0] C:\Users\matia\.gradle\caches\8.13\transforms\d2bf7d156f4bba7d094381898f5a60f7\transformed\ui-tooling\AndroidManifest.xml:23:9-25:39
-73            android:name="androidx.compose.ui.tooling.PreviewActivity"
-73-->[androidx.compose.ui:ui-tooling-android:1.9.0] C:\Users\matia\.gradle\caches\8.13\transforms\d2bf7d156f4bba7d094381898f5a60f7\transformed\ui-tooling\AndroidManifest.xml:24:13-71
-74            android:exported="true" />
-74-->[androidx.compose.ui:ui-tooling-android:1.9.0] C:\Users\matia\.gradle\caches\8.13\transforms\d2bf7d156f4bba7d094381898f5a60f7\transformed\ui-tooling\AndroidManifest.xml:25:13-36
-75        <activity
-75-->[androidx.compose.ui:ui-test-manifest:1.9.0] C:\Users\matia\.gradle\caches\8.13\transforms\15e2dec8d0f153b24ea9e60d5a550655\transformed\ui-test-manifest-1.9.0\AndroidManifest.xml:23:9-26:79
-76            android:name="androidx.activity.ComponentActivity"
-76-->[androidx.compose.ui:ui-test-manifest:1.9.0] C:\Users\matia\.gradle\caches\8.13\transforms\15e2dec8d0f153b24ea9e60d5a550655\transformed\ui-test-manifest-1.9.0\AndroidManifest.xml:24:13-63
-77            android:exported="true"
-77-->[androidx.compose.ui:ui-test-manifest:1.9.0] C:\Users\matia\.gradle\caches\8.13\transforms\15e2dec8d0f153b24ea9e60d5a550655\transformed\ui-test-manifest-1.9.0\AndroidManifest.xml:25:13-36
-78            android:theme="@android:style/Theme.Material.Light.NoActionBar" />
-78-->[androidx.compose.ui:ui-test-manifest:1.9.0] C:\Users\matia\.gradle\caches\8.13\transforms\15e2dec8d0f153b24ea9e60d5a550655\transformed\ui-test-manifest-1.9.0\AndroidManifest.xml:26:13-76
-79
-80        <provider
-80-->[androidx.emoji2:emoji2:1.4.0] C:\Users\matia\.gradle\caches\8.13\transforms\00692be7c31061a2a69c18f3a6ca3c77\transformed\emoji2-1.4.0\AndroidManifest.xml:24:9-32:20
-81            android:name="androidx.startup.InitializationProvider"
-81-->[androidx.emoji2:emoji2:1.4.0] C:\Users\matia\.gradle\caches\8.13\transforms\00692be7c31061a2a69c18f3a6ca3c77\transformed\emoji2-1.4.0\AndroidManifest.xml:25:13-67
-82            android:authorities="com.example.appmilsabores.androidx-startup"
-82-->[androidx.emoji2:emoji2:1.4.0] C:\Users\matia\.gradle\caches\8.13\transforms\00692be7c31061a2a69c18f3a6ca3c77\transformed\emoji2-1.4.0\AndroidManifest.xml:26:13-68
-83            android:exported="false" >
-83-->[androidx.emoji2:emoji2:1.4.0] C:\Users\matia\.gradle\caches\8.13\transforms\00692be7c31061a2a69c18f3a6ca3c77\transformed\emoji2-1.4.0\AndroidManifest.xml:27:13-37
-84            <meta-data
-84-->[androidx.emoji2:emoji2:1.4.0] C:\Users\matia\.gradle\caches\8.13\transforms\00692be7c31061a2a69c18f3a6ca3c77\transformed\emoji2-1.4.0\AndroidManifest.xml:29:13-31:52
-85                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-85-->[androidx.emoji2:emoji2:1.4.0] C:\Users\matia\.gradle\caches\8.13\transforms\00692be7c31061a2a69c18f3a6ca3c77\transformed\emoji2-1.4.0\AndroidManifest.xml:30:17-75
-86                android:value="androidx.startup" />
-86-->[androidx.emoji2:emoji2:1.4.0] C:\Users\matia\.gradle\caches\8.13\transforms\00692be7c31061a2a69c18f3a6ca3c77\transformed\emoji2-1.4.0\AndroidManifest.xml:31:17-49
-87            <meta-data
-87-->[androidx.lifecycle:lifecycle-process:2.9.4] C:\Users\matia\.gradle\caches\8.13\transforms\1dcedc1a6d307070012a1251516ed6b4\transformed\lifecycle-process-2.9.4\AndroidManifest.xml:29:13-31:52
-88                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-88-->[androidx.lifecycle:lifecycle-process:2.9.4] C:\Users\matia\.gradle\caches\8.13\transforms\1dcedc1a6d307070012a1251516ed6b4\transformed\lifecycle-process-2.9.4\AndroidManifest.xml:30:17-78
-89                android:value="androidx.startup" />
-89-->[androidx.lifecycle:lifecycle-process:2.9.4] C:\Users\matia\.gradle\caches\8.13\transforms\1dcedc1a6d307070012a1251516ed6b4\transformed\lifecycle-process-2.9.4\AndroidManifest.xml:31:17-49
-90            <meta-data
-90-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\matia\.gradle\caches\8.13\transforms\09b4627a7e4a80560f84b49d03918e61\transformed\profileinstaller-1.4.0\AndroidManifest.xml:29:13-31:52
-91                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
-91-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\matia\.gradle\caches\8.13\transforms\09b4627a7e4a80560f84b49d03918e61\transformed\profileinstaller-1.4.0\AndroidManifest.xml:30:17-85
-92                android:value="androidx.startup" />
-92-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\matia\.gradle\caches\8.13\transforms\09b4627a7e4a80560f84b49d03918e61\transformed\profileinstaller-1.4.0\AndroidManifest.xml:31:17-49
-93        </provider>
-94
-95        <service
-95-->[androidx.room:room-runtime:2.6.1] C:\Users\matia\.gradle\caches\8.13\transforms\5bced13160d34842de3634bec3e4de25\transformed\room-runtime-2.6.1\AndroidManifest.xml:24:9-28:63
-96            android:name="androidx.room.MultiInstanceInvalidationService"
-96-->[androidx.room:room-runtime:2.6.1] C:\Users\matia\.gradle\caches\8.13\transforms\5bced13160d34842de3634bec3e4de25\transformed\room-runtime-2.6.1\AndroidManifest.xml:25:13-74
-97            android:directBootAware="true"
-97-->[androidx.room:room-runtime:2.6.1] C:\Users\matia\.gradle\caches\8.13\transforms\5bced13160d34842de3634bec3e4de25\transformed\room-runtime-2.6.1\AndroidManifest.xml:26:13-43
-98            android:exported="false" />
-98-->[androidx.room:room-runtime:2.6.1] C:\Users\matia\.gradle\caches\8.13\transforms\5bced13160d34842de3634bec3e4de25\transformed\room-runtime-2.6.1\AndroidManifest.xml:27:13-37
-99
-100        <receiver
-100-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\matia\.gradle\caches\8.13\transforms\09b4627a7e4a80560f84b49d03918e61\transformed\profileinstaller-1.4.0\AndroidManifest.xml:34:9-52:20
-101            android:name="androidx.profileinstaller.ProfileInstallReceiver"
-101-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\matia\.gradle\caches\8.13\transforms\09b4627a7e4a80560f84b49d03918e61\transformed\profileinstaller-1.4.0\AndroidManifest.xml:35:13-76
-102            android:directBootAware="false"
-102-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\matia\.gradle\caches\8.13\transforms\09b4627a7e4a80560f84b49d03918e61\transformed\profileinstaller-1.4.0\AndroidManifest.xml:36:13-44
-103            android:enabled="true"
-103-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\matia\.gradle\caches\8.13\transforms\09b4627a7e4a80560f84b49d03918e61\transformed\profileinstaller-1.4.0\AndroidManifest.xml:37:13-35
-104            android:exported="true"
-104-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\matia\.gradle\caches\8.13\transforms\09b4627a7e4a80560f84b49d03918e61\transformed\profileinstaller-1.4.0\AndroidManifest.xml:38:13-36
-105            android:permission="android.permission.DUMP" >
-105-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\matia\.gradle\caches\8.13\transforms\09b4627a7e4a80560f84b49d03918e61\transformed\profileinstaller-1.4.0\AndroidManifest.xml:39:13-57
-106            <intent-filter>
-106-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\matia\.gradle\caches\8.13\transforms\09b4627a7e4a80560f84b49d03918e61\transformed\profileinstaller-1.4.0\AndroidManifest.xml:40:13-42:29
-107                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
-107-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\matia\.gradle\caches\8.13\transforms\09b4627a7e4a80560f84b49d03918e61\transformed\profileinstaller-1.4.0\AndroidManifest.xml:41:17-91
-107-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\matia\.gradle\caches\8.13\transforms\09b4627a7e4a80560f84b49d03918e61\transformed\profileinstaller-1.4.0\AndroidManifest.xml:41:25-88
-108            </intent-filter>
-109            <intent-filter>
-109-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\matia\.gradle\caches\8.13\transforms\09b4627a7e4a80560f84b49d03918e61\transformed\profileinstaller-1.4.0\AndroidManifest.xml:43:13-45:29
-110                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
-110-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\matia\.gradle\caches\8.13\transforms\09b4627a7e4a80560f84b49d03918e61\transformed\profileinstaller-1.4.0\AndroidManifest.xml:44:17-85
-110-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\matia\.gradle\caches\8.13\transforms\09b4627a7e4a80560f84b49d03918e61\transformed\profileinstaller-1.4.0\AndroidManifest.xml:44:25-82
-111            </intent-filter>
-112            <intent-filter>
-112-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\matia\.gradle\caches\8.13\transforms\09b4627a7e4a80560f84b49d03918e61\transformed\profileinstaller-1.4.0\AndroidManifest.xml:46:13-48:29
-113                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
-113-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\matia\.gradle\caches\8.13\transforms\09b4627a7e4a80560f84b49d03918e61\transformed\profileinstaller-1.4.0\AndroidManifest.xml:47:17-88
-113-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\matia\.gradle\caches\8.13\transforms\09b4627a7e4a80560f84b49d03918e61\transformed\profileinstaller-1.4.0\AndroidManifest.xml:47:25-85
-114            </intent-filter>
-115            <intent-filter>
-115-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\matia\.gradle\caches\8.13\transforms\09b4627a7e4a80560f84b49d03918e61\transformed\profileinstaller-1.4.0\AndroidManifest.xml:49:13-51:29
-116                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
-116-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\matia\.gradle\caches\8.13\transforms\09b4627a7e4a80560f84b49d03918e61\transformed\profileinstaller-1.4.0\AndroidManifest.xml:50:17-95
-116-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\matia\.gradle\caches\8.13\transforms\09b4627a7e4a80560f84b49d03918e61\transformed\profileinstaller-1.4.0\AndroidManifest.xml:50:25-92
-117            </intent-filter>
-118        </receiver>
-119    </application>
-120
-121</manifest>
+39        android:testOnly="true"
+40        android:theme="@style/Theme.AppMilSabores"
+40-->D:\DuocUc\SegundoAnio\SegundoSemestre\Desarrollo_Aplicaciones\app\src\main\AndroidManifest.xml:27:9-51
+41        android:usesCleartextTraffic="true" >
+41-->D:\DuocUc\SegundoAnio\SegundoSemestre\Desarrollo_Aplicaciones\app\src\main\AndroidManifest.xml:19:9-44
+42        <provider
+43            android:name="androidx.core.content.FileProvider"
+43-->D:\DuocUc\SegundoAnio\SegundoSemestre\Desarrollo_Aplicaciones\app\src\main\AndroidManifest.xml:30:13-62
+44            android:authorities="com.example.appmilsabores.fileprovider"
+44-->D:\DuocUc\SegundoAnio\SegundoSemestre\Desarrollo_Aplicaciones\app\src\main\AndroidManifest.xml:31:13-64
+45            android:exported="false"
+45-->D:\DuocUc\SegundoAnio\SegundoSemestre\Desarrollo_Aplicaciones\app\src\main\AndroidManifest.xml:32:13-37
+46            android:grantUriPermissions="true" >
+46-->D:\DuocUc\SegundoAnio\SegundoSemestre\Desarrollo_Aplicaciones\app\src\main\AndroidManifest.xml:33:13-47
+47            <meta-data
+47-->D:\DuocUc\SegundoAnio\SegundoSemestre\Desarrollo_Aplicaciones\app\src\main\AndroidManifest.xml:34:13-36:54
+48                android:name="android.support.FILE_PROVIDER_PATHS"
+48-->D:\DuocUc\SegundoAnio\SegundoSemestre\Desarrollo_Aplicaciones\app\src\main\AndroidManifest.xml:35:17-67
+49                android:resource="@xml/file_paths" />
+49-->D:\DuocUc\SegundoAnio\SegundoSemestre\Desarrollo_Aplicaciones\app\src\main\AndroidManifest.xml:36:17-51
+50        </provider>
+51
+52        <activity
+52-->D:\DuocUc\SegundoAnio\SegundoSemestre\Desarrollo_Aplicaciones\app\src\main\AndroidManifest.xml:39:9-48:20
+53            android:name="com.example.appmilsabores.MainActivity"
+53-->D:\DuocUc\SegundoAnio\SegundoSemestre\Desarrollo_Aplicaciones\app\src\main\AndroidManifest.xml:40:13-41
+54            android:exported="true"
+54-->D:\DuocUc\SegundoAnio\SegundoSemestre\Desarrollo_Aplicaciones\app\src\main\AndroidManifest.xml:41:13-36
+55            android:label="@string/app_name"
+55-->D:\DuocUc\SegundoAnio\SegundoSemestre\Desarrollo_Aplicaciones\app\src\main\AndroidManifest.xml:42:13-45
+56            android:theme="@style/Theme.AppMilSabores" >
+56-->D:\DuocUc\SegundoAnio\SegundoSemestre\Desarrollo_Aplicaciones\app\src\main\AndroidManifest.xml:43:13-55
+57            <intent-filter>
+57-->D:\DuocUc\SegundoAnio\SegundoSemestre\Desarrollo_Aplicaciones\app\src\main\AndroidManifest.xml:44:13-47:29
+58                <action android:name="android.intent.action.MAIN" />
+58-->D:\DuocUc\SegundoAnio\SegundoSemestre\Desarrollo_Aplicaciones\app\src\main\AndroidManifest.xml:45:17-69
+58-->D:\DuocUc\SegundoAnio\SegundoSemestre\Desarrollo_Aplicaciones\app\src\main\AndroidManifest.xml:45:25-66
+59
+60                <category android:name="android.intent.category.LAUNCHER" />
+60-->D:\DuocUc\SegundoAnio\SegundoSemestre\Desarrollo_Aplicaciones\app\src\main\AndroidManifest.xml:46:17-77
+60-->D:\DuocUc\SegundoAnio\SegundoSemestre\Desarrollo_Aplicaciones\app\src\main\AndroidManifest.xml:46:27-74
+61            </intent-filter>
+62        </activity>
+63
+64        <!-- Receiver to manually trigger remote->local sync via adb broadcast -->
+65        <receiver
+65-->D:\DuocUc\SegundoAnio\SegundoSemestre\Desarrollo_Aplicaciones\app\src\main\AndroidManifest.xml:51:9-55:20
+66            android:name="com.example.appmilsabores.sync.RemoteSyncReceiver"
+66-->D:\DuocUc\SegundoAnio\SegundoSemestre\Desarrollo_Aplicaciones\app\src\main\AndroidManifest.xml:51:19-58
+67            android:exported="false" >
+67-->D:\DuocUc\SegundoAnio\SegundoSemestre\Desarrollo_Aplicaciones\app\src\main\AndroidManifest.xml:51:59-83
+68            <intent-filter>
+68-->D:\DuocUc\SegundoAnio\SegundoSemestre\Desarrollo_Aplicaciones\app\src\main\AndroidManifest.xml:52:13-54:29
+69                <action android:name="com.example.appmilsabores.ACTION_SYNC_PRODUCTS" />
+69-->D:\DuocUc\SegundoAnio\SegundoSemestre\Desarrollo_Aplicaciones\app\src\main\AndroidManifest.xml:53:17-89
+69-->D:\DuocUc\SegundoAnio\SegundoSemestre\Desarrollo_Aplicaciones\app\src\main\AndroidManifest.xml:53:25-86
+70            </intent-filter>
+71        </receiver>
+72
+73        <activity
+73-->[androidx.compose.ui:ui-tooling-android:1.9.0] C:\Users\matia\.gradle\caches\8.13\transforms\d2bf7d156f4bba7d094381898f5a60f7\transformed\ui-tooling\AndroidManifest.xml:23:9-25:39
+74            android:name="androidx.compose.ui.tooling.PreviewActivity"
+74-->[androidx.compose.ui:ui-tooling-android:1.9.0] C:\Users\matia\.gradle\caches\8.13\transforms\d2bf7d156f4bba7d094381898f5a60f7\transformed\ui-tooling\AndroidManifest.xml:24:13-71
+75            android:exported="true" />
+75-->[androidx.compose.ui:ui-tooling-android:1.9.0] C:\Users\matia\.gradle\caches\8.13\transforms\d2bf7d156f4bba7d094381898f5a60f7\transformed\ui-tooling\AndroidManifest.xml:25:13-36
+76        <activity
+76-->[androidx.compose.ui:ui-test-manifest:1.9.0] C:\Users\matia\.gradle\caches\8.13\transforms\15e2dec8d0f153b24ea9e60d5a550655\transformed\ui-test-manifest-1.9.0\AndroidManifest.xml:23:9-26:79
+77            android:name="androidx.activity.ComponentActivity"
+77-->[androidx.compose.ui:ui-test-manifest:1.9.0] C:\Users\matia\.gradle\caches\8.13\transforms\15e2dec8d0f153b24ea9e60d5a550655\transformed\ui-test-manifest-1.9.0\AndroidManifest.xml:24:13-63
+78            android:exported="true"
+78-->[androidx.compose.ui:ui-test-manifest:1.9.0] C:\Users\matia\.gradle\caches\8.13\transforms\15e2dec8d0f153b24ea9e60d5a550655\transformed\ui-test-manifest-1.9.0\AndroidManifest.xml:25:13-36
+79            android:theme="@android:style/Theme.Material.Light.NoActionBar" />
+79-->[androidx.compose.ui:ui-test-manifest:1.9.0] C:\Users\matia\.gradle\caches\8.13\transforms\15e2dec8d0f153b24ea9e60d5a550655\transformed\ui-test-manifest-1.9.0\AndroidManifest.xml:26:13-76
+80
+81        <provider
+81-->[androidx.emoji2:emoji2:1.4.0] C:\Users\matia\.gradle\caches\8.13\transforms\00692be7c31061a2a69c18f3a6ca3c77\transformed\emoji2-1.4.0\AndroidManifest.xml:24:9-32:20
+82            android:name="androidx.startup.InitializationProvider"
+82-->[androidx.emoji2:emoji2:1.4.0] C:\Users\matia\.gradle\caches\8.13\transforms\00692be7c31061a2a69c18f3a6ca3c77\transformed\emoji2-1.4.0\AndroidManifest.xml:25:13-67
+83            android:authorities="com.example.appmilsabores.androidx-startup"
+83-->[androidx.emoji2:emoji2:1.4.0] C:\Users\matia\.gradle\caches\8.13\transforms\00692be7c31061a2a69c18f3a6ca3c77\transformed\emoji2-1.4.0\AndroidManifest.xml:26:13-68
+84            android:exported="false" >
+84-->[androidx.emoji2:emoji2:1.4.0] C:\Users\matia\.gradle\caches\8.13\transforms\00692be7c31061a2a69c18f3a6ca3c77\transformed\emoji2-1.4.0\AndroidManifest.xml:27:13-37
+85            <meta-data
+85-->[androidx.emoji2:emoji2:1.4.0] C:\Users\matia\.gradle\caches\8.13\transforms\00692be7c31061a2a69c18f3a6ca3c77\transformed\emoji2-1.4.0\AndroidManifest.xml:29:13-31:52
+86                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+86-->[androidx.emoji2:emoji2:1.4.0] C:\Users\matia\.gradle\caches\8.13\transforms\00692be7c31061a2a69c18f3a6ca3c77\transformed\emoji2-1.4.0\AndroidManifest.xml:30:17-75
+87                android:value="androidx.startup" />
+87-->[androidx.emoji2:emoji2:1.4.0] C:\Users\matia\.gradle\caches\8.13\transforms\00692be7c31061a2a69c18f3a6ca3c77\transformed\emoji2-1.4.0\AndroidManifest.xml:31:17-49
+88            <meta-data
+88-->[androidx.lifecycle:lifecycle-process:2.9.4] C:\Users\matia\.gradle\caches\8.13\transforms\1dcedc1a6d307070012a1251516ed6b4\transformed\lifecycle-process-2.9.4\AndroidManifest.xml:29:13-31:52
+89                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+89-->[androidx.lifecycle:lifecycle-process:2.9.4] C:\Users\matia\.gradle\caches\8.13\transforms\1dcedc1a6d307070012a1251516ed6b4\transformed\lifecycle-process-2.9.4\AndroidManifest.xml:30:17-78
+90                android:value="androidx.startup" />
+90-->[androidx.lifecycle:lifecycle-process:2.9.4] C:\Users\matia\.gradle\caches\8.13\transforms\1dcedc1a6d307070012a1251516ed6b4\transformed\lifecycle-process-2.9.4\AndroidManifest.xml:31:17-49
+91            <meta-data
+91-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\matia\.gradle\caches\8.13\transforms\09b4627a7e4a80560f84b49d03918e61\transformed\profileinstaller-1.4.0\AndroidManifest.xml:29:13-31:52
+92                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+92-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\matia\.gradle\caches\8.13\transforms\09b4627a7e4a80560f84b49d03918e61\transformed\profileinstaller-1.4.0\AndroidManifest.xml:30:17-85
+93                android:value="androidx.startup" />
+93-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\matia\.gradle\caches\8.13\transforms\09b4627a7e4a80560f84b49d03918e61\transformed\profileinstaller-1.4.0\AndroidManifest.xml:31:17-49
+94        </provider>
+95
+96        <service
+96-->[androidx.room:room-runtime:2.6.1] C:\Users\matia\.gradle\caches\8.13\transforms\5bced13160d34842de3634bec3e4de25\transformed\room-runtime-2.6.1\AndroidManifest.xml:24:9-28:63
+97            android:name="androidx.room.MultiInstanceInvalidationService"
+97-->[androidx.room:room-runtime:2.6.1] C:\Users\matia\.gradle\caches\8.13\transforms\5bced13160d34842de3634bec3e4de25\transformed\room-runtime-2.6.1\AndroidManifest.xml:25:13-74
+98            android:directBootAware="true"
+98-->[androidx.room:room-runtime:2.6.1] C:\Users\matia\.gradle\caches\8.13\transforms\5bced13160d34842de3634bec3e4de25\transformed\room-runtime-2.6.1\AndroidManifest.xml:26:13-43
+99            android:exported="false" />
+99-->[androidx.room:room-runtime:2.6.1] C:\Users\matia\.gradle\caches\8.13\transforms\5bced13160d34842de3634bec3e4de25\transformed\room-runtime-2.6.1\AndroidManifest.xml:27:13-37
+100
+101        <receiver
+101-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\matia\.gradle\caches\8.13\transforms\09b4627a7e4a80560f84b49d03918e61\transformed\profileinstaller-1.4.0\AndroidManifest.xml:34:9-52:20
+102            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+102-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\matia\.gradle\caches\8.13\transforms\09b4627a7e4a80560f84b49d03918e61\transformed\profileinstaller-1.4.0\AndroidManifest.xml:35:13-76
+103            android:directBootAware="false"
+103-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\matia\.gradle\caches\8.13\transforms\09b4627a7e4a80560f84b49d03918e61\transformed\profileinstaller-1.4.0\AndroidManifest.xml:36:13-44
+104            android:enabled="true"
+104-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\matia\.gradle\caches\8.13\transforms\09b4627a7e4a80560f84b49d03918e61\transformed\profileinstaller-1.4.0\AndroidManifest.xml:37:13-35
+105            android:exported="true"
+105-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\matia\.gradle\caches\8.13\transforms\09b4627a7e4a80560f84b49d03918e61\transformed\profileinstaller-1.4.0\AndroidManifest.xml:38:13-36
+106            android:permission="android.permission.DUMP" >
+106-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\matia\.gradle\caches\8.13\transforms\09b4627a7e4a80560f84b49d03918e61\transformed\profileinstaller-1.4.0\AndroidManifest.xml:39:13-57
+107            <intent-filter>
+107-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\matia\.gradle\caches\8.13\transforms\09b4627a7e4a80560f84b49d03918e61\transformed\profileinstaller-1.4.0\AndroidManifest.xml:40:13-42:29
+108                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+108-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\matia\.gradle\caches\8.13\transforms\09b4627a7e4a80560f84b49d03918e61\transformed\profileinstaller-1.4.0\AndroidManifest.xml:41:17-91
+108-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\matia\.gradle\caches\8.13\transforms\09b4627a7e4a80560f84b49d03918e61\transformed\profileinstaller-1.4.0\AndroidManifest.xml:41:25-88
+109            </intent-filter>
+110            <intent-filter>
+110-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\matia\.gradle\caches\8.13\transforms\09b4627a7e4a80560f84b49d03918e61\transformed\profileinstaller-1.4.0\AndroidManifest.xml:43:13-45:29
+111                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+111-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\matia\.gradle\caches\8.13\transforms\09b4627a7e4a80560f84b49d03918e61\transformed\profileinstaller-1.4.0\AndroidManifest.xml:44:17-85
+111-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\matia\.gradle\caches\8.13\transforms\09b4627a7e4a80560f84b49d03918e61\transformed\profileinstaller-1.4.0\AndroidManifest.xml:44:25-82
+112            </intent-filter>
+113            <intent-filter>
+113-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\matia\.gradle\caches\8.13\transforms\09b4627a7e4a80560f84b49d03918e61\transformed\profileinstaller-1.4.0\AndroidManifest.xml:46:13-48:29
+114                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+114-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\matia\.gradle\caches\8.13\transforms\09b4627a7e4a80560f84b49d03918e61\transformed\profileinstaller-1.4.0\AndroidManifest.xml:47:17-88
+114-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\matia\.gradle\caches\8.13\transforms\09b4627a7e4a80560f84b49d03918e61\transformed\profileinstaller-1.4.0\AndroidManifest.xml:47:25-85
+115            </intent-filter>
+116            <intent-filter>
+116-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\matia\.gradle\caches\8.13\transforms\09b4627a7e4a80560f84b49d03918e61\transformed\profileinstaller-1.4.0\AndroidManifest.xml:49:13-51:29
+117                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+117-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\matia\.gradle\caches\8.13\transforms\09b4627a7e4a80560f84b49d03918e61\transformed\profileinstaller-1.4.0\AndroidManifest.xml:50:17-95
+117-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\matia\.gradle\caches\8.13\transforms\09b4627a7e4a80560f84b49d03918e61\transformed\profileinstaller-1.4.0\AndroidManifest.xml:50:25-92
+118            </intent-filter>
+119        </receiver>
+120    </application>
+121
+122</manifest>

@@ -230,7 +230,19 @@ public class DataLoader implements CommandLineRunner {
             if (run == null) continue;
             JsonNode cardsNode = n.path("cards");
             if (userRepository.existsById(run)) {
-                ensureCardsForExistingUser(userRepository.getReferenceById(run), cardsNode);
+                // update existing user's cards and password if seed provides one
+                User existing = userRepository.getReferenceById(run);
+                ensureCardsForExistingUser(existing, cardsNode);
+                String pwFromJsonExisting = n.path("password").asText(null);
+                if (pwFromJsonExisting != null) {
+                    String pwToStoreExisting = pwFromJsonExisting;
+                    if (!(pwToStoreExisting.startsWith("$2a$") || pwToStoreExisting.startsWith("$2b$") || pwToStoreExisting.startsWith("$2y$"))) {
+                        pwToStoreExisting = new org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder().encode(pwToStoreExisting);
+                    }
+                    existing.setPassword(pwToStoreExisting);
+                    userRepository.save(existing);
+                    log.info("Updated password for existing user {} from seed", run);
+                }
                 continue;
             }
             User u = new User();
@@ -245,7 +257,20 @@ public class DataLoader implements CommandLineRunner {
             u.setTelefono(telefonoTexto);
             u.setFechaNacimiento(n.path("fechaNacimiento").asText(null));
             u.setTipoUsuario(UserType.fromString(n.path("tipoUsuario").asText(null)));
-            u.setPassword(n.path("password").asText(null));
+            // Ensure stored password is BCrypt-hashed. The seed JSON may contain a raw
+            // password (hex or plain). If it's not already a BCrypt hash, encode it
+            // so DaoAuthenticationProvider can validate credentials correctly.
+            String pwFromJson = n.path("password").asText(null);
+            if (pwFromJson != null) {
+                String pwToStore = pwFromJson;
+                // BCrypt hashes start with $2a$, $2b$ or $2y$
+                if (!(pwToStore.startsWith("$2a$") || pwToStore.startsWith("$2b$") || pwToStore.startsWith("$2y$"))) {
+                    pwToStore = new org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder().encode(pwToStore);
+                }
+                u.setPassword(pwToStore);
+            } else {
+                u.setPassword(null);
+            }
 
             // optional extra fields present in enhanced JSON
             // discount percent
