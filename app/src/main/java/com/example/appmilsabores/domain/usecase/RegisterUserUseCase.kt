@@ -26,7 +26,8 @@ class RegisterUserUseCase(
 		region: String,
 		comuna: String,
 		address: String,
-		referralCode: String?
+		referralCode: String?,
+		discount: Int
 	): Result {
 		return try {
 			val user = userRepository.register(

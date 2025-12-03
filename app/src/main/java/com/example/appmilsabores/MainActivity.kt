@@ -3,6 +3,7 @@ package com.example.appmilsabores
 
 import android.os.Bundle
 import android.graphics.Color as AndroidColor
+import android.util.Log
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.activity.ComponentActivity
@@ -11,8 +12,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.lifecycleScope
 import com.example.appmilsabores.presentation.ui.theme.AppMilSaboresTheme // El tema de tu app
 import com.example.appmilsabores.presentation.navigation.AppNavGraph
+import com.example.appmilsabores.network.ApiClient
+import kotlinx.coroutines.launch
 
 
 class MainActivity : ComponentActivity() {
@@ -32,6 +36,16 @@ class MainActivity : ComponentActivity() {
                 ) {
                     AppNavGraph()
                 }
+            }
+        }
+
+        // Llamada inicial para verificar que la API responde y ver los datos en Logcat
+        lifecycleScope.launch {
+            try {
+                val productos = ApiClient.service.getProductos()
+                Log.d("API", "Productos obtenidos: ${'$'}productos")
+            } catch (e: Exception) {
+                Log.e("API", "Error al obtener productos", e)
             }
         }
     }

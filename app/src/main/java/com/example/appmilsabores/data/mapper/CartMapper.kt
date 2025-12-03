@@ -12,6 +12,7 @@ object CartMapper {
 			name = relation.product.name,
 			price = relation.product.price,
 			imageRes = relation.product.imageRes,
+			imageUrl = relation.product.imageUrl,
 			quantity = relation.cart.quantity
 		)
 	}

@@ -7,5 +7,6 @@ data class PaymentMethod(
     val cardType: CardType,
     val lastFourDigits: String,
     val expiryDate: String,
-    val isDefault: Boolean
+    val isDefault: Boolean,
+    val cardHolderName: String
 )

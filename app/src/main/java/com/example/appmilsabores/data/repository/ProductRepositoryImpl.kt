@@ -47,6 +47,50 @@ class ProductRepositoryImpl(
         return productDao.getProductById(id)?.let(ProductMapper::toDomain)
     }
 
+    override suspend fun updateProductStock(id: Int, newStock: Int): Boolean {
+        return try {
+            val existing = productDao.getProductById(id)
+
+            // If we have a remote data source and a server product code, try to update remote first
+            val remoteUpdated = try {
+                val codigo = existing?.codigo
+                if (remoteDataSource != null && codigo != null) {
+                    val remoteProduct = remoteDataSource.updateProductStock(codigo, newStock)
+                    if (remoteProduct != null) {
+                        // persist returned product from server to local DB
+                        val entity = ProductMapper.toEntity(remoteProduct)
+                        productDao.upsertProducts(listOf(entity))
+                        com.example.appmilsabores.utils.Logger.d("ProductRepository", "updateStock id=$id -> remote persisted stock=${remoteProduct.stock}")
+                        true
+                    } else {
+                        false
+                    }
+                } else {
+                    false
+                }
+                } catch (t: Throwable) {
+                    com.example.appmilsabores.utils.Logger.w("ProductRepository", "Remote update failed for id=$id", t)
+                false
+            }
+
+            if (!remoteUpdated) {
+                // Fallback to local-only update
+                productDao.updateStock(id, newStock)
+                try {
+                    val after = productDao.getProductById(id)
+                    com.example.appmilsabores.utils.Logger.d("ProductRepository", "updateStock id=$id -> requested=$newStock persisted=${after?.stock}")
+                } catch (t: Throwable) {
+                    com.example.appmilsabores.utils.Logger.w("ProductRepository", "updateStock: failed to read back product id=$id", t)
+                }
+            }
+
+            true
+        } catch (e: Exception) {
+            com.example.appmilsabores.utils.Logger.e("ProductRepository", "Failed to update stock for id=$id", e)
+            false
+        }
+    }
+
     override suspend fun searchProducts(query: String, filters: ProductFilters): List<Product> {
         val sanitized = query.trim()
         if (sanitized.isEmpty()) return emptyList()
@@ -78,8 +122,24 @@ class ProductRepositoryImpl(
     private suspend fun fetchRemoteAndCache(): List<Product> {
         val remoteProducts = remoteDataSource?.fetchProducts().orEmpty()
         if (remoteProducts.isNotEmpty()) {
-            val entities = remoteProducts.map(ProductMapper::toEntity)
-            productDao.upsertProducts(entities)
+            // Temporary debug logging to diagnose category issues
+            try {
+                com.example.appmilsabores.utils.Logger.d("ProductRepository", "Fetched ${remoteProducts.size} remote products")
+                val entities = remoteProducts.map { prod ->
+                    val entity = ProductMapper.toEntity(prod)
+                    com.example.appmilsabores.utils.Logger.d("ProductRepository", "Remote product='${prod.name}' originalCategory='${prod.category}' storedCategory='${entity.category}'")
+                    entity
+                }
+
+                productDao.upsertProducts(entities)
+
+                // Log categories currently stored in DB
+                val stored = productDao.getAllProducts()
+                val categories = stored.map { it.category }.distinct()
+                com.example.appmilsabores.utils.Logger.d("ProductRepository", "Stored product count=${stored.size}, categories=${categories}")
+            } catch (e: Exception) {
+                com.example.appmilsabores.utils.Logger.e("ProductRepository", "Error while caching remote products", e)
+            }
         }
         return remoteProducts
     }
@@ -108,7 +168,21 @@ class ProductRepositoryImpl(
     }
 
     private fun ProductFilters.ensureCategory(categoryName: String): ProductFilters {
-        return if (categories.isEmpty()) copy(categories = setOf(categoryName)) else this
+        fun normalizeCategory(name: String): String {
+            val normalized = java.text.Normalizer.normalize(name, java.text.Normalizer.Form.NFD)
+            return normalized.replace("\\p{InCombiningDiacriticalMarks}+".toRegex(), "").trim().lowercase()
+        }
+
+        // Normalize any categories already present in the filters, and also normalize the
+        // incoming categoryName. This makes category matching insensitive to accents/case.
+        val normalizedFromParam = normalizeCategory(categoryName)
+        val normalizedCategories = if (categories.isEmpty()) {
+            setOf(normalizedFromParam)
+        } else {
+            categories.map { normalizeCategory(it) }.toSet()
+        }
+
+        return copy(categories = normalizedCategories)
     }
 
     private fun ProductSortOption.toComparator(): Comparator<Product> {

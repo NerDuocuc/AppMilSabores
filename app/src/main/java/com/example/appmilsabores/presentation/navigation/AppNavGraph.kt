@@ -224,6 +224,14 @@ fun AppNavGraph(modifier: Modifier = Modifier) {
             popExitTransition = { backwardExit() }
         ) { EditProfileScreen(navController) }
 
+        composable(
+            route = Destinations.AdminStock.route,
+            enterTransition = { forwardEnter() },
+            exitTransition = { forwardExit() },
+            popEnterTransition = { backwardEnter() },
+            popExitTransition = { backwardExit() }
+        ) { AdminStockScreen(navController) }
+
         // Carrito
         composable(
             route = Destinations.Cart.route,
@@ -287,6 +295,14 @@ fun AppNavGraph(modifier: Modifier = Modifier) {
             popEnterTransition = { backwardEnter() },
             popExitTransition = { backwardExit() }
         ) { AddAddressScreen(navController) }
+        // Debug: show stored categories
+        composable(
+            route = "debug/categories",
+            enterTransition = { forwardEnter() },
+            exitTransition = { forwardExit() },
+            popEnterTransition = { backwardEnter() },
+            popExitTransition = { backwardExit() }
+        ) { DebugCategoriesScreen(navController) }
     }
 }
 }

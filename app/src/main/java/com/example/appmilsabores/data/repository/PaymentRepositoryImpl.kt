@@ -53,7 +53,8 @@ class PaymentRepositoryImpl(
             cardType = type,
             lastFourDigits = lastFourDigits,
             expiryDate = expiryDate,
-            isDefault = isDefault
+            isDefault = isDefault,
+            cardHolderName = cardHolderName
         )
     }
 
@@ -63,6 +64,7 @@ class PaymentRepositoryImpl(
         lastFourDigits = lastFourDigits,
         expiryDate = expiryDate,
         isDefault = isDefault,
-        createdAt = System.currentTimeMillis()
+        createdAt = System.currentTimeMillis(),
+        cardHolderName = this.cardHolderName ?: ""
     )
 }

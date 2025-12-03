@@ -145,6 +145,50 @@ fun LandingPageScreen(
         }
     }
 
+<<<<<<< HEAD
+=======
+    // When entering the Landing screen (route changes), pick fresh products
+    LaunchedEffect(backStackEntry?.destination?.route, landingState.categories, landingState.desserts) {
+        // 1) Te podría gustar -> always use Postres Individuales (landingState.desserts) shuffled
+        curatedRecommendationsState.value = landingState.desserts.shuffled()
+
+        // 2) Opciones populares -> pick a random category different from "Postres Individuales"
+        val categories = landingState.categories.map { it.name }.filter { it.isNotBlank() }
+        val preferred = "Postres Individuales"
+        val available = categories.filter { !it.equals(preferred, ignoreCase = true) }
+
+        if (available.isEmpty()) {
+            // Fallback to featured/newProducts if no other categories
+            popularOptionsState.value = (landingState.featured + landingState.newProducts).distinctBy { it.id }
+        } else {
+            // pick a random category name
+            val randomCategory = available.shuffled().first()
+
+            // fetch products for that category from repository and map to ProductSummary
+            val repo = com.example.appmilsabores.data.AppDependencyContainer.createProductRepository()
+            val products = try {
+                repo.getProductsByCategory(randomCategory)
+            } catch (e: Exception) {
+                emptyList()
+            }
+
+            popularOptionsState.value = if (products.isEmpty()) {
+                (landingState.featured + landingState.newProducts).distinctBy { it.id }
+            } else {
+                products.map { p ->
+                    ProductSummary(
+                        id = p.id,
+                        name = p.name,
+                        price = formatPrice(p.price),
+                        imageRes = p.imageRes,
+                        imageUrl = p.imageUrl
+                    )
+                }
+            }
+        }
+    }
+
+>>>>>>> fix-Api
     BackHandler(enabled = searchActive) {
         searchActive = false
         searchQuery = ""

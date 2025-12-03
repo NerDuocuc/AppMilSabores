@@ -14,21 +14,32 @@ object ProductMapper {
 			rating = entity.rating,
 			reviews = entity.reviews,
 			imageRes = entity.imageRes,
+			imageUrl = entity.imageUrl,
+			stock = entity.stock,
 			category = entity.category,
-			description = entity.description.orEmpty()
+			description = entity.description.orEmpty(),
+			codigo = entity.codigo
 		)
 	}
 
 		fun toEntity(product: Product): ProductEntity {
+		fun normalizeCategory(name: String): String {
+			val normalized = java.text.Normalizer.normalize(name, java.text.Normalizer.Form.NFD)
+			return normalized.replace("\\p{InCombiningDiacriticalMarks}+".toRegex(), "").trim().lowercase()
+		}
+
 		return ProductEntity(
 			id = product.id,
+			codigo = product.codigo,
 			name = product.name,
 			price = product.price,
 			oldPrice = product.oldPrice,
 			rating = product.rating,
 			reviews = product.reviews,
 				imageRes = product.imageRes,
-				category = product.category,
+				imageUrl = product.imageUrl,
+				stock = product.stock,
+				category = normalizeCategory(product.category),
 				description = product.description
 		)
 	}

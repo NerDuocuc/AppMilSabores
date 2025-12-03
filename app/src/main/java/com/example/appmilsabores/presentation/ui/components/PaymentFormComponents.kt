@@ -20,6 +20,10 @@ import androidx.compose.ui.unit.dp
 import com.example.appmilsabores.R
 import com.example.appmilsabores.domain.model.CardType
 import com.example.appmilsabores.presentation.ui.screens.getTextFieldColors
+<<<<<<< HEAD
+=======
+import com.example.appmilsabores.presentation.ui.theme.MainTextColor
+>>>>>>> fix-Api
 import com.example.appmilsabores.presentation.ui.theme.PrimaryPurple
 import com.example.appmilsabores.presentation.viewmodel.AddPaymentUiState
 
@@ -155,7 +159,11 @@ private class ExpiryDateVisualTransformation : VisualTransformation {
 }
 @Composable
 fun paymentTextFieldColors(): TextFieldColors {
+<<<<<<< HEAD
     // Make the text fields white with dark text so card details are readable over the form
+=======
+    // Make the payment form fields white with dark text (MainTextColor) for readability
+>>>>>>> fix-Api
     val backgroundColor = Color.White
     val textColor = MainTextColor
     return TextFieldDefaults.colors(

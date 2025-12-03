@@ -107,6 +107,55 @@ class SessionPreferencesDataSource(context: Context) {
         }
     }
 
+    suspend fun savePrimaryAddress(address: String?, comuna: String?, region: String?) {
+        dataStore.edit { preferences ->
+            if (address.isNullOrBlank()) {
+                preferences.remove(KEY_PRIMARY_ADDRESS)
+            } else {
+                preferences[KEY_PRIMARY_ADDRESS] = address
+            }
+
+            if (comuna.isNullOrBlank()) {
+                preferences.remove(KEY_PRIMARY_COMUNA)
+            } else {
+                preferences[KEY_PRIMARY_COMUNA] = comuna
+            }
+
+            if (region.isNullOrBlank()) {
+                preferences.remove(KEY_PRIMARY_REGION)
+            } else {
+                preferences[KEY_PRIMARY_REGION] = region
+            }
+        }
+    }
+
+    suspend fun saveJwtToken(token: String?) {
+        dataStore.edit { preferences ->
+            if (token.isNullOrBlank()) {
+                preferences.remove(KEY_JWT)
+            } else {
+                preferences[KEY_JWT] = token
+            }
+        }
+
+        // update in-memory token for quick access by interceptors
+        TOKEN = token
+    }
+
+    suspend fun getJwtToken(): String? {
+        val prefs = dataStore.data.first()
+        return prefs[KEY_JWT]
+    }
+
+    suspend fun readPrimaryAddress(): Triple<String?, String?, String?> {
+        val prefs = dataStore.data.first()
+        return Triple(
+            prefs[KEY_PRIMARY_ADDRESS],
+            prefs[KEY_PRIMARY_COMUNA],
+            prefs[KEY_PRIMARY_REGION]
+        )
+    }
+
     suspend fun updateSession(transform: (SessionState) -> SessionState) {
         val current = sessionFlow.first()
         saveSession(transform(current))
@@ -123,6 +172,8 @@ class SessionPreferencesDataSource(context: Context) {
                 rememberMe = current.rememberMe
             )
         )
+        // also clear stored JWT
+        saveJwtToken(null)
     }
 
     companion object {
@@ -133,6 +184,14 @@ class SessionPreferencesDataSource(context: Context) {
         private val KEY_EMAIL = stringPreferencesKey("email")
         private val KEY_FULL_NAME = stringPreferencesKey("full_name")
         private val KEY_REMEMBER_ME = booleanPreferencesKey("remember_me")
+        private val KEY_PRIMARY_ADDRESS = stringPreferencesKey("primary_address")
+        private val KEY_PRIMARY_COMUNA = stringPreferencesKey("primary_comuna")
+        private val KEY_PRIMARY_REGION = stringPreferencesKey("primary_region")
         private val KEY_VERSION = intPreferencesKey("prefs_version")
+        private val KEY_JWT = stringPreferencesKey("jwt_token")
+
+        // In-memory token to avoid blocking DataStore read from OkHttp interceptor
+        @Volatile
+        var TOKEN: String? = null
     }
 }

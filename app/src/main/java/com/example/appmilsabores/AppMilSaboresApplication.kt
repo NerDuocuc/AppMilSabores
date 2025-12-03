@@ -30,6 +30,14 @@ class AppMilSaboresApplication : Application() {
             try {
                 database.seed()
                 sessionPrefs.seedSuperAdminIfNeeded()
+                // load persisted JWT (if any) into in-memory token for interceptor
+                try {
+                    val existing = sessionPrefs.getJwtToken()
+                    com.example.appmilsabores.data.prefs.SessionPreferencesDataSource.TOKEN = existing
+                } catch (ignored: Exception) {
+                }
+                // Try to sync remote products into local Room DB. This will upsert products from your backend.
+                com.example.appmilsabores.data.sync.RemoteToLocalSync.syncProducts(database, this@AppMilSaboresApplication)
             } catch (t: Throwable) {
                 // Log and persist the exception to a file so we can inspect crashes that occur during initialization
                 Log.e("AppInit", "Error during app initialization", t)

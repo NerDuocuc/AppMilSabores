@@ -6,6 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.appmilsabores.data.local.dao.CartDao
 import com.example.appmilsabores.data.local.dao.PaymentMethodDao
+import com.example.appmilsabores.data.local.dao.AddressDao
 import com.example.appmilsabores.data.local.dao.ProductDao
 import com.example.appmilsabores.data.local.dao.UserDao
 import com.example.appmilsabores.data.local.entity.CartItemEntity
@@ -15,9 +16,16 @@ import com.example.appmilsabores.data.local.entity.UserEntity
 import com.example.appmilsabores.data.local.seed.LocalSeedData
 
 @Database(
-	entities = [ProductEntity::class, CartItemEntity::class, UserEntity::class, PaymentMethodEntity::class],
-	// bumped version to 7 to apply destructive fallback migration after schema changes
-	version = 7,
+	entities = [
+		ProductEntity::class,
+		CartItemEntity::class,
+		UserEntity::class,
+		PaymentMethodEntity::class,
+		com.example.appmilsabores.data.local.entity.AddressEntity::class,
+		com.example.appmilsabores.data.local.entity.OrderEntity::class
+	],
+	// bumped version to 10 to include codigo column
+	version = 10,
 	exportSchema = true
 )
 abstract class AppDatabase : RoomDatabase() {
@@ -26,10 +34,12 @@ abstract class AppDatabase : RoomDatabase() {
 	abstract fun cartDao(): CartDao
 	abstract fun userDao(): UserDao
 	abstract fun paymentMethodDao(): PaymentMethodDao
+	abstract fun addressDao(): AddressDao
+	abstract fun orderDao(): com.example.appmilsabores.data.local.dao.OrderDao
 
 	suspend fun seed() {
+		// Do not seed products locally. Products will be synchronized from the remote API.
 		val productDao = productDao()
-		productDao.upsertProducts(LocalSeedData.defaultProducts)
 
 		val userDao = userDao()
 		LocalSeedData.seededUsers.forEach { seed ->

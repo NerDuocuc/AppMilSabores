@@ -1,3 +1,4 @@
+com.example.appmilsabores:xml/network_security_config = 0x7f0c0003
 com.example.appmilsabores:xml/data_extraction_rules = 0x7f0c0001
 com.example.appmilsabores:xml/backup_rules = 0x7f0c0000
 com.example.appmilsabores:styleable/StateListDrawableItem = 0x7f0b0013

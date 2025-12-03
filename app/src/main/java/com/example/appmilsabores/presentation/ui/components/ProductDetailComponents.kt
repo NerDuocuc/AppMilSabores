@@ -35,6 +35,10 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import coil.compose.AsyncImage
+import coil.request.ImageRequest
+import androidx.compose.ui.platform.LocalContext
+import com.example.appmilsabores.R
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
@@ -54,14 +58,8 @@ fun ProductDetailTopBar(
     onCartClick: () -> Unit
 ) {
     CenterAlignedTopAppBar(
-        title = {
-            Text(
-                text = title,
-                color = Color.White,
-                fontSize = 18.sp,
-                fontWeight = FontWeight.SemiBold
-            )
-        },
+        // No mostrar el nombre del producto en la barra superior; se mostrará en el encabezado
+        title = {},
         navigationIcon = {
             IconButton(onClick = onBackClick) {
                 Icon(
@@ -96,12 +94,27 @@ fun ProductImageCarousel(product: Product) {
                 .fillMaxWidth()
                 .height(350.dp)
         ) { page ->
-            Image(
-                painter = painterResource(id = images[page]),
-                contentDescription = "Imagen del producto",
-                contentScale = ContentScale.Crop,
-                modifier = Modifier.fillMaxSize()
-            )
+            val context = LocalContext.current
+            if (!product.imageUrl.isNullOrBlank()) {
+                AsyncImage(
+                    model = ImageRequest.Builder(context)
+                        .data(product.imageUrl)
+                        .crossfade(true)
+                        .build(),
+                    contentDescription = "Imagen del producto",
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier.fillMaxSize(),
+                    placeholder = painterResource(id = R.drawable.avatar_placeholder),
+                    error = painterResource(id = R.drawable.avatar_placeholder)
+                )
+            } else {
+                Image(
+                    painter = painterResource(id = images[page]),
+                    contentDescription = "Imagen del producto",
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier.fillMaxSize()
+                )
+            }
         }
 
         Row(
@@ -128,19 +141,17 @@ fun ProductImageCarousel(product: Product) {
 @Composable
 fun ProductHeader(product: Product, reviews: List<ProductReview>) {
     // Star rating UI has been removed per request; keep reviews data intact
-    Row(
+    // Mostrar el nombre del producto centrado y justo encima del contador de reseñas
+    Column(
         modifier = Modifier
             .fillMaxWidth()
             .padding(16.dp),
-        horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.CenterVertically
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Column(modifier = Modifier.weight(1f)) {
-            Text(product.name, fontWeight = FontWeight.Bold, fontSize = 24.sp, color = Color.White)
-            Spacer(modifier = Modifier.height(8.dp))
-            if (reviews.isNotEmpty()) {
-                Text("${reviews.size} reseñas", color = Color.LightGray, fontSize = 14.sp)
-            }
+        Text(product.name, fontWeight = FontWeight.Bold, fontSize = 24.sp, color = Color.Black)
+        Spacer(modifier = Modifier.height(8.dp))
+        if (reviews.isNotEmpty()) {
+            Text("${reviews.size} reseñas", color = Color.LightGray, fontSize = 14.sp)
         }
     }
 }
@@ -197,7 +208,7 @@ fun ProductDescription(description: String) {
         Box(modifier = Modifier.animateContentSize()) {
             Text(
                 text = description,
-                color = Color.LightGray,
+                color = Color.Black,
                 lineHeight = 22.sp,
                 maxLines = if (expanded) Int.MAX_VALUE else 4
             )
@@ -258,7 +269,7 @@ private fun ReviewCard(review: ProductReview) {
                 Text("${review.rating}", color = Color.White, fontWeight = FontWeight.SemiBold, fontSize = 14.sp)
             }
             Spacer(Modifier.height(8.dp))
-            Text(review.comment, color = Color.LightGray, lineHeight = 20.sp)
+            Text(review.comment, color = Color.White, lineHeight = 20.sp)
         }
     }
 }

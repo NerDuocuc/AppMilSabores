@@ -8,6 +8,10 @@ data class Product(
     val rating: Float,
     val reviews: Int = 0,
     val imageRes: Int,
+    val imageUrl: String? = null,
+    val stock: Int = 0,
     val category: String,
-    val description: String = ""
+    val description: String = "",
+    // Server-side product code (may be non-numeric). Used when calling backend APIs.
+    val codigo: String? = null
 )

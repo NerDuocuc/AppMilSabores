@@ -108,7 +108,7 @@ fun ProfileHeader(user: UserProfile, onChangePhotoRequest: () -> Unit) {
                 shape = RoundedCornerShape(16.dp)
             ) {
                 Text(
-                    text = "20% OFF vitalicio activado",
+                    text = "50% OFF vitalicio activado",
                     color = PrimaryPurple,
                     fontWeight = FontWeight.SemiBold,
                     fontSize = 12.sp,
@@ -204,7 +204,8 @@ fun OrderCard(order: Order) {
 @Composable
 fun SettingsMenu(
     navController: NavController,
-    onLogout: () -> Unit
+    onLogout: () -> Unit,
+    isSystemUser: Boolean = false
 ) {
     Column(
         modifier = Modifier
@@ -218,6 +219,12 @@ fun SettingsMenu(
             color = MainTextColor,
             modifier = Modifier.padding(bottom = 12.dp)
         )
+
+        if (isSystemUser) {
+            SettingItem("Editar Stock", Icons.Default.Edit) {
+                navController.navigate(Destinations.AdminStock.route)
+            }
+        }
 
         SettingItem("Editar Perfil", Icons.Default.Edit) {
             navController.navigate(Destinations.EditProfile.route)

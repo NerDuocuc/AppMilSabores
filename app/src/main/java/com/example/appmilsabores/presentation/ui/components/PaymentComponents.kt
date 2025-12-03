@@ -60,7 +60,7 @@ fun PaymentMethodCard(
                             CardType.MASTERCARD -> "MasterCard"
                             else -> "Tarjeta"
                         },
-                        color = Color.White,
+                        color = Color.Black,
                         fontWeight = FontWeight.Bold,
                         fontSize = 16.sp
                     )
@@ -75,6 +75,13 @@ fun PaymentMethodCard(
                     }
                 }
                 Spacer(modifier = Modifier.height(8.dp))
+                Text(
+                    text = method.cardHolderName,
+                    color = Color.Black,
+                    fontSize = 13.sp,
+                    fontWeight = FontWeight.Normal
+                )
+                Spacer(modifier = Modifier.height(4.dp))
                 Text(
                     text = "**** **** **** ${method.lastFourDigits}",
                     color = Color.LightGray,

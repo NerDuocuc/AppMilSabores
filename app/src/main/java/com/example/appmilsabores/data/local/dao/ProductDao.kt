@@ -16,10 +16,10 @@ interface ProductDao {
 	@Query("SELECT * FROM products ORDER BY name")
 	suspend fun getAllProducts(): List<ProductEntity>
 
-	@Query("SELECT * FROM products WHERE category = :category ORDER BY name")
+	@Query("SELECT * FROM products WHERE LOWER(category) = LOWER(:category) ORDER BY name")
 	suspend fun getProductsByCategory(category: String): List<ProductEntity>
 
-	@Query("SELECT * FROM products WHERE category IN (:categories) ORDER BY name")
+	@Query("SELECT * FROM products WHERE LOWER(category) IN (:categories) ORDER BY name")
 	suspend fun getProductsByCategories(categories: List<String>): List<ProductEntity>
 
 	@Query("SELECT * FROM products WHERE id = :productId")
@@ -33,4 +33,12 @@ interface ProductDao {
 
 	@Query("SELECT COUNT(*) FROM products")
 	suspend fun countProducts(): Int
+
+	// Remove all products - used when syncing remote data to ensure local seed is replaced
+	@Query("DELETE FROM products")
+	suspend fun clearProducts()
+
+	// Update stock for a product (bounded checking should be done in callers)
+	@Query("UPDATE products SET stock = :newStock WHERE id = :productId")
+	suspend fun updateStock(productId: Int, newStock: Int)
 }

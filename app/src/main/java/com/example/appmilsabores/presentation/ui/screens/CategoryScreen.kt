@@ -6,6 +6,7 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.Info
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -38,6 +39,11 @@ fun CategoryScreen(
                 navigationIcon = {
                     IconButton(onClick = { navController.popBackStack() }) {
                         Icon(Icons.AutoMirrored.Filled.ArrowBack, "Volver", tint = Color.White)
+                    }
+                }
+                ,actions = {
+                    IconButton(onClick = { navController.navigate("debug/categories") }) {
+                        Icon(Icons.Filled.Info, contentDescription = "Debug", tint = Color.White)
                     }
                 }
             )

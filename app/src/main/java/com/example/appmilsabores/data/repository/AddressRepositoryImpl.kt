@@ -1,18 +1,24 @@
 package com.example.appmilsabores.data.repository
 
+import com.example.appmilsabores.AppMilSaboresApplication
+import com.example.appmilsabores.data.local.entity.AddressEntity
+import com.example.appmilsabores.data.local.dao.AddressDao
 import com.example.appmilsabores.domain.model.Address
 import com.example.appmilsabores.domain.repository.AddressRepository
 import kotlinx.coroutines.runBlocking
 
 class AddressRepositoryImpl(
+    private val dao: AddressDao = AppMilSaboresApplication.database.addressDao(),
     private val userRepository: UserRepositoryImpl = UserRepositoryImpl()
 ) : AddressRepository {
 
-    override fun getAddresses(): List<Address> = synchronized(addresses) {
-        if (addresses.isEmpty()) {
+    override fun getAddresses(): List<Address> = synchronized(this) {
+        val persisted = runBlocking { dao.getAll() }
+        if (persisted.isEmpty()) {
             bootstrapFromProfileLocked()
+            return@synchronized addressesFromMemory()
         }
-        addresses.toList()
+        return@synchronized persisted.map(AddressRepositoryImpl::toDomain)
     }
 
     override fun addAddress(
@@ -21,118 +27,161 @@ class AddressRepositoryImpl(
         city: String,
         details: String,
         setAsDefault: Boolean
-    ): Address = synchronized(addresses) {
-        val id = nextId++
-        val trimmedAddress = Address(
-            id = id,
+    ): Address = synchronized(this) {
+        val entity = AddressEntity(
             alias = alias.trim(),
             street = street.trim(),
             city = city.trim(),
             details = details.trim(),
-            isDefault = false
+            isDefault = false,
+            createdAt = System.currentTimeMillis()
         )
+        val newId = runBlocking { dao.insert(entity) }
+        val stored = runBlocking { dao.findById(newId) } ?: entity.copy(id = newId)
 
-        addresses.add(0, trimmedAddress)
-        updateNextIdLocked()
-
-        if (setAsDefault || addresses.none { it.isDefault }) {
-            setDefaultLocked(id)
+        if (setAsDefault || runBlocking { dao.getAll() }.none { it.isDefault }) {
+            runBlocking { dao.setDefault(newId) }
+            // persist selection to user profile and session prefs
+            try {
+                val addr = stored.street.takeIf { it.isNotBlank() }
+                val comuna = stored.city.takeIf { it.isNotBlank() }
+                runBlocking {
+                    userRepository.setAddressForCurrentUser(addr, comuna, null)
+                    AppMilSaboresApplication.sessionPreferences.savePrimaryAddress(addr, comuna, null)
+                }
+            } catch (_: Exception) {
+            }
         }
 
-        addresses.first { it.id == id }
+        return@synchronized toDomain(stored)
     }
 
     override fun deleteAddress(id: Int) {
-        synchronized(addresses) {
-            val removedWasDefault = addresses.firstOrNull { it.id == id }?.isDefault == true
-            addresses.removeAll { it.id == id }
-            if (addresses.isEmpty()) {
-                updateNextIdLocked()
-                return
-            }
-            if (removedWasDefault || addresses.none { it.isDefault }) {
-                setDefaultLocked(addresses.first().id)
+        synchronized(this) {
+            val existing = runBlocking { dao.findById(id.toLong()) } ?: return@synchronized
+            runBlocking { dao.deleteById(id.toLong()) }
+            if (existing.isDefault) {
+                val remaining = runBlocking { dao.getAll() }
+                if (remaining.isNotEmpty()) {
+                    runBlocking { dao.setDefault(remaining.first().id) }
+                }
             }
         }
     }
 
     override fun setDefaultAddress(id: Int) {
-        synchronized(addresses) {
-            if (addresses.none { it.id == id }) return
-            setDefaultLocked(id)
-        }
-    }
-
-    private fun setDefaultLocked(id: Int) {
-        var found = false
-        for (index in addresses.indices) {
-            val current = addresses[index]
-            val shouldBeDefault = current.id == id
-            if (shouldBeDefault) found = true
-            if (current.isDefault != shouldBeDefault) {
-                addresses[index] = current.copy(isDefault = shouldBeDefault)
-            }
-        }
-        if (!found && addresses.isNotEmpty()) {
-            val first = addresses.first()
-            if (!first.isDefault) {
-                addresses[0] = first.copy(isDefault = true)
+        synchronized(this) {
+            val exists = runBlocking { dao.findById(id.toLong()) } ?: return@synchronized
+            runBlocking { dao.setDefault(id.toLong()) }
+            try {
+                val addr = exists.street.takeIf { it.isNotBlank() }
+                val comuna = exists.city.takeIf { it.isNotBlank() }
+                runBlocking {
+                    userRepository.setAddressForCurrentUser(addr, comuna, null)
+                    AppMilSaboresApplication.sessionPreferences.savePrimaryAddress(addr, comuna, null)
+                }
+            } catch (_: Exception) {
             }
         }
     }
 
+    // Keep compatibility with older callers that expect to set a primary address in one call
     fun setPrimaryAddress(fullAddress: String) {
-        synchronized(addresses) {
-            addresses.clear()
+        synchronized(this) {
+            runBlocking { dao.clearAll() }
             if (fullAddress.isNotBlank()) {
-                addresses.add(
-                    Address(
-                        id = nextId++,
-                        alias = "Principal",
-                        street = fullAddress.trim(),
-                        city = "",
-                        details = "",
-                        isDefault = true
-                    )
+                val entity = AddressEntity(
+                    alias = "Principal",
+                    street = fullAddress.trim(),
+                    city = "",
+                    details = "",
+                    isDefault = true,
+                    createdAt = System.currentTimeMillis()
                 )
+                val newId = runBlocking { dao.insert(entity) }
+                runBlocking { dao.setDefault(newId) }
+                try {
+                    val toPersist = entity.street.takeIf { it.isNotBlank() }
+                    runBlocking {
+                        userRepository.setAddressForCurrentUser(toPersist, null, null)
+                        AppMilSaboresApplication.sessionPreferences.savePrimaryAddress(toPersist, null, null)
+                    }
+                } catch (_: Exception) {
+                }
+            } else {
+                // cleared
+                try {
+                    runBlocking {
+                        userRepository.setAddressForCurrentUser(null, null, null)
+                        AppMilSaboresApplication.sessionPreferences.savePrimaryAddress(null, null, null)
+                    }
+                } catch (_: Exception) {}
             }
-            updateNextIdLocked()
         }
     }
 
     fun clearAll() {
-        synchronized(addresses) {
-            addresses.clear()
-            nextId = 1
+        synchronized(this) {
+            runBlocking { dao.clearAll() }
+            try {
+                runBlocking {
+                    userRepository.setAddressForCurrentUser(null, null, null)
+                    AppMilSaboresApplication.sessionPreferences.savePrimaryAddress(null, null, null)
+                }
+            } catch (_: Exception) {
+            }
         }
     }
 
     private fun bootstrapFromProfileLocked() {
+        // Try session prefs first
+        try {
+            val primary = runBlocking { AppMilSaboresApplication.sessionPreferences.readPrimaryAddress() }
+            val addr = primary.first?.trim().orEmpty()
+            if (addr.isNotEmpty()) {
+                val entity = AddressEntity(
+                    alias = "Principal",
+                    street = addr,
+                    city = primary.second?.trim().orEmpty(),
+                    details = "",
+                    isDefault = true,
+                    createdAt = System.currentTimeMillis()
+                )
+                runBlocking { dao.insert(entity) }
+                return
+            }
+        } catch (_: Exception) {
+        }
+
         val profile = runBlocking { userRepository.getUserProfile() }
         val mainAddress = profile?.address?.trim().orEmpty()
-        if (mainAddress.isEmpty()) {
-            updateNextIdLocked()
-            return
-        }
-        addresses.add(
-            Address(
-                id = nextId++,
-                alias = "Principal",
-                street = mainAddress,
-                city = profile?.comuna?.trim().orEmpty(),
-                details = "",
-                isDefault = true
-            )
+        if (mainAddress.isEmpty()) return
+        val entity = AddressEntity(
+            alias = "Principal",
+            street = mainAddress,
+            city = profile?.comuna?.trim().orEmpty(),
+            details = "",
+            isDefault = true,
+            createdAt = System.currentTimeMillis()
         )
-        updateNextIdLocked()
+        runBlocking { dao.insert(entity) }
     }
 
-    private fun updateNextIdLocked() {
-        nextId = (addresses.maxOfOrNull { it.id } ?: 0) + 1
+    private fun addressesFromMemory(): List<Address> {
+        // read from DB and map to domain
+        val persisted = runBlocking { dao.getAll() }
+        return persisted.map(AddressRepositoryImpl::toDomain)
     }
 
     companion object {
-        private val addresses = mutableListOf<Address>()
-        private var nextId: Int = 1
+        private fun toDomain(entity: AddressEntity) = Address(
+            id = entity.id.toInt(),
+            alias = entity.alias,
+            street = entity.street,
+            city = entity.city,
+            details = entity.details,
+            isDefault = entity.isDefault
+        )
     }
 }
+
