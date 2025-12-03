@@ -17,6 +17,7 @@ object LocalSeedData {
             rating = 4.9f,
             reviews = 88,
             imageRes = R.drawable.torta_especial_cumpleanos, // <- TU IMAGEN
+            stock = 10,
             category = "Tortas Especiales",
             description = "Una torta festiva y personalizable, con bizcocho de vainilla, relleno de crema y frutas de estación. Perfecta para celebrar."
         ),
@@ -28,6 +29,7 @@ object LocalSeedData {
             rating = 5.0f,
             reviews = 45,
             imageRes = R.drawable.torta_especial_boda, // <- TU IMAGEN
+            stock = 5,
             category = "Tortas Especiales",
             description = "Elegancia y sabor en una torta de varios pisos. Sabores a elección, cubierta de fondant artesanal y detalles florales."
         ),
@@ -41,6 +43,7 @@ object LocalSeedData {
             rating = 4.7f,
             reviews = 112,
             imageRes = R.drawable.torta_circular_vainilla, // <- TU IMAGEN
+            stock = 8,
             category = "Tortas Circulares",
             description = "Un clásico que nunca falla. Bizcocho de vainilla húmedo y esponjoso, relleno de manjar casero y cubierto con merengue."
         ),
@@ -52,6 +55,7 @@ object LocalSeedData {
             rating = 4.8f,
             reviews = 130,
             imageRes = R.drawable.torta_circular_manjar, // <- TU IMAGEN
+            stock = 7,
             category = "Tortas Circulares",
             description = "Para los amantes del manjar. Múltiples capas de bizcocho fino intercaladas con abundante manjar y nueces tostadas."
         ),
@@ -63,6 +67,7 @@ object LocalSeedData {
             rating = 4.9f,
             reviews = 155,
             imageRes = R.drawable.torta_cuadrada_chocolate, // <- TU IMAGEN
+            stock = 12,
             category = "Tortas Cuadradas",
             description = "Intensidad y textura. Bizcocho de chocolate 70% cacao, relleno de ganache y cubierto con trozos de chocolate belga."
         ),
@@ -74,6 +79,7 @@ object LocalSeedData {
             rating = 4.6f,
             reviews = 95,
             imageRes = R.drawable.torta_cuadrada_frutas, // <- TU IMAGEN
+            stock = 6,
             category = "Tortas Cuadradas",
             description = "Frescura y color. Bizcocho de yogur natural cubierto con crema pastelera y una selección de frutas frescas de la temporada."
         ),
@@ -87,6 +93,7 @@ object LocalSeedData {
             rating = 4.8f,
             reviews = 78,
             imageRes = R.drawable.torta_circular_chocolate,
+            stock = 9,
             category = "Tortas Circulares",
             description = "Torta circular de chocolate, bizcocho húmedo y relleno de ganache de chocolate. Ideal para celebraciones y amantes del chocolate."
         ),
@@ -98,6 +105,7 @@ object LocalSeedData {
             rating = 4.7f,
             reviews = 64,
             imageRes = R.drawable.torta_circular_frutas,
+            stock = 11,
             category = "Tortas Circulares",
             description = "Bizcocho esponjoso con capas de crema y frutas frescas, decorada con frutas de temporada encima. Fresca y elegante."
         ),
@@ -109,6 +117,7 @@ object LocalSeedData {
             rating = 4.6f,
             reviews = 50,
             imageRes = R.drawable.torta_cuadrada_vainilla,
+            stock = 10,
             category = "Tortas Cuadradas",
             description = "Clásica torta cuadrada de vainilla, rellena de crema y cubierta con merengue suave. Perfecta para reuniones familiares."
         ),
@@ -120,6 +129,7 @@ object LocalSeedData {
             rating = 4.7f,
             reviews = 34,
             imageRes = R.drawable.torta_vegana_manjar,
+            stock = 4,
             category = "Productos Veganos",
             description = "Torta vegana con relleno de manjar vegano, bizcocho a base de ingredientes 100% vegetales y cobertura cremosa sin lácteos."
         ),
@@ -131,6 +141,7 @@ object LocalSeedData {
             rating = 4.5f,
             reviews = 28,
             imageRes = R.drawable.torta_vegana_vainilla,
+            stock = 3,
             category = "Productos Veganos",
             description = "Una opción vegana suave y esponjosa con esencia de vainilla y relleno cremoso a base de plantas. Ideal para quienes prefieren alternativas vegetales."
         ),
@@ -142,6 +153,7 @@ object LocalSeedData {
             rating = 4.6f,
             reviews = 40,
             imageRes = R.drawable.brownie_vegano,
+            stock = 20,
             category = "Productos Veganos",
             description = "Brownie vegano con textura fudgy, hecho con ingredientes de origen vegetal y trozos de chocolate. Perfecto para un antojo responsable."
         ),
@@ -153,6 +165,7 @@ object LocalSeedData {
             rating = 4.4f,
             reviews = 22,
             imageRes = R.drawable.bizcochuelo_sin_gluten,
+            stock = 15,
             category = "Productos sin Gluten",
             description = "Bizcochuelo esponjoso y liviano, elaborado con harinas sin gluten para quienes buscan opciones libres de gluten sin sacrificar sabor."
         ),
@@ -166,6 +179,7 @@ object LocalSeedData {
             rating = 4.9f,
             reviews = 210,
             imageRes = R.drawable.tiramisu, // <- TU IMAGEN (principal)
+            stock = 18,
             category = "Postres Individuales",
             description = "Capas de galletas de champaña bañadas en café de grano y licor, intercaladas con una suave crema de queso mascarpone."
         ),
@@ -177,6 +191,7 @@ object LocalSeedData {
             rating = 4.8f,
             reviews = 90,
             imageRes = R.drawable.tiramisu_2, // <- TU IMAGEN (alternativa)
+            stock = 14,
             category = "Postres Individuales",
             description = "El mismo sabor clásico de nuestro tiramisú, en un formato más grande ideal para compartir en una ocasión especial."
         ),
@@ -188,6 +203,7 @@ object LocalSeedData {
             rating = 4.8f,
             reviews = 180,
             imageRes = R.drawable.mousse_chocolate, // <- TU IMAGEN
+            stock = 22,
             category = "Postres Individuales",
             description = "Una mousse aireada y potente, hecha con chocolate de origen y un toque de sal marina para realzar su sabor."
         ),
@@ -199,6 +215,7 @@ object LocalSeedData {
             rating = 4.7f,
             reviews = 250,
             imageRes = R.drawable.brownie, // <- TU IMAGEN
+            stock = 25,
             category = "Postres Individuales",
             description = "Húmedo por dentro, con una capa crujiente por fuera y lleno de trozos de nueces y chocolate. Un clásico irresistible."
         ),
@@ -210,6 +227,7 @@ object LocalSeedData {
             rating = 4.8f,
             reviews = 190,
             imageRes = R.drawable.brownie_2, // <- TU IMAGEN
+            stock = 13,
             category = "Postres Individuales",
             description = "Nuestra receta de brownie elevada al siguiente nivel, con doble carga de chocolate semi-amargo y una textura extra fudgy."
         ),
@@ -223,6 +241,7 @@ object LocalSeedData {
             rating = 4.5f,
             reviews = 65,
             imageRes = R.drawable.torta_sin_azucar_naranja, // <- TU IMAGEN
+            stock = 6,
             category = "Productos sin Azúcar",
             description = "Bizcocho húmedo de naranja endulzado naturalmente, ideal para quienes buscan una opción deliciosa y sin azúcar añadida."
         ),
@@ -234,6 +253,7 @@ object LocalSeedData {
             rating = 4.6f,
             reviews = 80,
             imageRes = R.drawable.brownie_sin_gluten, // <- TU IMAGEN
+            stock = 2,
             category = "Productos sin Gluten",
             description = "El mismo sabor intenso de nuestro brownie, pero elaborado con una mezcla de harinas sin gluten para que todos puedan disfrutarlo."
         ),
@@ -245,6 +265,7 @@ object LocalSeedData {
             rating = 4.4f,
             reviews = 55,
             imageRes = R.drawable.pan_sin_gluten, // <- TU IMAGEN
+            stock = 9,
             category = "Productos sin Gluten",
             description = "Pan artesanal sin gluten, de miga suave y corteza dorada. Perfecto para sándwiches o tostadas."
         ),
@@ -256,6 +277,7 @@ object LocalSeedData {
             rating = 4.7f,
             reviews = 92,
             imageRes = R.drawable.vegana_chocolate, // <- TU IMAGEN
+            stock = 7,
             category = "Productos Veganos",
             description = "Cremoso pastel de chocolate hecho a base de palta y cacao, endulzado con sirope de agave. 100% origen vegetal."
         ),
@@ -269,6 +291,7 @@ object LocalSeedData {
             rating = 4.8f,
             reviews = 140,
             imageRes = R.drawable.empanada_manzana, // <- TU IMAGEN
+            stock = 30,
             category = "Pastelería Tradicional",
             description = "Masa horneada rellena de compota de manzana casera, con un toque de canela y pasas. Un clásico del sur de Chile."
         ),
@@ -280,6 +303,7 @@ object LocalSeedData {
             rating = 4.9f,
             reviews = 105,
             imageRes = R.drawable.tarta_santiago, // <- TU IMAGEN
+            stock = 16,
             category = "Pastelería Tradicional",
             description = "Exquisita tarta de almendras molidas, de origen gallego pero adoptada en la repostería chilena. Densa, húmeda y sin harina de trigo."
         )

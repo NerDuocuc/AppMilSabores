@@ -176,7 +176,8 @@ fun ProfileScreen(
                     item {
                         SettingsMenu(
                             navController = navController,
-                            onLogout = viewModel::logout
+                            onLogout = viewModel::logout,
+                            isSystemUser = profile.isSystem
                         )
                     }
                 }

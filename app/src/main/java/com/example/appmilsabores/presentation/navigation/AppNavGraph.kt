@@ -224,6 +224,14 @@ fun AppNavGraph(modifier: Modifier = Modifier) {
             popExitTransition = { backwardExit() }
         ) { EditProfileScreen(navController) }
 
+        composable(
+            route = Destinations.AdminStock.route,
+            enterTransition = { forwardEnter() },
+            exitTransition = { forwardExit() },
+            popEnterTransition = { backwardEnter() },
+            popExitTransition = { backwardExit() }
+        ) { AdminStockScreen(navController) }
+
         // Carrito
         composable(
             route = Destinations.Cart.route,

@@ -311,6 +311,7 @@ object RemoteToLocalSync {
                     reviews = 0,
                     imageRes = imageResToStore,
                     imageUrl = imageUrlToStore,
+                    stock = dto.stock ?: 0,
                     category = dto.categoriaNombre ?: "General",
                     description = dto.descripcionProducto
                 )

@@ -47,6 +47,50 @@ class ProductRepositoryImpl(
         return productDao.getProductById(id)?.let(ProductMapper::toDomain)
     }
 
+    override suspend fun updateProductStock(id: Int, newStock: Int): Boolean {
+        return try {
+            val existing = productDao.getProductById(id)
+
+            // If we have a remote data source and a server product code, try to update remote first
+            val remoteUpdated = try {
+                val codigo = existing?.codigo
+                if (remoteDataSource != null && codigo != null) {
+                    val remoteProduct = remoteDataSource.updateProductStock(codigo, newStock)
+                    if (remoteProduct != null) {
+                        // persist returned product from server to local DB
+                        val entity = ProductMapper.toEntity(remoteProduct)
+                        productDao.upsertProducts(listOf(entity))
+                        android.util.Log.d("ProductRepository", "updateStock id=$id -> remote persisted stock=${remoteProduct.stock}")
+                        true
+                    } else {
+                        false
+                    }
+                } else {
+                    false
+                }
+            } catch (t: Throwable) {
+                android.util.Log.w("ProductRepository", "Remote update failed for id=$id", t)
+                false
+            }
+
+            if (!remoteUpdated) {
+                // Fallback to local-only update
+                productDao.updateStock(id, newStock)
+                try {
+                    val after = productDao.getProductById(id)
+                    android.util.Log.d("ProductRepository", "updateStock id=$id -> requested=$newStock persisted=${after?.stock}")
+                } catch (t: Throwable) {
+                    android.util.Log.w("ProductRepository", "updateStock: failed to read back product id=$id", t)
+                }
+            }
+
+            true
+        } catch (e: Exception) {
+            android.util.Log.e("ProductRepository", "Failed to update stock for id=$id", e)
+            false
+        }
+    }
+
     override suspend fun searchProducts(query: String, filters: ProductFilters): List<Product> {
         val sanitized = query.trim()
         if (sanitized.isEmpty()) return emptyList()

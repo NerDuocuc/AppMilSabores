@@ -37,4 +37,8 @@ interface ProductDao {
 	// Remove all products - used when syncing remote data to ensure local seed is replaced
 	@Query("DELETE FROM products")
 	suspend fun clearProducts()
+
+	// Update stock for a product (bounded checking should be done in callers)
+	@Query("UPDATE products SET stock = :newStock WHERE id = :productId")
+	suspend fun updateStock(productId: Int, newStock: Int)
 }

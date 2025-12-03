@@ -15,8 +15,10 @@ object ProductMapper {
 			reviews = entity.reviews,
 			imageRes = entity.imageRes,
 			imageUrl = entity.imageUrl,
+			stock = entity.stock,
 			category = entity.category,
-			description = entity.description.orEmpty()
+			description = entity.description.orEmpty(),
+			codigo = entity.codigo
 		)
 	}
 
@@ -28,6 +30,7 @@ object ProductMapper {
 
 		return ProductEntity(
 			id = product.id,
+			codigo = product.codigo,
 			name = product.name,
 			price = product.price,
 			oldPrice = product.oldPrice,
@@ -35,6 +38,7 @@ object ProductMapper {
 			reviews = product.reviews,
 				imageRes = product.imageRes,
 				imageUrl = product.imageUrl,
+				stock = product.stock,
 				category = normalizeCategory(product.category),
 				description = product.description
 		)
