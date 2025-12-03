@@ -231,17 +231,34 @@ public class DataLoader implements CommandLineRunner {
             JsonNode cardsNode = n.path("cards");
             if (userRepository.existsById(run)) {
                 // update existing user's cards and password if seed provides one
-                User existing = userRepository.getReferenceById(run);
-                ensureCardsForExistingUser(existing, cardsNode);
-                String pwFromJsonExisting = n.path("password").asText(null);
-                if (pwFromJsonExisting != null) {
-                    String pwToStoreExisting = pwFromJsonExisting;
-                    if (!(pwToStoreExisting.startsWith("$2a$") || pwToStoreExisting.startsWith("$2b$") || pwToStoreExisting.startsWith("$2y$"))) {
-                        pwToStoreExisting = new org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder().encode(pwToStoreExisting);
+                // Use findById to obtain a managed entity instead of a lazy proxy
+                User existing = userRepository.findById(run).orElse(null);
+                if (existing != null) {
+                    ensureCardsForExistingUser(existing, cardsNode);
+                    String pwFromJsonExisting = n.path("password").asText(null);
+                    if (pwFromJsonExisting != null) {
+                        String pwToStoreExisting = pwFromJsonExisting;
+                        if (!(pwToStoreExisting.startsWith("$2a$") || pwToStoreExisting.startsWith("$2b$") || pwToStoreExisting.startsWith("$2y$"))) {
+                            pwToStoreExisting = new org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder().encode(pwToStoreExisting);
+                        }
+                        existing.setPassword(pwToStoreExisting);
+                        userRepository.save(existing);
+                        log.info("Updated password for existing user {} from seed", run);
                     }
-                    existing.setPassword(pwToStoreExisting);
-                    userRepository.save(existing);
-                    log.info("Updated password for existing user {} from seed", run);
+                } else {
+                    // fallback: create new user record if for some reason it disappeared
+                    String pwFromJsonExisting = n.path("password").asText(null);
+                    User newUser = new User();
+                    newUser.setRun(run);
+                    if (pwFromJsonExisting != null) {
+                        String pwToStoreExisting = pwFromJsonExisting;
+                        if (!(pwToStoreExisting.startsWith("$2a$") || pwToStoreExisting.startsWith("$2b$") || pwToStoreExisting.startsWith("$2y$"))) {
+                            pwToStoreExisting = new org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder().encode(pwToStoreExisting);
+                        }
+                        newUser.setPassword(pwToStoreExisting);
+                    }
+                    userRepository.save(newUser);
+                    log.info("Created fallback user {} during seed password update", run);
                 }
                 continue;
             }

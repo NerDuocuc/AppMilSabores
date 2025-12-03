@@ -57,6 +57,12 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 // Permitir solo GET público a productos durante el desarrollo:
                 .requestMatchers(HttpMethod.GET, "/api/productos/**").permitAll()
+                // For development: allow modifying products (PUT/POST/DELETE) without auth
+                // so the Android emulator can update stock while testing. Remove or restrict
+                // this in production.
+                .requestMatchers(HttpMethod.PUT, "/api/productos/**").permitAll()
+                .requestMatchers(HttpMethod.POST, "/api/productos/**").permitAll()
+                .requestMatchers(HttpMethod.DELETE, "/api/productos/**").permitAll()
                 // Permitir acceso público a recursos estáticos de imágenes (GET y HEAD)
                 .requestMatchers(HttpMethod.GET, "/images/**").permitAll()
                 .requestMatchers(HttpMethod.HEAD, "/images/**").permitAll()
