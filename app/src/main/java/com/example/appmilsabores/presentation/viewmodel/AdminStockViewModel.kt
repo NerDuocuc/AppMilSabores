@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
 class AdminStockViewModel(
-    private val productRepo: com.example.appmilsabores.data.repository.ProductRepositoryImpl = AppDependencyContainer.createProductRepository()
+    private val productRepo: com.example.appmilsabores.domain.repository.ProductRepository = AppDependencyContainer.createProductRepository()
 ) : ViewModel() {
 
     val products: StateFlow<List<Product>> = productRepo.observeProducts()

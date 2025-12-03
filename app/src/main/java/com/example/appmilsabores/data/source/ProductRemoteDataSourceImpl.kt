@@ -5,10 +5,12 @@ import com.example.appmilsabores.model.ProductoDto
 import com.example.appmilsabores.network.ApiClient
 import com.example.appmilsabores.domain.model.Product
 
-class ProductRemoteDataSourceImpl : ProductRemoteDataSource {
+class ProductRemoteDataSourceImpl(
+    private val apiService: com.example.appmilsabores.network.ApiService = com.example.appmilsabores.network.ApiClient.service
+) : ProductRemoteDataSource {
 
     override suspend fun fetchProducts(): List<Product> {
-        val dtos: List<ProductoDto> = ApiClient.service.getProductos()
+        val dtos: List<ProductoDto> = apiService.getProductos()
         return dtos.mapNotNull { dto ->
             try {
                 // Map ProductoDto -> Product domain
@@ -42,6 +44,7 @@ class ProductRemoteDataSourceImpl : ProductRemoteDataSource {
                     reviews = 0,
                     imageRes = 0,
                     imageUrl = imageUrl,
+                    stock = dto.stock ?: 0,
                     codigo = dto.codigoProducto,
                     category = dto.categoriaNombre ?: "",
                     description = dto.descripcionProducto ?: ""
@@ -55,9 +58,9 @@ class ProductRemoteDataSourceImpl : ProductRemoteDataSource {
     override suspend fun updateProductStock(codigo: String, newStock: Int): Product? {
         return try {
             // Fetch current DTO from server, update stock and send PUT
-            val current: ProductoDto = ApiClient.service.getProducto(codigo)
+            val current: ProductoDto = apiService.getProducto(codigo)
             val updated = current.copy(stock = newStock)
-            val result: ProductoDto = ApiClient.service.updateProducto(codigo, updated)
+            val result: ProductoDto = apiService.updateProducto(codigo, updated)
 
             // Map returned DTO -> Product domain
             try {

@@ -60,7 +60,7 @@ class ProductRepositoryImpl(
                         // persist returned product from server to local DB
                         val entity = ProductMapper.toEntity(remoteProduct)
                         productDao.upsertProducts(listOf(entity))
-                        android.util.Log.d("ProductRepository", "updateStock id=$id -> remote persisted stock=${remoteProduct.stock}")
+                        com.example.appmilsabores.utils.Logger.d("ProductRepository", "updateStock id=$id -> remote persisted stock=${remoteProduct.stock}")
                         true
                     } else {
                         false
@@ -68,8 +68,8 @@ class ProductRepositoryImpl(
                 } else {
                     false
                 }
-            } catch (t: Throwable) {
-                android.util.Log.w("ProductRepository", "Remote update failed for id=$id", t)
+                } catch (t: Throwable) {
+                    com.example.appmilsabores.utils.Logger.w("ProductRepository", "Remote update failed for id=$id", t)
                 false
             }
 
@@ -78,15 +78,15 @@ class ProductRepositoryImpl(
                 productDao.updateStock(id, newStock)
                 try {
                     val after = productDao.getProductById(id)
-                    android.util.Log.d("ProductRepository", "updateStock id=$id -> requested=$newStock persisted=${after?.stock}")
+                    com.example.appmilsabores.utils.Logger.d("ProductRepository", "updateStock id=$id -> requested=$newStock persisted=${after?.stock}")
                 } catch (t: Throwable) {
-                    android.util.Log.w("ProductRepository", "updateStock: failed to read back product id=$id", t)
+                    com.example.appmilsabores.utils.Logger.w("ProductRepository", "updateStock: failed to read back product id=$id", t)
                 }
             }
 
             true
         } catch (e: Exception) {
-            android.util.Log.e("ProductRepository", "Failed to update stock for id=$id", e)
+            com.example.appmilsabores.utils.Logger.e("ProductRepository", "Failed to update stock for id=$id", e)
             false
         }
     }
@@ -124,10 +124,10 @@ class ProductRepositoryImpl(
         if (remoteProducts.isNotEmpty()) {
             // Temporary debug logging to diagnose category issues
             try {
-                android.util.Log.d("ProductRepository", "Fetched ${remoteProducts.size} remote products")
+                com.example.appmilsabores.utils.Logger.d("ProductRepository", "Fetched ${remoteProducts.size} remote products")
                 val entities = remoteProducts.map { prod ->
                     val entity = ProductMapper.toEntity(prod)
-                    android.util.Log.d("ProductRepository", "Remote product='${prod.name}' originalCategory='${prod.category}' storedCategory='${entity.category}'")
+                    com.example.appmilsabores.utils.Logger.d("ProductRepository", "Remote product='${prod.name}' originalCategory='${prod.category}' storedCategory='${entity.category}'")
                     entity
                 }
 
@@ -136,9 +136,9 @@ class ProductRepositoryImpl(
                 // Log categories currently stored in DB
                 val stored = productDao.getAllProducts()
                 val categories = stored.map { it.category }.distinct()
-                android.util.Log.d("ProductRepository", "Stored product count=${stored.size}, categories=${categories}")
+                com.example.appmilsabores.utils.Logger.d("ProductRepository", "Stored product count=${stored.size}, categories=${categories}")
             } catch (e: Exception) {
-                android.util.Log.e("ProductRepository", "Error while caching remote products", e)
+                com.example.appmilsabores.utils.Logger.e("ProductRepository", "Error while caching remote products", e)
             }
         }
         return remoteProducts
