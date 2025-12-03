@@ -8,6 +8,7 @@ import com.example.appmilsabores.data.repository.SessionRepositoryImpl
 import com.example.appmilsabores.domain.model.*
 import com.example.appmilsabores.domain.repository.SessionRepository
 import kotlinx.coroutines.delay
+import android.util.Log
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
@@ -64,6 +65,11 @@ class LandingViewModel(
                         imageRes = p.imageRes,
                         imageUrl = p.imageUrl
                     )
+                }
+
+                // Debug: log image resource mapping for each summary to help diagnose placeholder issues
+                summaries.forEach { s ->
+                    Log.d("LandingVM", "ProductSummary id=${s.id} name='${s.name}' imageRes=${s.imageRes} imageUrl=${s.imageUrl}")
                 }
 
                 val featured = summaries.take(3)

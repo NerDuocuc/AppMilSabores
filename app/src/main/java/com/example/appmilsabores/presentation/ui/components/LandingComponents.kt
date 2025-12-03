@@ -741,6 +741,7 @@ fun ProductShowcaseRow(
                         .padding(12.dp),
                     verticalArrangement = Arrangement.spacedBy(10.dp)
                 ) {
+                    val context = LocalContext.current
                     Surface(
                         modifier = Modifier
                             .fillMaxWidth()
@@ -793,6 +794,23 @@ fun ProductShowcaseRow(
                         style = MaterialTheme.typography.titleMedium,
                         fontWeight = FontWeight.Bold
                     )
+
+                    // DEBUG: show image resource id / url to help diagnose why preview may show placeholder
+                    // Use reflection to read BuildConfig.DEBUG at runtime to avoid unresolved reference during compile
+                    val isDebug = try {
+                        val pkg = context.packageName
+                        Class.forName("$pkg.BuildConfig").getField("DEBUG").getBoolean(null)
+                    } catch (_: Throwable) { false }
+
+                    if (isDebug) {
+                        val debugText = "res=${product.imageRes} url=${product.imageUrl ?: "-"}"
+                        Text(
+                            text = debugText,
+                            color = Color.Gray,
+                            style = MaterialTheme.typography.bodySmall,
+                            maxLines = 1
+                        )
+                    }
 
                     AnimatedVisibility(visible = product.id % 2 == 0, enter = fadeIn(), exit = fadeOut()) {
                         Surface(
