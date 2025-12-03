@@ -34,7 +34,17 @@ fun ProductListItem(
     ) {
         Column(modifier = Modifier.padding(8.dp)) {
             val context = LocalContext.current
-            if (!product.imageUrl.isNullOrBlank()) {
+            // Prefer local drawable resource when available. Fallback to remote URL only if local resource is 0.
+            if (product.imageRes != 0) {
+                // Safe usage of painterResource: imageRes is non-zero (we ensure placeholder in sync step)
+                Image(
+                    painter = painterResource(id = product.imageRes),
+                    contentDescription = product.name,
+                    modifier = Modifier
+                        .height(120.dp)
+                        .fillMaxWidth()
+                )
+            } else if (!product.imageUrl.isNullOrBlank()) {
                 AsyncImage(
                     model = ImageRequest.Builder(context)
                         .data(product.imageUrl)
@@ -48,8 +58,9 @@ fun ProductListItem(
                     error = painterResource(id = R.drawable.avatar_placeholder)
                 )
             } else {
+                // final fallback
                 Image(
-                    painter = painterResource(id = product.imageRes),
+                    painter = painterResource(id = R.drawable.avatar_placeholder),
                     contentDescription = product.name,
                     modifier = Modifier
                         .height(120.dp)

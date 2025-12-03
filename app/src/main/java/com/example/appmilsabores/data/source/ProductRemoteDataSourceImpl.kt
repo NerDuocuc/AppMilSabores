@@ -14,14 +14,24 @@ class ProductRemoteDataSourceImpl : ProductRemoteDataSource {
                 // Map ProductoDto -> Product domain
                 val id = dto.codigoProducto?.toIntOrNull() ?: dto.hashCode()
                 val price = dto.precioProducto?.toDouble() ?: 0.0
-                val rawImage = dto.imagenProducto
-                val imageUrl = rawImage?.let { path ->
-                    // Backend returns paths like "/images/..." — prefix with emulator base URL for dev
-                    if (path.startsWith("/")) {
-                        "http://10.0.2.2:8080${path}"
-                    } else {
-                        path
+                val imageUrl = when {
+                    // Prefer explicit imagen_url returned by backend (may include leading '/').
+                    dto.imagenUrl?.isNotBlank() == true -> {
+                        val p = dto.imagenUrl!!
+                        if (p.startsWith("/")) "http://10.0.2.2:8080${p}" else p
                     }
+                    // Fallback to imagen_producto base name: build full URL pointing to images controller
+                    dto.imagenProducto?.isNotBlank() == true -> {
+                        val raw = dto.imagenProducto!!
+                        if (raw.startsWith("/")) {
+                            // if backend somehow returned a path with leading slash
+                            "http://10.0.2.2:8080${raw}"
+                        } else {
+                            // build image lookup by base name; ImagesController will try known extensions
+                            "http://10.0.2.2:8080/images/products/$raw"
+                        }
+                    }
+                    else -> null
                 }
                 Product(
                     id = id,

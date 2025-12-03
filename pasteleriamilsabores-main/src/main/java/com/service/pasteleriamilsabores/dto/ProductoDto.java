@@ -13,6 +13,8 @@ public class ProductoDto {
     private String descripcionProducto;
     @JsonProperty("imagen_producto")
     private String imagenProducto;
+    @JsonProperty("imagen_url")
+    private String imagenUrl;
     private Integer stock;
     @JsonProperty("stock_critico")
     private Integer stockCritico;
@@ -20,6 +22,8 @@ public class ProductoDto {
     private Integer categoriaId;
     @JsonProperty("nombre_categoria")
     private String categoriaNombre;
+    @JsonProperty("categoria_slug")
+    private String categoriaSlug;
 
     public ProductoDto() {}
 
@@ -33,6 +37,8 @@ public class ProductoDto {
     public void setDescripcionProducto(String descripcionProducto) { this.descripcionProducto = descripcionProducto; }
     public String getImagenProducto() { return imagenProducto; }
     public void setImagenProducto(String imagenProducto) { this.imagenProducto = imagenProducto; }
+    public String getImagenUrl() { return imagenUrl; }
+    public void setImagenUrl(String imagenUrl) { this.imagenUrl = imagenUrl; }
     public Integer getStock() { return stock; }
     public void setStock(Integer stock) { this.stock = stock; }
     public Integer getStockCritico() { return stockCritico; }
@@ -41,4 +47,6 @@ public class ProductoDto {
     public void setCategoriaId(Integer categoriaId) { this.categoriaId = categoriaId; }
     public String getCategoriaNombre() { return categoriaNombre; }
     public void setCategoriaNombre(String categoriaNombre) { this.categoriaNombre = categoriaNombre; }
+    public String getCategoriaSlug() { return categoriaSlug; }
+    public void setCategoriaSlug(String categoriaSlug) { this.categoriaSlug = categoriaSlug; }
 }

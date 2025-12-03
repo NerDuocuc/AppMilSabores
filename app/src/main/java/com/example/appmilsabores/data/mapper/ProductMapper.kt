@@ -21,6 +21,11 @@ object ProductMapper {
 	}
 
 		fun toEntity(product: Product): ProductEntity {
+		fun normalizeCategory(name: String): String {
+			val normalized = java.text.Normalizer.normalize(name, java.text.Normalizer.Form.NFD)
+			return normalized.replace("\\p{InCombiningDiacriticalMarks}+".toRegex(), "").trim().lowercase()
+		}
+
 		return ProductEntity(
 			id = product.id,
 			name = product.name,
@@ -30,7 +35,7 @@ object ProductMapper {
 			reviews = product.reviews,
 				imageRes = product.imageRes,
 				imageUrl = product.imageUrl,
-				category = product.category,
+				category = normalizeCategory(product.category),
 				description = product.description
 		)
 	}

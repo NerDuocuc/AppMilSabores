@@ -78,8 +78,24 @@ class ProductRepositoryImpl(
     private suspend fun fetchRemoteAndCache(): List<Product> {
         val remoteProducts = remoteDataSource?.fetchProducts().orEmpty()
         if (remoteProducts.isNotEmpty()) {
-            val entities = remoteProducts.map(ProductMapper::toEntity)
-            productDao.upsertProducts(entities)
+            // Temporary debug logging to diagnose category issues
+            try {
+                android.util.Log.d("ProductRepository", "Fetched ${remoteProducts.size} remote products")
+                val entities = remoteProducts.map { prod ->
+                    val entity = ProductMapper.toEntity(prod)
+                    android.util.Log.d("ProductRepository", "Remote product='${prod.name}' originalCategory='${prod.category}' storedCategory='${entity.category}'")
+                    entity
+                }
+
+                productDao.upsertProducts(entities)
+
+                // Log categories currently stored in DB
+                val stored = productDao.getAllProducts()
+                val categories = stored.map { it.category }.distinct()
+                android.util.Log.d("ProductRepository", "Stored product count=${stored.size}, categories=${categories}")
+            } catch (e: Exception) {
+                android.util.Log.e("ProductRepository", "Error while caching remote products", e)
+            }
         }
         return remoteProducts
     }
@@ -108,7 +124,21 @@ class ProductRepositoryImpl(
     }
 
     private fun ProductFilters.ensureCategory(categoryName: String): ProductFilters {
-        return if (categories.isEmpty()) copy(categories = setOf(categoryName)) else this
+        fun normalizeCategory(name: String): String {
+            val normalized = java.text.Normalizer.normalize(name, java.text.Normalizer.Form.NFD)
+            return normalized.replace("\\p{InCombiningDiacriticalMarks}+".toRegex(), "").trim().lowercase()
+        }
+
+        // Normalize any categories already present in the filters, and also normalize the
+        // incoming categoryName. This makes category matching insensitive to accents/case.
+        val normalizedFromParam = normalizeCategory(categoryName)
+        val normalizedCategories = if (categories.isEmpty()) {
+            setOf(normalizedFromParam)
+        } else {
+            categories.map { normalizeCategory(it) }.toSet()
+        }
+
+        return copy(categories = normalizedCategories)
     }
 
     private fun ProductSortOption.toComparator(): Comparator<Product> {

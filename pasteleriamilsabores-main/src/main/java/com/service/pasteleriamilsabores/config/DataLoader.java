@@ -164,18 +164,58 @@ public class DataLoader implements CommandLineRunner {
             if (productos.isArray()) {
                 for (JsonNode pnode : productos) {
                     String codigo = pnode.path("codigo_producto").asText(null);
-                    if (codigo == null || productoRepository.existsById(codigo)) continue;
+                    if (codigo == null) continue;
+
+                    String imagenDesdeJson = pnode.path("imagen_producto").asText(null);
+
+                    if (productoRepository.existsById(codigo)) {
+                        // update existing product's imagenProducto if seed provides one
+                        try {
+                            Producto existing = productoRepository.getReferenceById(codigo);
+                            boolean changed = false;
+                            if (imagenDesdeJson != null && !imagenDesdeJson.isEmpty()) {
+                                if (existing.getImagenProducto() == null || !imagenDesdeJson.equals(existing.getImagenProducto())) {
+                                    existing.setImagenProducto(imagenDesdeJson);
+                                    changed = true;
+                                }
+                            }
+                            // Optionally update other fields if desired (name/price/stock)
+                            if (pnode.hasNonNull("nombre_producto")) {
+                                String nuevoNombre = pnode.path("nombre_producto").asText(null);
+                                if (nuevoNombre != null && !nuevoNombre.equals(existing.getNombreProducto())) {
+                                    existing.setNombreProducto(nuevoNombre);
+                                    changed = true;
+                                }
+                            }
+                            if (pnode.hasNonNull("precio_producto")) {
+                                Integer nuevoPrecio = pnode.path("precio_producto").isInt() ? pnode.path("precio_producto").asInt() : null;
+                                if (nuevoPrecio != null && !nuevoPrecio.equals(existing.getPrecioProducto())) {
+                                    existing.setPrecioProducto(nuevoPrecio);
+                                    changed = true;
+                                }
+                            }
+                            if (changed) {
+                                productoRepository.save(existing);
+                                log.info("Updated product {} from seed (imagenProducto={})", codigo, existing.getImagenProducto());
+                            }
+                        } catch (Exception ex) {
+                            log.debug("Could not update existing product {}: {}", codigo, ex.getMessage());
+                        }
+                        continue;
+                    }
+
                     Producto p = new Producto();
                     p.setCodigoProducto(codigo);
                     p.setNombreProducto(pnode.path("nombre_producto").asText(null));
                     p.setPrecioProducto(pnode.path("precio_producto").isInt() ? pnode.path("precio_producto").asInt() : null);
                     // description key has accent in JSON
                     p.setDescripcionProducto(pnode.path("descripción_producto").asText(null));
-                    p.setImagenProducto(pnode.path("imagen_producto").asText(null));
+                    p.setImagenProducto(imagenDesdeJson);
                     p.setStock(pnode.path("stock").isInt() ? pnode.path("stock").asInt() : null);
                     p.setStockCritico(pnode.path("stock_critico").isInt() ? pnode.path("stock_critico").asInt() : null);
                     p.setCategoria(categoria);
                     productoRepository.save(p);
+                    log.info("Inserted product {} from seed (imagenProducto={})", p.getCodigoProducto(), p.getImagenProducto());
                 }
             }
         }

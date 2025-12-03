@@ -55,6 +55,11 @@ public class SecurityConfig {
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/api/auth/**", "/actuator/**", "/swagger-ui/**", "/v3/api-docs/**").permitAll()
                 .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+                // Permitir solo GET público a productos durante el desarrollo:
+                .requestMatchers(HttpMethod.GET, "/api/productos/**").permitAll()
+                // Permitir acceso público a recursos estáticos de imágenes (GET y HEAD)
+                .requestMatchers(HttpMethod.GET, "/images/**").permitAll()
+                .requestMatchers(HttpMethod.HEAD, "/images/**").permitAll()
                 // Explicitly allow registration POST to avoid accidental blocking
                 .requestMatchers(HttpMethod.POST, "/api/users/register").permitAll()
                 .requestMatchers("/api/users/**").permitAll()
@@ -65,5 +70,7 @@ public class SecurityConfig {
 
         return http.build();
     }
+
+    // CORS configuration is provided in `CorsConfig` class. Do not redefine the bean here to avoid conflicts.
 
 }

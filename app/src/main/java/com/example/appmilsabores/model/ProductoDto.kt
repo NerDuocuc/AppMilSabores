@@ -8,6 +8,7 @@ data class ProductoDto(
     @SerializedName("precio_producto") val precioProducto: Int?,
     @SerializedName("descripción_producto") val descripcionProducto: String?,
     @SerializedName("imagen_producto") val imagenProducto: String?,
+    @SerializedName("imagen_url") val imagenUrl: String?,
     val stock: Int?,
     @SerializedName("stock_critico") val stockCritico: Int?,
     @SerializedName("categoria_id") val categoriaId: Int?,

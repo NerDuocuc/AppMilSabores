@@ -287,6 +287,14 @@ fun AppNavGraph(modifier: Modifier = Modifier) {
             popEnterTransition = { backwardEnter() },
             popExitTransition = { backwardExit() }
         ) { AddAddressScreen(navController) }
+        // Debug: show stored categories
+        composable(
+            route = "debug/categories",
+            enterTransition = { forwardEnter() },
+            exitTransition = { forwardExit() },
+            popEnterTransition = { backwardEnter() },
+            popExitTransition = { backwardExit() }
+        ) { DebugCategoriesScreen(navController) }
     }
 }
 }
