@@ -178,12 +178,14 @@ fun LandingPageScreen(
         val categories = landingState.categories.map { it.name }.filter { it.isNotBlank() }
         val preferred = "Postres Individuales"
         val available = categories.filter { !it.equals(preferred, ignoreCase = true) }
+
         if (available.isEmpty()) {
             // Fallback to featured/newProducts if no other categories
             popularOptionsState.value = (landingState.featured + landingState.newProducts).distinctBy { it.id }
         } else {
             // pick a random category name
             val randomCategory = available.shuffled().first()
+
             // fetch products for that category from repository and map to ProductSummary
             val repo = com.example.appmilsabores.data.AppDependencyContainer.createProductRepository()
             val products = try {
@@ -192,15 +194,16 @@ fun LandingPageScreen(
                 emptyList()
             }
 
-            if (products.isEmpty()) {
-                popularOptionsState.value = (landingState.featured + landingState.newProducts).distinctBy { it.id }
+            popularOptionsState.value = if (products.isEmpty()) {
+                (landingState.featured + landingState.newProducts).distinctBy { it.id }
             } else {
-                popularOptionsState.value = products.map { p ->
+                products.map { p ->
                     ProductSummary(
                         id = p.id,
                         name = p.name,
                         price = formatPrice(p.price),
-                        imageRes = p.imageRes
+                        imageRes = p.imageRes,
+                        imageUrl = p.imageUrl
                     )
                 }
             }
